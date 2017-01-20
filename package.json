@@ -56,6 +56,7 @@
     "dockerode": "^2.3.1",
     "double-docker": "^1.6.0",
     "express": "^4.14.0",
+    "gulp": "^3.9.1",
     "humps": "^2.0.0",
     "is-docker": "^1.1.0",
     "jsonwebtoken": "^7.2.1",
@@ -73,6 +74,7 @@
     "pure-css": "^1.0.4",
     "rekcod": "^2.0.1",
     "screwdriver-executor-docker": "^2.2.1",
+    "supertest": "^2.0.1",
     "swarmerode": "^3.1.0",
     "validate-dockerfile": "^1.8.1"
   }
