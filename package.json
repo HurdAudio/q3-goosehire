@@ -69,6 +69,7 @@
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
     "passport-linkedin": "^1.0.0",
+    "path": "^0.12.7",
     "pure-css": "^1.0.4",
     "rekcod": "^2.0.1",
     "screwdriver-executor-docker": "^2.2.1",
