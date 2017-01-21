@@ -23,3 +23,36 @@ suite('Verify basic functionality of GooseHire API', () => {
   });
 
 });
+
+suite('verify basic functionality of searches', function(){
+
+    test('GET /index.html', (done) => {
+
+      request(app)
+        .get('/searches')
+        .expect('Content-Type', /json/)
+        .expect(200, done);
+    });
+  });
+
+suite('verify basic functionality of skillsets', function(){
+
+    test('GET /index.html', (done) => {
+
+      request(app)
+        .get('/skillsets')
+        .expect('Content-Type', /json/)
+        .expect(200, done);
+    });
+  });
+
+suite('verify basic functionality of users', function(){
+
+    test('GET /index.html', (done) => {
+
+      request(app)
+        .get('/users')
+        .expect('Content-Type', /json/)
+        .expect(200, done);
+    });
+  });
