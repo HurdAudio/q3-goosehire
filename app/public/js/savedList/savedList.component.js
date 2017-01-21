@@ -3,13 +3,11 @@
 
   angular.module('app')
     .component('savedList', {
-      controller: savedListController,
+      controller: SavedListController,
       templateUrl: '/js/savedList/savedList.template.html'
     });
 
-    // homeController.$inject = ['$http'];
-
-    function savedListController(){
+    function SavedListController(){
       const vm = this;
 
     }

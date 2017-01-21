@@ -3,13 +3,11 @@
 
   angular.module('app')
     .component('jobList', {
-      controller: jobListController,
+      controller: JobListController,
       templateUrl: '/js/jobList/jobList.template.html'
     });
 
-    // homeController.$inject = ['$http'];
-
-    function jobListController(){
+    function JobListController(){
       const vm = this;
 
     }

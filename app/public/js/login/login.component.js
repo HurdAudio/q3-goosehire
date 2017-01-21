@@ -3,13 +3,11 @@
 
   angular.module('app')
     .component('login', {
-      controller: loginController,
+      controller: LoginController,
       templateUrl: '/js/login/login.template.html'
     });
 
-    // homeController.$inject = ['$http'];
-
-    function loginController(){
+    function LoginController(){
       const vm = this;
 
     }

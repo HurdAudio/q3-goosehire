@@ -3,13 +3,11 @@
 
   angular.module('app')
     .component('savedItem', {
-      controller: savedItemController,
+      controller: SavedItemController,
       templateUrl: '/js/savedItem/savedItem.template.html'
     });
 
-    // homeController.$inject = ['$http'];
-
-    function savedItemController(){
+    function SavedItemController(){
       const vm = this;
 
     }
