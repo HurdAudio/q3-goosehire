@@ -77,5 +77,8 @@
     "supertest": "^2.0.1",
     "swarmerode": "^3.1.0",
     "validate-dockerfile": "^1.8.1"
+  },
+  "devDependencies": {
+    "supertest": "^2.0.1"
   }
 }
