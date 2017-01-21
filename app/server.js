@@ -4,11 +4,14 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
+const port = 3007;
 
 if (process.env.NODE_ENV !== 'test') {
   const logger = require('morgan');
   app.use(logger('dev'));
 }
+
+app.use(express.static(path.join('public')));
 
 app.use(bodyParser.json());
 
@@ -22,4 +25,8 @@ app.use('*', function(req, res, next) {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')});
 });
 
-module.exports = app
+app.listen(port, () => {
+  console.log('Listening on port', port);
+});
+
+module.exports = app;
