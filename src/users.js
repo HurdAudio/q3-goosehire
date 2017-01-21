@@ -20,5 +20,5 @@ const UserSchema = new Schema({
   searches: [SearchSchema]
 });
 
-const User = mongoose.model()
+const User = mongoose.model('goosehire', UserSchema);
 module.exports = User;
