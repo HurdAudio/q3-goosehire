@@ -3,15 +3,27 @@
 
   angular.module('app')
     .component('searchForm', {
-      controller: searchFormController,
+      controller: SearchFormController,
       templateUrl: '/js/searchForm/searchForm.template.html'
     });
 
-    // homeController.$inject = ['$http'];
+    SearchFormController.$inject = ['$http']
 
-    function searchFormController(){
+    function SearchFormController($http){
       const vm = this;
 
+      vm.indeedSearch = function() {
+        console.log('this happened')
+
+        $http.get('/indeed')
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+      }
     }
+
 
 }());
