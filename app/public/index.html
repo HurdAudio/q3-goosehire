@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <base href="/">
   <title>GooseHire</title>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/pure_offsets.css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
-  <h1>GooseHire</h1>
+  <ui-view></ui-view>
 
   <!--angular  -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.js"></script>
@@ -17,10 +20,22 @@
   <!--ui-router  -->
   <script src="https://unpkg.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.js"></script>
 
-  <!--post  -->
-  <script src="/js/app.module.js" defer></script>
-  <script src="/js/app.component.js" defer></script>
-  <script src="/js/app.config.js" defer></script>
+  <!--app -->
+  <script src="/js/app/app.module.js"></script>
+  <script src="/js/app/app.config.js"></script>
+  <script src="/js/app/app.component.js"></script>
+
+  <script src="/js/main/main.component.js"></script>
+  <!-- <script src="/js/jobList/jobList.component.js"></script> -->
+  <!-- <script src="/js//jobView/jobView.component.js"></script>
+
+  <script src="/js/billboard/billboard.component.js"></script>
+  <script src="/js/login/login.component.js"></script>
+  <script src="/js/savedItem/savedItem.component.js"></script>
+  <script src="/js/savedList/savedList.component.js"></script>
+  <script src="/js/searchForm/searchForm.component.js"></script>
+  <script src="/js/wordCloud/wordCloud.component.js"></script>
+  <script src="/js/jobPost/jobPost.component.js"></script> -->
 
 </body>
 </html>

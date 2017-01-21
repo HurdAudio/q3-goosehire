@@ -4,18 +4,14 @@
   angular.module('app')
     .component('app', {
       templateUrl: '/js/app/app.template.html',
-      controller: appController
+      controller: AppController
     })
 
-  appController.$inject = ['$http']
-  function appController($http) {
-    var vm = this
-
-    vm.$onInit = onInit;
-
-    function onInit() {
-      vm.addingPost = false;
-    }
+  AppController.$inject = ['$http']
+  function AppController($http) {
+    const vm = this
   }
+
+  //nav menu lives here
 
 })();
