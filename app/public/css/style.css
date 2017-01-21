@@ -1,1 +1,8 @@
-/*already linked in index.html*/
+#page {
+  display: -webkit-flex;
+  display: flex;
+  min-height: 100vh;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  margin:0;
+}
