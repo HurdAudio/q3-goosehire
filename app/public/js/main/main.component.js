@@ -7,10 +7,8 @@
       templateUrl: '/js/main/main.template.html'
     });
 
-
     function MainController(){
       const vm = this;
-
     }
 
 }());

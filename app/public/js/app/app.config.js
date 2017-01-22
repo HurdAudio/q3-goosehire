@@ -25,6 +25,12 @@
       .state({
         name: 'jobList',
         url: '/jobList',
+        params: {
+          skills: '',
+          location: '',
+          title: '',
+          results: []
+        },
         parent: 'app',
         component: 'jobList'
       })
