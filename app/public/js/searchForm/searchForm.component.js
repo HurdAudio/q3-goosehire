@@ -7,9 +7,9 @@
       templateUrl: '/js/searchForm/searchForm.template.html'
     });
 
-    SearchFormController.$inject = ['$http'];
+    SearchFormController.$inject = ['$http', '$state'];
 
-    function SearchFormController($http){
+    function SearchFormController($http, $state){
       const vm = this;
 
       vm.indeedSearch = function() {
@@ -23,7 +23,15 @@
           }
         })
         .then((response) => {
-          console.log(response.data.results);
+          console.log('srchFrmCtrl: ', response.data.results);
+
+          return $state.go('jobList', {
+            skills: vm.searchForm.skills,
+            location: vm.searchForm.location,
+            title: vm.searchForm.title,
+            results: response.data.results
+          })
+
         })
         .catch((err) => {
           console.log(err);
