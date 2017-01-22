@@ -29,6 +29,10 @@ app.get('/indeed', (req, res) => {
   request(newUrl).pipe(res);
 });
 
+app.get('/', (req, res) => {
+  res.sendFile('index.html', {root: path.join(__dirname, 'public')});
+});
+
 app.use('*', function(req, res, next) {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')});
 });
