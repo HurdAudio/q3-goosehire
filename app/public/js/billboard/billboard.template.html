@@ -3,4 +3,22 @@
   <div>
     <p>more billboard stuff</p>
   </div>
+
+  <!--slideshow  -->
+  <div class="container slider">
+    <img ng-repeat="slide in $ctrl.slides" class="slide" ng-hide="$ctrl.isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
+
+    <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
+    <a class="arrow next" href="#" ng-click="prevSlide()"></a>
+
+    <nav class="nav">
+      <div class="wrapper">
+      <ul class="dots">
+      <li class="dot" ng-repeat="slide in slides">
+        <a href="#" ng-class="{'active':$ctrl.isCurrentSlideIndex($index)}" ng-click="$ctrl.setCurrentSlideIndex($index);">{{slide.description}}</a></li>
+      </ul></div>
+      </nav>
+
+  </div>
+
 </div>
