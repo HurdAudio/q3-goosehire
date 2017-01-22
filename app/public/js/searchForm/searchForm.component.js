@@ -13,10 +13,17 @@
       const vm = this;
 
       vm.indeedSearch = function() {
-
-        $http.get('/indeed')
+        $http({
+          method:'GET',
+          url: '/indeed',
+          params: {
+            skills: vm.searchForm.skills,
+            location: vm.searchForm.location,
+            title: vm.searchForm.title
+          }
+        })
         .then((response) => {
-          console.log(response);
+          console.log(response.data.results);
         })
         .catch((err) => {
           console.log(err);
