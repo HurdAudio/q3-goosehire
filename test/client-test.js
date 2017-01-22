@@ -1,20 +1,22 @@
 'use strict';
 
+// console.log('CWD', process.cwd());
+
 process.env.NODE_ENV = 'test';
 
 
-const express = require('express');
+// const express = require('express');
 const { suite, test } = require('mocha');
 const request = require('supertest');
-// const server = require('../server');
+const server = require('../app/server');
 
-const app = express();
+// const app = express();
 
 suite('Verify basic functionality of GooseHire API', () => {
 
   test('GET /index.html', (done) => {
     /* eslint-disable max-len */
-    request(app)
+    request(server)
       .get('/')
       .expect('Content-Type', /html/)
       .expect(200, done);
@@ -24,20 +26,34 @@ suite('Verify basic functionality of GooseHire API', () => {
 
 });
 
+suite('Verify basic functionality of Indeed API', () => {
+
+  test('GET /index.html/indeed', (done) => {
+    /* eslint-disable max-len */
+    request(server)
+      .get('/indeed')
+      .expect('Content-Type', /json/)
+      .expect(200, done);
+
+      /* eslint-enable max-len */
+  });
+
+});
+
 // TEST FOR SEARCHES
 
-suite('verify basic functionality of searches', function(){
+suite('verify basic functionality of searches', () => {
 
     test('GET /index.html/searches - returns all searches in users account', (done) => {
 
-      request(app)
+      request(server)
         .get('/searches')
         .expect('Content-Type', /json/)
         .expect(200, done);
     });
 
     test('GET /index/searches by id  - returns json of single record.', (done) => {
-      request(app)
+      request(server)
         .get('/searches/1')
         .expect('Content-Type', /json/)
         .expect(200, {
@@ -47,7 +63,7 @@ suite('verify basic functionality of searches', function(){
     });
 
     test('POST /index/searches - create new search.', (done) => {
-        request(app)
+        request(server)
           .post('/searches')
           .set('Accept', 'application/json')
           .send({
@@ -58,12 +74,12 @@ suite('verify basic functionality of searches', function(){
           .expect(200, {
             title: 'Fluffer',
             location: 'Seatle, WA'
-          },done);
+          }, done);
 
     });
 
     test('PATCH /index/searches - revises search.', (done) => {
-      request(app)
+      request(server)
         .patch('/searches/1')
         .set('Accept', 'application/json')
         .send({
@@ -73,19 +89,19 @@ suite('verify basic functionality of searches', function(){
         .expect(200, {
           title: 'Horse Whisperer',
           location: 'San Antonio, TX'
-        },done);
+        }, done);
 
     });
 
     test('DELETE /index/searches - delete search item.', (done) => {
-      request(app)
+      request(server)
         .del('/search/2')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200, {
           title: 'Horse Whisperer',
           location: 'San Antonio, TX'
-        },done);
+        }, done);
 
 
     });
@@ -94,18 +110,18 @@ suite('verify basic functionality of searches', function(){
 
   });
 
-suite('verify basic functionality of skillsets', function(){
+suite('verify basic functionality of skillsets', () => {
 
     test('GET /index.html', (done) => {
 
-      request(app)
+      request(server)
         .get('/skillsets')
         .expect('Content-Type', /json/)
         .expect(200, done);
     });
 
     test('GET /index/skillsets by id  - returns json of single record.', (done) => {
-      request(app)
+      request(server)
         .get('/skillsets/1')
         .expect('Content-Type', /json/)
         .expect(200, {
@@ -115,7 +131,7 @@ suite('verify basic functionality of skillsets', function(){
     });
 
     test('POST /index/skillsets - create new skillsets.', (done) => {
-        request(app)
+        request(server)
           .post('/skillsets')
           .set('Accept', 'application/json')
           .send({
@@ -126,12 +142,12 @@ suite('verify basic functionality of skillsets', function(){
           .expect(200, {
             1: ['dare devil', 'comedian', 'Daytime Talkshow Host'],
             2: ['scupa diver', 'elvis impersonator', 'jesus impersonator']
-          },done);
+          }, done);
 
     });
 
     test('PATCH /index/skillsets - revises skillsets.', (done) => {
-      request(app)
+      request(server)
         .patch('/skillsets/1')
         .set('Accept', 'application/json')
         .send({
@@ -141,36 +157,36 @@ suite('verify basic functionality of skillsets', function(){
         .expect(200, {
           1: ['Hobbit', 'Wizard', 'Elf'],
           2: ['javascript', 'angular', 'writing tests']
-        },done);
+        }, done);
 
     });
 
     test('DELETE /index/skillsets - delete skillset item.', (done) => {
-      request(app)
+      request(server)
         .del('/skillsets/2')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200, {
           1: ['dare devil', 'comedian', 'Daytime Talkshow Host'],
           2: ['scupa diver', 'elvis impersonator', 'jesus impersonator']
-        },done);
+        }, done);
 
 
     });
   });
 
-suite('verify basic functionality of users', function(){
+suite('verify basic functionality of users', () => {
 
     test('GET /index.html', (done) => {
 
-      request(app)
+      request(server)
         .get('/users')
         .expect('Content-Type', /json/)
         .expect(200, done);
     });
 
     test('GET /index/users by id  - returns json of single record.', (done) => {
-      request(app)
+      request(server)
         .get('/users/1')
         .expect('Content-Type', /json/)
         .expect(200, {
@@ -180,7 +196,7 @@ suite('verify basic functionality of users', function(){
     });
 
     test('POST /index/users - create new users.', (done) => {
-        request(app)
+        request(server)
           .post('/users')
           .set('Accept', 'application/json')
           .send({
@@ -192,12 +208,12 @@ suite('verify basic functionality of users', function(){
           .expect(200, {
             name: 'Jason Goldfarb',
             email: 'farb@gmail.com'
-          },done);
+          }, done);
 
     });
 
     test('PATCH /index/users - revises users.', (done) => {
-      request(app)
+      request(server)
         .patch('/users/1')
         .set('Accept', 'application/json')
         .send({
@@ -207,19 +223,19 @@ suite('verify basic functionality of users', function(){
         .expect(200, {
           name: 'Devin Hurd',
           email: 'george@gmail.com'
-        },done);
+        }, done);
 
     });
 
     test('DELETE /index/users - delete users item.', (done) => {
-      request(app)
+      request(server)
         .del('/users/2')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200, {
           name: 'Jason Goldfarb',
           email: 'farb@gmail.com'
-        },done);
+        }, done);
 
 
     });
