@@ -25,8 +25,20 @@ app.use(bodyParser.json());
 
 
 app.get('/indeed', (req, res) => {
-  const newUrl = 'http://api.indeed.com/ads/apisearch?publisher=5344646076398943&q=javascript&l=austin%2C+tx&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=1&co=us&chnl=&userip=localhost:3000&useragent=Mozilla%2F5.0+(Macintosh%3B+Intel+Mac+OS+X+10_11_6)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F55.0.2883.95+Safari%2F537.36&v=2';
-  request(newUrl).pipe(res);
+
+  console.log(req.query.skills);
+
+  let searchInfo = {
+    skills: encodeURIComponent(req.query.skills),
+    location: encodeURIComponent(req.query.location),
+    title: encodeURIComponent(req.query.title)
+  };
+
+  console.log('server: ', searchInfo);
+
+  const newUrl = `http://api.indeed.com/ads/apisearch?publisher=5344646076398943&q=${searchInfo.skills}&l=${searchInfo.location}&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=1&co=us&chnl=&userip=localhost:3000&useragent=Mozilla%2F5.0+(Macintosh%3B+Intel+Mac+OS+X+10_11_6)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F55.0.2883.95+Safari%2F537.36&v=2&format=json`;
+
+   return request(newUrl).pipe(res);
 });
 
 app.get('/', (req, res) => {
