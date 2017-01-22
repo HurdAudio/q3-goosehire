@@ -19,35 +19,31 @@
 
       //  increment images
       vm.currentIndex = 0;
+      var count = 0;
 
-      // vm.index = vm.index;
+      vm.setCurrentSlideIndex = function (index) {
+          console.log(index, "setCurrent");
+          count++;
+          console.log(count);
+          vm.currentIndex = index;
+      };
 
-      // vm.setCurrentSlideIndex = function (index) {
-      //   console.log(index, "setCurrent");
-      //   vm.currentIndex = index;
-      // };
-      //
-      // vm.isCurrentSlideIndex = function (index) {
-      //   console.log(index, "isCurrent");
-      //   return vm.currentIndex === index;
-      // };
+      vm.isCurrentSlideIndex = function (index) {
+        console.log(index, "isCurrent");
+        count++;
+        console.log(count);
+          return vm.currentIndex === index;
+      };
 
+      vm.prevSlide = function () {
+        console.log("prevSLide");
+          vm.currentIndex = (vm.currentIndex < vm.slides.length - 1) ? ++vm.currentIndex : 0;
+      };
 
-        vm.setCurrentSlideIndex = function (index) {
-            vm.currentIndex = index;
-        };
-
-        vm.isCurrentSlideIndex = function (index) {
-            return vm.currentIndex === index;
-        };
-
-        vm.prevSlide = function () {
-            vm.currentIndex = (vm.currentIndex < vm.slides.length - 1) ? ++vm.currentIndex : 0;
-        };
-        
-        vm.nextSlide = function () {
-            vm.currentIndex = (vm.currentIndex > 0) ? --vm.currentIndex : vm.slides.length - 1;
-        };
+      vm.nextSlide = function () {
+        console.log("nextSLide");
+          vm.currentIndex = (vm.currentIndex > 0) ? --vm.currentIndex : vm.slides.length - 1;
+      };
 
     }
 
