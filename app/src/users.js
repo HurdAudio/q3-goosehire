@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 // const db = require('./db');
-const SkillsSchema = require('./app/skills_schema');
-const SearchSchema = require('./app/search_schema');
+const SkillsSchema = require('./skills_schema');
+const SearchSchema = require('./search_schema');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({

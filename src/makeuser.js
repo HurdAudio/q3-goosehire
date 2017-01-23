@@ -1,4 +1,4 @@
-const User = require('./users');
+const User = require('./app/users');
 
 var devin = new User({
   username: 'devinsux',

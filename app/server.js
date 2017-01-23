@@ -3,6 +3,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const app = express();
 const request = require('request');
 
@@ -13,6 +14,12 @@ if (process.env.NODE_ENV !== 'test') {
   const logger = require('morgan');
   app.use(logger('dev'));
 }
+
+mongoose.Promise = require('bluebird');
+mongoose.connect('mongodb://localhost:27017/goosehire');
+
+mongoose.connection.on('error', () => {console.log('mongo connection failed')})
+  .once('open', () => {console.log('mongo is lit')});
 
 app.use(express.static(path.join(__dirname, 'public')));
 
