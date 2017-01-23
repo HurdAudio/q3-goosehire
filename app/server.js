@@ -6,10 +6,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
 const request = require('request');
-const User = require('./src/users');
 
 const port = 3007;
-
 
 if (process.env.NODE_ENV !== 'test') {
   const logger = require('morgan');
@@ -52,17 +50,6 @@ app.get('/indeed', (req, res) => {
 app.get('/', (req, res) => {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')});
 });
-
-app.get('/api', (req, res) => {
-  User.find((err, users) => {
-    if(err) {
-      throw err;
-    }
-    else {
-      res.send(users);
-    }
-  });
-})
 
 app.use('*', function(req, res, next) {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')});
