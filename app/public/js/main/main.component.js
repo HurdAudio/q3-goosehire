@@ -3,15 +3,12 @@
 
   angular.module('app')
     .component('main', {
-      controller: mainController,
-      templateUrl: '/js/main.template.html'
+      controller: MainController,
+      templateUrl: '/js/main/main.template.html'
     });
 
-    // homeController.$inject = ['$http'];
-
-    function mainController(){
+    function MainController(){
       const vm = this;
-
     }
 
 }());

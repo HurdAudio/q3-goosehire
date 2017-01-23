@@ -3,13 +3,12 @@
 
   angular.module('app')
     .component('billboard', {
-      controller: billboardController,
+      controller: BillboardController,
       templateUrl: '/js/billboard/billboard.template.html'
     });
 
-    // homeController.$inject = ['$http'];
 
-    function billboardController(){
+    function BillboardController(){
       const vm = this;
 
     }

@@ -3,14 +3,21 @@
 
   angular.module('app')
     .component('jobList', {
-      controller: jobListController,
+      controller: JobListController,
       templateUrl: '/js/jobList/jobList.template.html'
     });
 
-    // homeController.$inject = ['$http'];
+    JobListController.$inject = ['$http', '$state', '$stateParams'];
 
-    function jobListController(){
+    function JobListController($http, $state, $stateParams){
       const vm = this;
+
+      vm.$onInit = function() {
+        vm.searchResults = $stateParams.results;
+        vm.skills = $stateParams.skills;
+        vm.location = $stateParams.location;
+        vm.title = $stateParams.title
+      }
 
     }
 
