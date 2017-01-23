@@ -44,131 +44,213 @@ suite('Verify basic functionality of Indeed API', () => {
 
 suite('verify basic functionality of searches', () => {
 
-    test('GET /index.html/searches - returns all searches in users account', (done) => {
+    test('GET /index.html/searches/:user-id/:skill-id - returns all searches in users account', (done) => {
 
       request(server)
-        .get('/searches')
-        .expect('Content-Type', /json/)
-        .expect(200, done);
-    });
-
-    test('GET /index/searches by id  - returns json of single record.', (done) => {
-      request(server)
-        .get('/searches/1')
+        .get('/searches/58862bb83c085df2aaf099cd')
         .expect('Content-Type', /json/)
         .expect(200, {
-          title: 'Fluffer',
-          location: 'San Antonio, TX'
+          searches: [
+              {
+                  _id: "58862bb83c085df2aaf099cd",
+                  jobTitle: "full stack dev",
+                  location: {
+                      city: "seattle",
+                      state: "washington"
+                  },
+                  skillSet: [
+                      "memes"
+                  ]
+              }
+          ]
         }, done);
     });
 
-    test('POST /index/searches - create new search.', (done) => {
+    test('GET /index/searches/:user-id by id  - returns json of single record.', (done) => {
+      request(server)
+        .get('/searches/58862bb83c085df2aaf099cd/1')
+        .expect('Content-Type', /json/)
+        .expect(200, {
+            {
+                _id: "58862bb83c085df2aaf099cd",
+                jobTitle: "full stack dev",
+                location: {
+                    city: "seattle",
+                    state: "washington"
+                },
+                skillSet: [
+                    "memes"
+                ]
+            }
+        }, done);
+    });
+
+    test('POST /index/searches/:user-id - create new search.', (done) => {
         request(server)
-          .post('/searches')
+          .post('/searches/58862bb83c085df2aaf099cd')
           .set('Accept', 'application/json')
           .send({
-            title: 'Fluffer',
-            location: 'Seatle, WA'
+            search: {
+              jobTitle: "unicorn rider",
+              location: {
+                city: "neverland"
+              },
+              skillSet: [
+                "glitter",
+                "horse riding"
+              ]
+            }
           })
           .expect('Content-Type', /json/)
           .expect(200, {
-            title: 'Fluffer',
-            location: 'Seatle, WA'
+              {
+                jobTitle: "unicorn rider",
+                location: {
+                  city: "neverland"
+                },
+                skillSet: [
+                  "glitter",
+                  "horse riding"
+                ]
+              }
           }, done);
 
     });
 
-    test('PATCH /index/searches - revises search.', (done) => {
+    test('PATCH /index/searches/:user-id/:search-id - revises search.', (done) => {
       request(server)
-        .patch('/searches/1')
+        .patch('/searches/58862bb83c085df2aaf099cd/2')
         .set('Accept', 'application/json')
         .send({
-          title: 'Horse Whisperer'
+          jobTitle: "flower farmer"
         })
         .expect('Content-Type', /json/)
         .expect(200, {
-          title: 'Horse Whisperer',
-          location: 'San Antonio, TX'
+              {
+                jobTitle: "flower farmer",
+                location: {
+                  city: "neverland"
+                },
+                skillSet: [
+                  "glitter",
+                  "horse riding"
+                ]
+              }
         }, done);
 
     });
 
-    test('DELETE /index/searches - delete search item.', (done) => {
+    test('DELETE /index/searches/:user-id/:search-id - delete search item.', (done) => {
       request(server)
-        .del('/search/2')
+        .del('/search/58862bb83c085df2aaf099cd/2')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200, {
-          title: 'Horse Whisperer',
-          location: 'San Antonio, TX'
+            {
+              jobTitle: "flower farmer",
+              location: {
+                city: "neverland"
+              },
+              skillSet: [
+                "glitter",
+                "horse riding"
+              ]
+            }
         }, done);
 
-
     });
-
-
-
   });
 
 suite('verify basic functionality of skillsets', () => {
 
-    test('GET /index.html', (done) => {
+    test('GET /index/skillsets/:user-id - returns all skillsets associated wit h a user', (done) => {
 
       request(server)
-        .get('/skillsets')
-        .expect('Content-Type', /json/)
-        .expect(200, done);
-    });
-
-    test('GET /index/skillsets by id  - returns json of single record.', (done) => {
-      request(server)
-        .get('/skillsets/1')
+        .get('/skillsets/58862bb83c085df2aaf099cd')
         .expect('Content-Type', /json/)
         .expect(200, {
-          1: ['horse rangling', 'clowning', 'magic tricks', 'exorcism'],
-          2: ['javascript', 'angular', 'writing tests']
+              {
+                  _id: "58862bb83c085df2aaf099ce",
+                  createdAt: "2017-01-23T16:13:44.096Z",
+                  skillSet: [
+                      "sarcasm",
+                      "drinking"
+                  ]
+              }
+        },done);
+    });
+
+    test('GET /index/skillsets/:user-id/:skills-id by id  - returns json of single record.', (done) => {
+      request(server)
+        .get('/skillsets/58862bb83c085df2aaf099cd/1')
+        .expect('Content-Type', /json/)
+        .expect(200, {
+              {
+                  _id: "58862bb83c085df2aaf099ce",
+                  createdAt: "2017-01-23T16:13:44.096Z",
+                  skillSet: [
+                      "sarcasm",
+                      "drinking"
+                  ]
+              }
         }, done);
     });
 
-    test('POST /index/skillsets - create new skillsets.', (done) => {
+    test('POST /index/skillsets/:user-id - create new skillsets.', (done) => {
         request(server)
-          .post('/skillsets')
+          .post('/skillsets/58862bb83c085df2aaf099cd')
           .set('Accept', 'application/json')
           .send({
-            1: ['dare devil', 'comedian', 'Daytime Talkshow Host'],
-            2: ['scupa diver', 'elvis impersonator', 'jesus impersonator']
+            skills: ['dare devil', 'comedian', 'Daytime Talkshow Host']
           })
           .expect('Content-Type', /json/)
-          .expect(200, {
-            1: ['dare devil', 'comedian', 'Daytime Talkshow Host'],
-            2: ['scupa diver', 'elvis impersonator', 'jesus impersonator']
+              {
+                  createdAt: "2017-01-23T16:13:44.096Z",
+                  skillSet: [
+                      "dare devil",
+                      "comedian",
+                      "Daytime Talkshow Host"
+                  ]
+              }
           }, done);
 
     });
 
-    test('PATCH /index/skillsets - revises skillsets.', (done) => {
+    test('PATCH /index/skillsets/:user-id/:skills-id - revises skillsets.', (done) => {
       request(server)
-        .patch('/skillsets/1')
+        .patch('/skillsets/58862bb83c085df2aaf099cd/1')
         .set('Accept', 'application/json')
         .send({
-          1: ['Hobbit', 'Wizard', 'Elf']
+          skill: ['witty taglines'];
         })
         .expect('Content-Type', /json/)
         .expect(200, {
-          1: ['Hobbit', 'Wizard', 'Elf'],
-          2: ['javascript', 'angular', 'writing tests']
+              {
+                  _id: "58862bb83c085df2aaf099ce",
+                  createdAt: "2017-01-23T16:13:44.096Z",
+                  skillSet: [
+                      "sarcasm",
+                      "drinking",
+                      "witty taglines"
+                  ]
+              }
         }, done);
-
     });
 
-    test('DELETE /index/skillsets - delete skillset item.', (done) => {
+    test('DELETE /index/skillsets/:user-id/:skills-id - delete skillset item.', (done) => {
       request(server)
-        .del('/skillsets/2')
+        .del('/skillsets/58862bb83c085df2aaf099cd/2')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200, {
-          1: ['dare devil', 'comedian', 'Daytime Talkshow Host'],
-          2: ['scupa diver', 'elvis impersonator', 'jesus impersonator']
+              {
+                  createdAt: "2017-01-23T16:13:44.096Z",
+                  skillSet: [
+                      "dare devil",
+                      "comedian",
+                      "Daytime Talkshow Host"
+                  ]
+              }
         }, done);
 
 
