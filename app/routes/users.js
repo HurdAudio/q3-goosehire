@@ -18,6 +18,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   User.findById(req.params.id, (err, data) => {
+    console.log(req.params.id);
     if(err) { throw err; }
     else {
       res.send(data);
