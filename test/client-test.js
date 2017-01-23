@@ -190,8 +190,9 @@ suite('verify basic functionality of users', () => {
         .get('/users/1')
         .expect('Content-Type', /json/)
         .expect(200, {
-          name: "Devin Hurd",
-          email: "hurd@gmail.com"
+          username: "devinhurd",
+          hashedPassword: "1234567890123456",
+          
         }, done);
     });
 
