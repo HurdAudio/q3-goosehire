@@ -6,8 +6,6 @@ const mongoose = require('mongoose');
 const User = require('../src/users');
 mongoose.Promise = require('bluebird');
 
-// const bodyParser
-
 
 router.get('/', (req, res) => {
   User.find((err, data) => {
