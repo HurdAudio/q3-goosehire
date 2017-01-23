@@ -51,9 +51,7 @@ const scrapeJobDeets = function(page) {
 
   const jobPage = cheerio.load(`'${page}'`);
 
-  let jobSummary = jobPage("#job_summary").children();
-
-  var text = jobPage("#job_summary").contents().map(function() {
+  let text = jobPage("#job_summary").contents().map(function() {
     if (this.name !== 'ul') {
       if (this.type === 'text') {
         return jobPage(this).text().trim();
@@ -67,7 +65,7 @@ const scrapeJobDeets = function(page) {
 
 
   console.log('selected HTML: ', text);
-  return jobSummary;
+  return text;
 }
 
 app.get('/indeedSingleJob', (req, res) => {
