@@ -187,12 +187,34 @@ suite('verify basic functionality of users', () => {
 
     test('GET /index/users by id  - returns json of single record.', (done) => {
       request(server)
-        .get('/users/1')
+        .get('/users/58862bb83c085df2aaf099cc')
         .expect('Content-Type', /json/)
         .expect(200, {
           username: "devinhurd",
           hashedPassword: "1234567890123456",
-          
+          searches: [
+              {
+                  _id: "58862bb83c085df2aaf099cd",
+                  jobTitle: "full stack dev",
+                  location: {
+                      city: "seattle",
+                      state: "washington"
+                  },
+                  skillSet: [
+                      "memes"
+                  ]
+              }
+          ],
+          skills: [
+              {
+                  _id: "58862bb83c085df2aaf099ce",
+                  createdAt: "2017-01-23T16:13:44.096Z",
+                  skillSet: [
+                      "sarcasm",
+                      "drinking"
+                  ]
+              }
+          ]
         }, done);
     });
 
@@ -201,21 +223,20 @@ suite('verify basic functionality of users', () => {
           .post('/users')
           .set('Accept', 'application/json')
           .send({
-            name: 'Jason Goldfarb',
-            email: 'farb@gmail.com'
-
+            username: 'jasongoldfarb',
+            hashedPassword: '1234567890123456'
           })
           .expect('Content-Type', /json/)
           .expect(200, {
-            name: 'Jason Goldfarb',
-            email: 'farb@gmail.com'
+            username: 'jasongoldfarb',
+            hashedPassword: '1234567890123456'
           }, done);
 
     });
 
     test('PATCH /index/users - revises users.', (done) => {
       request(server)
-        .patch('/users/1')
+        .patch('/users/')
         .set('Accept', 'application/json')
         .send({
           email: 'george@gmail.com'
@@ -230,12 +251,35 @@ suite('verify basic functionality of users', () => {
 
     test('DELETE /index/users - delete users item.', (done) => {
       request(server)
-        .del('/users/2')
+        .del('/users/58862bb83c085df2aaf099cc')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200, {
-          name: 'Jason Goldfarb',
-          email: 'farb@gmail.com'
+          username: "devinhurd",
+          hashedPassword: "1234567890123456",
+          searches: [
+              {
+                  _id: "58862bb83c085df2aaf099cd",
+                  jobTitle: "full stack dev",
+                  location: {
+                      city: "seattle",
+                      state: "washington"
+                  },
+                  skillSet: [
+                      "memes"
+                  ]
+              }
+          ],
+          skills: [
+              {
+                  _id: "58862bb83c085df2aaf099ce",
+                  createdAt: "2017-01-23T16:13:44.096Z",
+                  skillSet: [
+                      "sarcasm",
+                      "drinking"
+                  ]
+              }
+          ]
         }, done);
 
 
