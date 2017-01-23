@@ -1,5 +1,5 @@
 {
-    "_id": "5883e0b0c3c69cc68ae7ae18",
+    "_id": ObjectId("5883e0b0c3c69cc68ae7ae18"),
     "hashedPassword": "1234567890123456",
     "searches": [
       {
@@ -18,12 +18,12 @@
     "username": "malilaclearwater"
 }
 {
-  "_id": "5883e0b0c3c69cc68ae7ae17",
+  "_id": ObjectId("5883e0b0c3c69cc68ae7ae17"),
   "hashedPassword": "1234567890123456",
   "searches": [],
   "skills": [
       {
-          "_id": "58862bb83c085df2aaf099bc",
+          "_id": ObjectId("58862bb83c085df2aaf099bc"),
           "createdAt": "2017-01-23T16:13:44.096Z",
           "skillSet": [
               "sarcasm",
@@ -35,11 +35,11 @@
 }
 {
     "__v": 0,
-    "_id": "58862bb83c085df2aaf099cc",
+    "_id": ObjectId("58862bb83c085df2aaf099cc"),
     "hashedPassword": "1234567890123456",
     "searches": [
         {
-            "_id": "58862bb83c085df2aaf099cd",
+            "_id": ObjectId("58862bb83c085df2aaf099cd"),
             "jobTitle": "full stack dev",
             "location": {
                 "city": "seattle",
@@ -52,7 +52,7 @@
     ],
     "skills": [
         {
-            "_id": "58862bb83c085df2aaf099ce",
+            "_id": ObjectId("58862bb83c085df2aaf099ce"),
             "createdAt": "2017-01-23T16:13:44.096Z",
             "skillSet": [
                 "sarcasm",

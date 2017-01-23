@@ -16,19 +16,25 @@ router.get('/', (req, res) => {
   })
 });
 
-router.get('/users/:id', (req, res) => {
+router.get('/:id', (req, res) => {
+  User.findById(req.params.id, (err, data) => {
+    console.log(req.params.id);
+    if(err) { throw err; }
+    else {
+      res.send(data);
+    }
+  })
+});
+
+router.post('/', (req, res) => {
 
 });
 
-router.post('/users', (req, res) => {
+router.patch('/:id', (req, res) => {
 
 });
 
-router.patch('/users/:id', (req, res) => {
-
-});
-
-router.delete('/users/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
 
 });
 
