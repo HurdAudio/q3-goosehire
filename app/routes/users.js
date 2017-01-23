@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const User = require('../src/users');
 mongoose.Promise = require('bluebird');
 
+// const bodyParser
+
 
 router.get('/', (req, res) => {
   User.find((err, data) => {
@@ -16,19 +18,24 @@ router.get('/', (req, res) => {
   })
 });
 
-router.get('/users/:id', (req, res) => {
+router.get('/:id', (req, res) => {
+  User.findById(req.params.id, (err, data) => {
+    if(err) { throw err; }
+    else {
+      res.send(data);
+    }
+  })
+});
+
+router.post('/', (req, res) => {
 
 });
 
-router.post('/users', (req, res) => {
+router.patch('/:id', (req, res) => {
 
 });
 
-router.patch('/users/:id', (req, res) => {
-
-});
-
-router.delete('/users/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
 
 });
 
