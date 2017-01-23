@@ -27,7 +27,16 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-
+  // var { username, hashedPassword } = req.body;
+  // res.status(200).send(username, hashedPassword)
+  // res.send(req.body);
+  User.create({
+    username: req.body.username,
+    hashedPassword: req.body.hashedPassword
+  }, (err, data) => {
+    if(err) {throw err};
+    res.send(data);
+  })
 });
 
 router.patch('/:id', (req, res) => {
