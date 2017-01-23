@@ -1,16 +1,64 @@
 {
-  "title": "Fluffer",
-  "location": "San Antonio, TX",
-  "skillsets": {
-     "1": ["horse rangling", "clowning", "magic tricks", "exorcism"],
-     "2": ["javascript", "angular", "writing tests"]
-  }
+    "_id": ObjectId("5883e0b0c3c69cc68ae7ae18"),
+    "hashedPassword": "1234567890123456",
+    "searches": [
+      {
+        "title": "Fluffer",
+        "location": {
+          "zipcode": "80302"
+        },
+        "skillSet": [
+          "horse rangling",
+          "clowning",
+          "magic tricks",
+          "exorcism"]
+      }
+    ],
+    "skills": [],
+    "username": "malilaclearwater"
 }
 {
-  "title": "Fluffer",
-  "location": "San Antonio, TX",
-  "skillsets": {
-     "1": ["horse rangling", "clowning", "magic tricks", "exorcism"],
-     "2": ["javascript", "angular", "writing tests"]
-  }
+  "_id": ObjectId("5883e0b0c3c69cc68ae7ae17"),
+  "hashedPassword": "1234567890123456",
+  "searches": [],
+  "skills": [
+      {
+          "_id": ObjectId("58862bb83c085df2aaf099bc"),
+          "createdAt": "2017-01-23T16:13:44.096Z",
+          "skillSet": [
+              "sarcasm",
+              "drinking"
+          ]
+      }
+  ],
+  "username": "mehrirusso"
+}
+{
+    "__v": 0,
+    "_id": ObjectId("58862bb83c085df2aaf099cc"),
+    "hashedPassword": "1234567890123456",
+    "searches": [
+        {
+            "_id": ObjectId("58862bb83c085df2aaf099cd"),
+            "jobTitle": "full stack dev",
+            "location": {
+                "city": "seattle",
+                "state": "washington"
+            },
+            "skillSet": [
+                "memes"
+            ]
+        }
+    ],
+    "skills": [
+        {
+            "_id": ObjectId("58862bb83c085df2aaf099ce"),
+            "createdAt": "2017-01-23T16:13:44.096Z",
+            "skillSet": [
+                "sarcasm",
+                "drinking"
+            ]
+        }
+    ],
+    "username": "devinhurd"
 }

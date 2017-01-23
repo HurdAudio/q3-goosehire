@@ -26,6 +26,10 @@ mongoose.connection.on('error', () => {console.log('mongo connection failed')})
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/users', require('./routes/users'));
+app.use('/skillsets', require('./routes/skillsets'));
+app.use('/search', require('./routes/searches'));
+
 app.use(bodyParser.json());
 
 //these need to be modified
