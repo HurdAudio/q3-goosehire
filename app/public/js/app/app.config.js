@@ -37,6 +37,9 @@
       .state({
         name: 'jobView',
         url: '/jobView',
+        params: {
+          jobLink: 'No link provided'
+        },
         parent: 'app',
         component: 'jobView'
       })

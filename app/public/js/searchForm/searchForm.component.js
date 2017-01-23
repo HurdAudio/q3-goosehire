@@ -23,8 +23,6 @@
           }
         })
         .then((response) => {
-          console.log('srchFrmCtrl: ', response.data.results);
-
           return $state.go('jobList', {
             skills: vm.searchForm.skills,
             location: vm.searchForm.location,

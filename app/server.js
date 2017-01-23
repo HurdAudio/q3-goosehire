@@ -6,6 +6,10 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
 const request = require('request');
+const rpn = require('request-promise-native');
+const cheerio = require('cheerio');
+
+require('dotenv').config();
 
 const port = 3007;
 
@@ -32,20 +36,49 @@ app.use(bodyParser.json());
 
 app.get('/indeed', (req, res) => {
 
-  console.log(req.query.skills);
-
   let searchInfo = {
     skills: encodeURIComponent(req.query.skills),
     location: encodeURIComponent(req.query.location),
     title: encodeURIComponent(req.query.title)
   };
 
-  console.log('server: ', searchInfo);
+  const newUrl = `http://api.indeed.com/ads/apisearch?publisher=${process.env.INDEED_KEY}&q=${searchInfo.skills}&l=${searchInfo.location}&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=1&co=us&chnl=&userip=localhost:3000&useragent=Mozilla%2F5.0+(Macintosh%3B+Intel+Mac+OS+X+10_11_6)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F55.0.2883.95+Safari%2F537.36&v=2&format=json`;
 
-  const newUrl = `http://api.indeed.com/ads/apisearch?publisher=5344646076398943&q=${searchInfo.skills}&l=${searchInfo.location}&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=1&co=us&chnl=&userip=localhost:3000&useragent=Mozilla%2F5.0+(Macintosh%3B+Intel+Mac+OS+X+10_11_6)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F55.0.2883.95+Safari%2F537.36&v=2&format=json`;
-
-   return request(newUrl).pipe(res);
+  return request(newUrl).pipe(res);
 });
+
+const scrapeJobDeets = function(page) {
+
+  const jobPage = cheerio.load(`'${page}'`);
+
+  let jobSummary = jobPage("#job_summary").children();
+
+  var text = jobPage("#job_summary").contents().map(function() {
+    if (this.name !== 'ul') {
+      if (this.type === 'text') {
+        return jobPage(this).text().trim();
+      }
+    } else {
+      return this.children.map((x) => {
+         return x.children[0].data;
+      })
+    }
+  }).get();
+
+
+  console.log('selected HTML: ', text);
+  return jobSummary;
+}
+
+app.get('/indeedSingleJob', (req, res) => {
+  return rpn(req.query.url)
+    .then((returnedHTML) => {
+      return scrapeJobDeets(returnedHTML);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+})
 
 app.get('/', (req, res) => {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')});
