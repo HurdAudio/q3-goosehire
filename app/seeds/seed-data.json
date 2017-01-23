@@ -1,31 +1,38 @@
 {
-  "_id": "5883e0b0c3c69cc68ae7ae18",
-  "hashedPassword": "1234567890123456",
-  "searches": [],
-  "skills": [
-    {
-
-    }
-  ]
-}
-{
-    "_id": "5883e0b0c3c69cc68ae7ae17",
+    "_id": "5883e0b0c3c69cc68ae7ae18",
     "hashedPassword": "1234567890123456",
     "searches": [
       {
         "title": "Fluffer",
         "location": {
-          "zipcode": 98201
+          "zipcode": "80302"
         },
-        "skillSet": {
-           "1": ["horse rangling", "clowning", "magic tricks", "exorcism"],
-           "2": ["javascript", "angular", "writing tests"]
-        }
+        "skillSet": [
+          "horse rangling",
+          "clowning",
+          "magic tricks",
+          "exorcism"]
       }
     ],
     "skills": [],
     "username": "malilaclearwater"
-},
+}
+{
+  "_id": "5883e0b0c3c69cc68ae7ae17",
+  "hashedPassword": "1234567890123456",
+  "searches": [],
+  "skills": [
+      {
+          "_id": "58862bb83c085df2aaf099bc",
+          "createdAt": "2017-01-23T16:13:44.096Z",
+          "skillSet": [
+              "sarcasm",
+              "drinking"
+          ]
+      }
+  ],
+  "username": "mehrirusso"
+}
 {
     "__v": 0,
     "_id": "58862bb83c085df2aaf099cc",
