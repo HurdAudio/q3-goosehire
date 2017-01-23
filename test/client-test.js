@@ -71,7 +71,6 @@ suite('verify basic functionality of searches', () => {
         .get('/searches/58862bb83c085df2aaf099cd/1')
         .expect('Content-Type', /json/)
         .expect(200, {
-            {
                 _id: "58862bb83c085df2aaf099cd",
                 jobTitle: "full stack dev",
                 location: {
@@ -81,7 +80,6 @@ suite('verify basic functionality of searches', () => {
                 skillSet: [
                     "memes"
                 ]
-            }
         }, done);
     });
 
@@ -102,7 +100,7 @@ suite('verify basic functionality of searches', () => {
             }
           })
           .expect('Content-Type', /json/)
-          .expect(200, {
+          .expect(200,
               {
                 jobTitle: "unicorn rider",
                 location: {
@@ -112,8 +110,7 @@ suite('verify basic functionality of searches', () => {
                   "glitter",
                   "horse riding"
                 ]
-              }
-          }, done);
+              }, done);
 
     });
 
@@ -125,7 +122,7 @@ suite('verify basic functionality of searches', () => {
           jobTitle: "flower farmer"
         })
         .expect('Content-Type', /json/)
-        .expect(200, {
+        .expect(200,
               {
                 jobTitle: "flower farmer",
                 location: {
@@ -135,8 +132,7 @@ suite('verify basic functionality of searches', () => {
                   "glitter",
                   "horse riding"
                 ]
-              }
-        }, done);
+              }, done);
 
     });
 
@@ -145,7 +141,7 @@ suite('verify basic functionality of searches', () => {
         .del('/search/58862bb83c085df2aaf099cd/2')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
-        .expect(200, {
+        .expect(200,
             {
               jobTitle: "flower farmer",
               location: {
@@ -155,8 +151,7 @@ suite('verify basic functionality of searches', () => {
                 "glitter",
                 "horse riding"
               ]
-            }
-        }, done);
+            }, done);
 
     });
   });
@@ -169,14 +164,12 @@ suite('verify basic functionality of skillsets', () => {
         .get('/skillsets/58862bb83c085df2aaf099cd')
         .expect('Content-Type', /json/)
         .expect(200, {
-              {
-                  _id: "58862bb83c085df2aaf099ce",
-                  createdAt: "2017-01-23T16:13:44.096Z",
-                  skillSet: [
-                      "sarcasm",
-                      "drinking"
-                  ]
-              }
+              _id: "58862bb83c085df2aaf099ce",
+              createdAt: "2017-01-23T16:13:44.096Z",
+              skillSet: [
+                  "sarcasm",
+                  "drinking"
+              ]
         },done);
     });
 
@@ -184,7 +177,7 @@ suite('verify basic functionality of skillsets', () => {
       request(server)
         .get('/skillsets/58862bb83c085df2aaf099cd/1')
         .expect('Content-Type', /json/)
-        .expect(200, {
+        .expect(200,
               {
                   _id: "58862bb83c085df2aaf099ce",
                   createdAt: "2017-01-23T16:13:44.096Z",
@@ -192,8 +185,7 @@ suite('verify basic functionality of skillsets', () => {
                       "sarcasm",
                       "drinking"
                   ]
-              }
-        }, done);
+              }, done);
     });
 
     test('POST /index/skillsets/:user-id - create new skillsets.', (done) => {
@@ -204,6 +196,7 @@ suite('verify basic functionality of skillsets', () => {
             skills: ['dare devil', 'comedian', 'Daytime Talkshow Host']
           })
           .expect('Content-Type', /json/)
+          .expect(200,
               {
                   createdAt: "2017-01-23T16:13:44.096Z",
                   skillSet: [
@@ -211,8 +204,7 @@ suite('verify basic functionality of skillsets', () => {
                       "comedian",
                       "Daytime Talkshow Host"
                   ]
-              }
-          }, done);
+              }, done);
 
     });
 
@@ -221,19 +213,17 @@ suite('verify basic functionality of skillsets', () => {
         .patch('/skillsets/58862bb83c085df2aaf099cd/1')
         .set('Accept', 'application/json')
         .send({
-          skill: ['witty taglines'];
+          skill: ['witty taglines']
         })
         .expect('Content-Type', /json/)
         .expect(200, {
-              {
-                  _id: "58862bb83c085df2aaf099ce",
-                  createdAt: "2017-01-23T16:13:44.096Z",
-                  skillSet: [
-                      "sarcasm",
-                      "drinking",
-                      "witty taglines"
-                  ]
-              }
+              _id: "58862bb83c085df2aaf099ce",
+              createdAt: "2017-01-23T16:13:44.096Z",
+              skillSet: [
+                  "sarcasm",
+                  "drinking",
+                  "witty taglines"
+              ]
         }, done);
     });
 
@@ -242,7 +232,7 @@ suite('verify basic functionality of skillsets', () => {
         .del('/skillsets/58862bb83c085df2aaf099cd/2')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
-        .expect(200, {
+        .expect(200,
               {
                   createdAt: "2017-01-23T16:13:44.096Z",
                   skillSet: [
@@ -250,8 +240,7 @@ suite('verify basic functionality of skillsets', () => {
                       "comedian",
                       "Daytime Talkshow Host"
                   ]
-              }
-        }, done);
+              }, done);
 
 
     });
