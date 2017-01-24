@@ -51,35 +51,13 @@ app.get('/indeed', (req, res) => {
   return request(newUrl).pipe(res);
 });
 
-const scrapeJobDeets = function(page) {
-
-  const jobPage = cheerio.load(`'${page}'`);
-
-  let text = jobPage("#job_summary").contents().map(function() {
-    if (this.name !== 'ul') {
-      if (this.type === 'text') {
-        return jobPage(this).text().trim();
-      }
-    } else {
-      return this.children.map((x) => {
-         return x.children[0].data;
-      })
-    }
-  }).get();
-
-
-  console.log('selected HTML: ', text);
-  return text;
-}
-
 app.get('/indeedSingleJob', (req, res) => {
-  return rpn(req.query.url)
-    .then((returnedHTML) => {
-      return scrapeJobDeets(returnedHTML);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  return request(req.query.url, (error, response, html) => {
+    let $ = cheerio.load(html);
+    let jobDeets = $('#job_summary').html();
+    
+    res.send(jobDeets);
+  })
 })
 
 app.get('/', (req, res) => {

@@ -13,6 +13,7 @@
       const vm = this;
 
       vm.$onInit = function() {
+        console.log("loading jobView comp");
 
         $http({
           method:'GET',
@@ -22,7 +23,7 @@
           }
         })
         .then((response) => {
-          console.log(response.data);
+          console.log(response);
           return vm.jobData = response.data;
         })
         .catch((err) => {
