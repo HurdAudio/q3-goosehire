@@ -7,34 +7,21 @@
       templateUrl: '/js/searchForm/searchForm.template.html'
     });
 
-    SearchFormController.$inject = ['$http', '$state'];
+    SearchFormController.$inject = ['$state', 'searchFormService'];
 
-    function SearchFormController($http, $state){
+    function SearchFormController($state, searchFormService){
       const vm = this;
 
-      vm.indeedSearch = function() {
-        $http({
-          method:'GET',
-          url: '/indeed',
-          params: {
-            skills: vm.searchForm.skills,
-            location: vm.searchForm.location,
-            title: vm.searchForm.title
-          }
-        })
-        .then((response) => {
-          return $state.go('jobList', {
-            skills: vm.searchForm.skills,
-            location: vm.searchForm.location,
-            title: vm.searchForm.title,
-            results: response.data.results
-          })
-
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      };
+      vm.search = function() {
+        searchFormService.getResults(vm.searchForm)
+          .then(() => {
+            console.log('this happened');
+            return $state.go('jobList', {
+              skills: vm.searchForm.skills,
+              location: vm.searchForm.location
+            });
+          });
+      }
     };
 
 

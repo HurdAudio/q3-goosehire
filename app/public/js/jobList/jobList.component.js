@@ -7,16 +7,15 @@
       templateUrl: '/js/jobList/jobList.template.html'
     });
 
-    JobListController.$inject = ['$http', '$state', '$stateParams'];
+    JobListController.$inject = ['$http', '$state', '$stateParams', 'searchFormService'];
 
-    function JobListController($http, $state, $stateParams){
+    function JobListController($http, $state, $stateParams, searchFormService){
       const vm = this;
 
       vm.$onInit = function() {
-        vm.searchResults = $stateParams.results;
+        vm.searchResults = searchFormService.searchResults;
         vm.skills = $stateParams.skills;
         vm.location = $stateParams.location;
-        vm.title = $stateParams.title
       }
 
     }
