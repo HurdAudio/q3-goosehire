@@ -1,25 +1,26 @@
+
 <div class="l-content">
   <div class=" pure-g">
     <div class="pure-u-4-5 l-content ">
-      <form name="searchForm" class="pure-form pure-form-aligned form-border" ng-submit="$ctrl.indeedSearch()">
+      <form name="searchForm" class="pure-form pure-form-aligned form-border" ng-submit="$ctrl.search()">
         <fieldset class="is-center">
-            <div class="pure-control-group">
-                <label for="search-terms">Search terms:</label>
-                <textarea class="pure-input-1-2" placeholder="Add skills, separated by commas (ex. PHP, Javascript, ...)" ng-model="$ctrl.searchForm.skills" required></textarea>
-            </div>
+          <div class="pure-control-group">
+            <label for="search-terms">Search terms</label>
+            <textarea class="pure-input-1-2" placeholder="Add skills, separated by commas (ex. PHP, Javascript, ...)" ng-model="$ctrl.searchForm.skills" required></textarea>
+          </div>
 
-            <div class="pure-control-group">
-                <label for="title">Job Title:</label>
-                <input id="title" type="title" placeholder="Enter Job Title" ng-model="$ctrl.searchForm.title">
-            </div>
+          <!-- <div class="pure-control-group">
+              <label for="title">Job Title:</label>
+              <input id="title" type="title" placeholder="Enter Job Title" ng-model="$ctrl.searchForm.title">
+          </div> -->
 
-            <div class="pure-control-group">
-                <label for="location">Location:</label>
-                <input id="location" type="text" placeholder="Enter Job Location" ng-model="$ctrl.searchForm.location">
+          <div class="pure-control-group">
+            <label for="location">Location</label>
+            <input id="location" type="text" placeholder="Enter Job Location" ng-model="$ctrl.searchForm.location">
 
-                <button type="submit" class="pure-button pure-button-primary" >Submit</button>
+            <button type="submit" class="pure-button pure-button-primary" >Submit</button>
 
-            </div>
+          </div>
         </fieldset>
       </form>
     </div>
