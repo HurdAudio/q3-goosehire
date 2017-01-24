@@ -38,9 +38,7 @@ router.post('/', (req, res) => {
 
 router.patch('/:id', (req, res) => {
   User.findByIdAndUpdate(req.params.id,
-    { $set: {
-      username: req.body.username 
-    }}, {
+    { $set: req.body }, {
       new: true
     },
     function (err, data) {
