@@ -1,5 +1,6 @@
 <div>
   <p>You are now on the jobList page!</p>
+  <a ui-sref="jobView">Go to jobView</a>
   <p>Your search parameters were: </p>
   <p>skills: {{ $ctrl.skills }}</p>
   <p>title: {{ $ctrl.title }}</p>
@@ -7,6 +8,7 @@
   <hr>
   <p>Results!!</p>
   <div ng-repeat="result in $ctrl.searchResults">
-    <pre> {{ result }}</pre>
+    <p>{{ result.url }}</p>
+    <a ui-sref="jobView({jobLink: '{{ result.url }}'})">{{ result.jobtitle }}</a>
   </div>
 </div>
