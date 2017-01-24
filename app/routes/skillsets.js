@@ -16,6 +16,24 @@ router.get('/:id', (req, res) => {
   })
 });
 
+router.get('/:userid/:id', (req, res) => {
+  var searchId = req.params.id;
+  User.findById(req.params.userid, (err, data) => {
+    if(err) {throw err;}
+    else {
+      for (var i = 0; i < data.skills.length; i++) {
+        var skills = data.skills[i];
+        if(skills._id == searchId) {
+          res.send(skills);
+        }
+        else {
+          res.send('skillset not found');
+        }
+      }
+    }
+  })
+})
+
 router.post('/', (req, res) => {
   User.create({
     username: req.body.username,

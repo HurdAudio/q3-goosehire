@@ -17,14 +17,14 @@ router.get('/:id', (req, res) => {
 });
 
 //gets one of a users search, by userid and search id
-router.get('/:userid/:id', (req, res) => {
-  User.find({'id': req.params.userid, $where: this.searches._id === req.params.id}).exec( (err, data) => {
-    if(err) { throw err; }
-    else {
-      res.send(data);
-    }
-  })
-});
+// router.get('/:userid/:id', (req, res) => {
+//   User.find({'id': req.params.userid, $where: this.searches._id === req.params.id}).exec( (err, data) => {
+//     if(err) { throw err; }
+//     else {
+//       res.send(data);
+//     }
+//   })
+// });
 
 //posts new search to users searches
 router.post('', (req, res) => {
