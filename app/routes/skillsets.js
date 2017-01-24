@@ -34,23 +34,19 @@ router.get('/:userid/:id', (req, res) => {
   })
 })
 
-router.post('/', (req, res) => {
-  User.create({
-    username: req.body.username,
-    hashedPassword: req.body.hashedPassword
-  }, (err, data) => {
-    if(err) {throw err};
-    res.send(data);
+router.post('/:userid/:id', (req, res) => {
+  User.findById(req.params.userid, (err, data) => {
+    if(err) { throw err; }
+    else {
+      data.skills.push({
+        skillSet: req.body.skills,
+      });
+      data.save(function (err, data) {
+          if (err) throw err;
+          res.send(data);
+        })
+    }
   })
-});
-
-router.patch('/:id', (req, res) => {
-  User.findByIdAndUpdate(req.params.id,
-    { $set: req.body }, { new: true },
-    function (err, data) {
-      if (err) throw err;
-      res.send(data);
-    });
 });
 
 router.delete('/:id', (req, res) => {
