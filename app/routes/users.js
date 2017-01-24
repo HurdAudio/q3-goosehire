@@ -27,9 +27,6 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  // var { username, hashedPassword } = req.body;
-  // res.status(200).send(username, hashedPassword)
-  // res.send(req.body);
   User.create({
     username: req.body.username,
     hashedPassword: req.body.hashedPassword
@@ -40,7 +37,16 @@ router.post('/', (req, res) => {
 });
 
 router.patch('/:id', (req, res) => {
-
+  User.findByIdAndUpdate(req.params.id,
+    { $set: {
+      username: req.body.username 
+    }}, {
+      new: true
+    },
+    function (err, data) {
+      if (err) throw err;
+      res.send(data);
+    });
 });
 
 router.delete('/:id', (req, res) => {
