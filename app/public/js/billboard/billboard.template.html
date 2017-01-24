@@ -1,24 +1,12 @@
-<div>
-  <p>billboard component goes here</p>
-  <div>
-    <p>more billboard stuff</p>
-  </div>
-
-  <!--slideshow  -->
-  <div class="container slider">
-    <img ng-repeat="slide in $ctrl.slides" class="slide" ng-hide="!$ctrl.isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
-
-    <a class="arrow prev" href="#" ng-click="$ctrl.nextSlide()"></a>
-    <a class="arrow next" href="#" ng-click="$ctrl.prevSlide()"></a>
-
-    <nav class="nav">
-      <div class="wrapper">
-      <ul class="dots">
-      <li class="dot" ng-repeat="slide in $ctrl.slides">
-        <a href="#" ng-class="{'active':!$ctrl.isCurrentSlideIndex($index)}" ng-click="$ctrl.setCurrentSlideIndex($index);">{{slide.description}}</a></li>
-      </ul></div>
-      </nav>
-
-  </div>
-
+<!--Slideshow will go in this template  -->
+<div class="splash-container">
+    <div class="splash">
+        <!-- <h1 class="splash-head">Big Bold Text</h1> -->
+        <p class="splash-subhead">
+          Don't let the job search get you down - GooseHire
+        </p>
+        <p>
+          <a href="http://purecss.io" class="pure-button pure-button-primary">Goose my resume</a>
+        </p>
+    </div>
 </div>
