@@ -18,6 +18,8 @@
         vm.location = $stateParams.location;
       }
 
+      console.log(vm.searchResults)
+
     }
 
 }());
