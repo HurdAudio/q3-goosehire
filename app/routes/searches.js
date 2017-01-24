@@ -10,7 +10,7 @@ router.get('/:id', (req, res) => {
   User.findById(req.params.id, (err, data) => {
     if(err) { throw err; }
     else{
-      res.send(data);
+      res.send(data.searches);
     }
   })
 });
