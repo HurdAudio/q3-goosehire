@@ -1,16 +1,20 @@
-<div id="header" class="header">
+<!--nav bar  -->
+<header class="content">
   <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-    <a class="pure-menu-heading" href="">GooseHire</a>
-      <ul class="pure-menu-list">
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sign Up</a></li>
-        <li class="pure-menu-item"><a ui-sref="main" class="pure-menu-link">New Search</a></li>
+      <a href="/" class="pure-menu-heading pure-u-4-5">GooseHire</a>
+      <ul class="pure-menu-list pure-u-1-5 is-center">
+          <!-- <li class="pure-menu-item"><a href="#" class="pure-menu-link">Login</a></li> -->
+          <li><a class="pure-button pure-button-primary is-center" href="#">Login</a></li>
       </ul>
   </div>
-</div>
+</header>
+
 
 <ui-view></ui-view>
 
-<div id="footer" class="footer pure-g pure-u-1">
-  <p>Goosehire, Inc.</p>
-  <p>Contact Info</p>
-</div>
+
+<footer class="footer-menu pure-g">
+  <div class="pure-u-1 is-center">
+    <p>GooseHire, Inc. is not responsible for people who are unemployable</p>
+  </div>
+</footer>
