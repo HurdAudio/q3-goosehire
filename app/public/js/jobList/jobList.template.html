@@ -10,8 +10,10 @@
   <div ng-repeat="result in $ctrl.searchResults">
 
     <!-- <pre> {{ result }}</pre> -->
-    <!-- <job-post job="result"></job-post> -->
+    <!--brad  -->
+    <job-post job="result"></job-post>
 
+    <!--chanse  -->
     <p>{{ result.url }}</p>
     <a ui-sref="jobView({jobLink: '{{ result.url }}'})">{{ result.jobtitle }}</a>
   </div>
