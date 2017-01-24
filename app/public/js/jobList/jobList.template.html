@@ -1,4 +1,6 @@
-<div>
+<!-- <div class="content pure-u-1 pure-u-md-3-4"> -->
+        <!-- <div> -->
+<div class="job-page">
   <p>You are now on the jobList page!</p>
   <a ui-sref="jobView">Go to jobView</a>
   <p>Your search parameters were: </p>
@@ -6,15 +8,26 @@
   <p>title: {{ $ctrl.title }}</p>
   <p>location: {{ $ctrl.location }}</p>
   <hr>
-  <p>Results!!</p>
+  <p>Job Results</p>
+</div>
+
+
+
   <div ng-repeat="result in $ctrl.searchResults">
 
     <!-- <pre> {{ result }}</pre> -->
     <!--brad  -->
-    <job-post job="result"></job-post>
 
     <!--chanse  -->
-    <p>{{ result.url }}</p>
-    <a ui-sref="jobView({jobLink: '{{ result.url }}'})">{{ result.jobtitle }}</a>
+    <!-- <p>{{ result.url }}</p> -->
+    <a ui-sref="jobView({jobLink: '{{ result.url }}'})">
+      <job-post job="result"></job-post>
+
+      <!-- {{ result.jobtitle }} -->
+    </a>
   </div>
 </div>
+
+    </div>
+  </div>
+<!-- </div> -->

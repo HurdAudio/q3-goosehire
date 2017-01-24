@@ -1,3 +1,9 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 .home-menu {
     padding: 0.5em;
     /*text-align: center;*/
@@ -124,6 +130,120 @@ This is the blue top section that appears on the page.*/
     padding: 1em 1em 3em;
 }*/
 
+/* ----------------------------
+ * Example for full-width Grids
+ * ----------------------------
+*/
+
+.grids-example {
+    background: rgb(250, 250, 250);
+    margin: 2em auto;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Apply the .box class on the immediate parent of any grid element (pure-u-*) to apply some padding. */
+.l-box {
+    padding: 1em;
+}
+
+.l-wrap {
+    margin-left: auto;
+    margin-right: auto;
+}
+.content .l-wrap {
+    margin-left: -1em;
+    margin-right: -1em;
+}
+
+/* ----------------------------
+* job posts css start
+* ----------------------------
+*/
+
+.job-page {
+  margin-top: 3em;
+  padding-bottom: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.content-subhead {
+    text-transform: uppercase;
+    color: #aaa;
+    border-bottom: 1px solid #eee;
+    padding: 0.4em 0;
+    font-size: 80%;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.content {
+    padding: 2em 1em 0;
+}
+
+.post {
+    padding-bottom: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+.post-title {
+    font-size: 2em;
+    color: #222;
+    margin-bottom: 0.2em;
+}
+.post-avatar {
+    border-radius: 50px;
+    float: right;
+    margin-left: 1em;
+}
+.post-description {
+    font-family: Georgia, "Cambria", serif;
+    color: #444;
+    line-height: 1.8em;
+}
+.post-meta {
+    color: #999;
+    font-size: 90%;
+    margin: 0;
+}
+
+.post-category {
+    margin: 0 0.1em;
+    padding: 0.3em 1em;
+    color: #fff;
+    background: #999;
+    font-size: 80%;
+}
+    .post-category-design {
+        background: #5aba59;
+    }
+    .post-category-pure {
+        background: #4d85d1;
+    }
+    .post-category-yui {
+        background: #8156a7;
+    }
+    .post-category-js {
+        background: #df2d4f;
+    }
+
+.post-images {
+    margin: 1em 0;
+}
+.post-image-meta {
+    margin-top: -3.5em;
+    margin-left: 1em;
+    color: #fff;
+    text-shadow: 0 1px 1px #333;
+}
+
+.header {
+    margin: 80% 2em 0;
+    text-align: right;
+}
+
+/* job posts end */
 
 
 pre {
