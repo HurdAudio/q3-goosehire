@@ -104,6 +104,14 @@ This is the blue top section that appears on the page.*/
   padding: 1em;
 }
 
+.jobPost {
+  width: 80%;
+  height: 5em;
+  background: #f7f7f7;
+
+}
+
+/*footer*/
 .footer-menu {
     background-color: rgba(0, 0, 0, 0.8);
     /*position: fixed;*/
@@ -118,33 +126,16 @@ This is the blue top section that appears on the page.*/
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*pre {
-  white-space: pre-wrap;       /* Since CSS 2.1 */
-  /*white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-  /*white-space: -pre-wrap;      /* Opera 4-6 */
-  /*white-space: -o-pre-wrap;    /* Opera 7 */
-  /*word-wrap: break-word;       /* Internet Explorer 5.5+ */
-  /*overflow: auto*/
-/*}*/
-
-/*#header {
-  margin-bottom: 50px;
-}*/
-
-/*nav bar*/
+pre {
+  white-space: pre-wrap;
+  /* Since CSS 2.1 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;
+  /* Opera 4-6*/
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* Internet Explorer 5.5+ */
+  overflow: auto
+}
