@@ -18,7 +18,20 @@
         vm.location = $stateParams.location;
       }
 
-      console.log(vm.searchResults)
+      // console.log(vm.searchResults)
+
+      vm.saveSearch = function() {
+        console.log('clicked');
+        vm.userid = '58862bb83c085df2aaf099cc';
+        var request = {
+          location: vm.location,
+          skillSet: vm.skills,
+        }
+        console.log(request);
+        $http.post(`/searches/${vm.userid}`, request).then((data) => {
+          console.log(data);
+        })
+      }
 
     }
 
