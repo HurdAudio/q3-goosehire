@@ -1,5 +1,6 @@
 "use strict";
 
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -8,38 +9,32 @@ const app = express();
 const request = require('request');
 const rpn = require('request-promise-native');
 const cheerio = require('cheerio');
+const passport = require('passport');
+const LinkedInStrategy = require('passport-linkedin').Strategy;
+const cookieSession = require('cookie-session');
 
-require('dotenv').config();
 
-const port = 3007;
 
-if (process.env.NODE_ENV !== 'test') {
-  const logger = require('morgan');
-  app.use(logger('dev'));
-}
 
+//database
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost:27017/goosehire');
-
 mongoose.connection.on('error', () => {console.log('mongo connection failed')})
   .once('open', () => {console.log('mongo is lit')});
 
-app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
+
+//routes
 app.use('/users', require('./routes/users'));
 app.use('/skillsets', require('./routes/skillsets'));
 app.use('/searches', require('./routes/searches'));
 
-//these need to be modified
-// app.use('/api/posts', require('./routes/searches'));
-// app.use('/api/posts', require('./routes/skillsets'));
-// app.use('/api/posts', require('./routes/users'));
 
-
+//api call to indeed
 app.get('/indeed', (req, res) => {
-
   let searchInfo = {
     skills: encodeURIComponent(req.query.skills),
     location: encodeURIComponent(req.query.location),
@@ -62,6 +57,8 @@ app.get('/indeedSingleJob', (req, res) => {
   })
 })
 
+
+//default endpoint
 app.get('/', (req, res) => {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')});
 });
@@ -69,6 +66,15 @@ app.get('/', (req, res) => {
 app.use('*', function(req, res, next) {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')});
 });
+
+
+//set environments
+const port = 3007;
+
+if (process.env.NODE_ENV !== 'test') {
+  const logger = require('morgan');
+  app.use(logger('dev'));
+}
 
 app.listen(port, () => {
   console.log('Listening on port', port);
