@@ -46,13 +46,6 @@
           return;
         })
       }
-
-      vm.clipboard = function() {
-        console.log('clicked');
-        holdtext.innerText = copytext.innerText;
-        Copied = holdtext.createTextRange();
-        Copied.execCommand("Copy");
-      }
     }
 
 }());
