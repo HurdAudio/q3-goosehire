@@ -4,7 +4,8 @@
   "description": "goose your resume. get hired.",
   "main": "app/server.js",
   "scripts": {
-    "test": "mocha test/client-test.js"
+    "test": "mocha test/client-test.js",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -72,6 +73,7 @@
     "moment": "^2.17.1",
     "mongoose": "^4.7.7",
     "morgan": "^1.7.0",
+    "ngclipboard": "^1.1.1",
     "node-docker-api": "^1.1.3",
     "nodemon": "^1.11.0",
     "passport": "^0.3.2",
