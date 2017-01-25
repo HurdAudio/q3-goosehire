@@ -19,7 +19,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost:27017/goosehire');
+mongoose.connect('mongodb://127.0.0.1:31109/heroku_f95771rw');
 
 mongoose.connection.on('error', () => {console.log('mongo connection failed')})
   .once('open', () => {console.log('mongo is lit')});
