@@ -1,6 +1,58 @@
-<h1>This is job post html</h1>
-<div class="pure-g">
-  <div class="pure-u-4-5">
-    <p>{{$ctrl.job}}</p>
+<div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+          <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead"></h1>
+
+            <!-- A single job post -->
+                <section class="post">
+                    <header class="post-header">
+                        <img width="48" height="48" alt="GooseHire" class="post-avatar" src="images/goose-avatar.png">
+
+                        <h2 class="post-title">{{$ctrl.job.jobtitle}}</h2>
+
+                        <p class="post-meta">
+                            <strong>{{$ctrl.job.company}}</strong> - {{$ctrl.job.formattedLocationFull}} | Posted: {{$ctrl.job.formattedRelativeTime}}
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <p>
+                            {{$ctrl.job.snippet}}
+                        </p>
+                        <a class="pure-button pure-button-primary buttons" href="">View More</a>
+                    </div>
+                </section>
+            </div>
+    </div>
   </div>
-</div>
+
+            <!-- A single job post -->
+                            <!-- <section class="post">
+                                <header class="post-header">
+                                    <img width="48" height="48" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src="img/common/tilo-avatar.png">
+
+                                    <h2 class="post-title">{{$ctrl.job.jobtitle}}</h2>
+
+                                    <p class="post-meta">
+                                        By <a href="#" class="post-author">Company</a> under <a class="post-category post-category-design" href="#">CSS</a> <a class="post-category post-category-pure" href="#">Pure</a>
+                                    </p>
+                                </header>
+
+                                <div class="post-description">
+                                    <p>
+                                        Yesterday at CSSConf, we launched Pure – a new CSS library. Phew! Here are the <a href="https://speakerdeck.com/tilomitra/pure-bliss">slides from the presentation</a>. Although it looks pretty minimalist, we’ve been working on Pure for several months. After many iterations, we have released Pure as a set of small, responsive, CSS modules that you can use in every web project.
+                                    </p>
+                                </div>
+                            </section>
+                        </div> -->
+
+
+<!-- <div class="pure-g">
+  <div class="pure-u-4-5">
+    <h4>{{$ctrl.job.jobtitle}}</h4>
+      <p>{{$ctrl.job.company}} - {{$ctrl.job.formattedLocationFull}}</p>
+      <p>{{$ctrl.job.snippet}}</p>
+
+  </div>
+</div> -->

@@ -1,17 +1,58 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.logo {
+  max-width:210px;
+  float:left;
+  /*position: relative;*/
+  /*padding-top: 25px;*/
+}
+
+#login-button {
+  float: right;
+  position: relative;
+  margin-top: 2em;
+}
+
+
+/*.logo img{
+    margin-left: 15px;
+    vertical-align: top;
+    position: relative;
+    height:65px;
+    margin-top: 5px;
+    padding-top: 5px;
+}*/
+
+
+
+.buttons {
+  /*background: #2F637B;*/
+  color: rgb(28, 184, 65);
+-webkit-border-radius: 8px;
+-moz-border-radius: 8px;
+border-radius: 8px;
+}
+
 .home-menu {
-    padding: 0.5em;
-    /*text-align: center;*/
-    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+    /*padding: 0.5em;*/
+    text-align: right;
+    padding-right: 2em;
+    /*box-shadow: 0 1px 1px rgba(0,0,0, 0.10);*/
     /*background: rgb(19, 2, 76);*/
-    background-color: rgba(0, 0, 0, 0.8);
-    border-bottom: 1px solid rgba(223, 86, 9, 0.99)
+    /*background-color: rgba(0, 0, 0, 0.8);*/
+    background-color: #0a114b;
+    /*border-bottom: 1px solid rgba(223, 86, 9, 0.99)*/
 }
 
 
 .home-menu .pure-menu-heading, .footer-menu {
     color: white;
     font-weight: 400;
-    font-size: 120%;
+    /*font-size: 120%;*/
 }
 
 /*layout styles*/
@@ -113,7 +154,8 @@ This is the blue top section that appears on the page.*/
 
 /*footer*/
 .footer-menu {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #0a114b;
+    /*background-color: rgba(0, 0, 0, 0.8);*/
     /*position: fixed;*/
     bottom: 0.4em;
     width: 100%;
@@ -124,6 +166,110 @@ This is the blue top section that appears on the page.*/
     padding: 1em 1em 3em;
 }*/
 
+
+/* ----------------------------
+* job list css start
+* ----------------------------
+*/
+
+.jobList-header {
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    max-width: 768px;
+    margin: 0 auto;
+    /*padding: 1em;*/
+    text-align: center;
+    /*border-bottom: 1px solid #eee;*/
+    background: #fff;
+    letter-spacing: 0.05em;
+}
+
+
+.job-page {
+  margin-top: 6em;
+  padding-bottom: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.content-subhead {
+    text-transform: uppercase;
+    color: #aaa;
+    border-bottom: 1px solid #eee;
+    padding: 0.4em 0;
+    font-size: 80%;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.content {
+    padding: 2em 1em 0;
+}
+
+.post {
+    padding-bottom: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+.post-title {
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.8em;
+    color: #5C668A;
+    margin-bottom: 0.2em;
+}
+.post-avatar {
+    border-radius: 50px;
+    float: right;
+    margin-left: 1em;
+}
+.post-description {
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #696969;
+    line-height: 1.8em;
+}
+.post-meta {
+    color: #999;
+    font-size: 90%;
+    margin: 0;
+}
+
+.post-category {
+    margin: 0 0.1em;
+    padding: 0.3em 1em;
+    color: #fff;
+    background: #999;
+    font-size: 80%;
+}
+    .post-category-design {
+        background: #5aba59;
+    }
+    .post-category-pure {
+        background: #4d85d1;
+    }
+    .post-category-yui {
+        background: #8156a7;
+    }
+    .post-category-js {
+        background: #df2d4f;
+    }
+
+.post-images {
+    margin: 1em 0;
+}
+.post-image-meta {
+    margin-top: -3.5em;
+    margin-left: 1em;
+    color: #fff;
+    text-shadow: 0 1px 1px #333;
+}
+
+.header {
+    margin: 80% 2em 0;
+    text-align: right;
+}
+
+/* job posts end */
 
 
 pre {
