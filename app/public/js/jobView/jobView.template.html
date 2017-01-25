@@ -11,14 +11,14 @@
           <div class="pure-u-1 pure-u-md-1-2">
             <div class="save-boxes">
               <h3 class="is-center">searched skill sets</h3>
-
-              {{ $ctrl.skills }}
-
+                <span id="copytext">
+                  {{ $ctrl.skills }}
+                </span>
             </div>
             <div>
               <ul class="pure-menu-list pure-u-5-5 is-center">
                 <li id="login-button"><a class="login-button pure-button pure-button-primary is-left" href="#" ng-click="$ctrl.saveSkills()">Save Skills</a></li>
-                <li id="login-button"><a class="login-button pure-button pure-button-primary is-center" href="#">Copy to Clipboard</a></li>
+                <li id="login-button"><a class="login-button pure-button pure-button-primary is-center" href="#" ngclipboard data-clipboard-target="#copytext">Copy to Clipboard</a></li>
               </ul>
             </div>
           </div>

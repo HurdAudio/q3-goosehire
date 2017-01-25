@@ -21,7 +21,6 @@
       // console.log(vm.searchResults)
 
       vm.saveSearch = function() {
-        console.log('clicked');
         vm.userid = '58862bb83c085df2aaf099cc';
         var request = {
           location: vm.location,

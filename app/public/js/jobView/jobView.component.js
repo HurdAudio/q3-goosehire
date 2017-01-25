@@ -35,7 +35,6 @@
       }
 
       vm.saveSkills = function() {
-        console.log('clicked');
         vm.userid = '58862bb83c085df2aaf099cc';
         var request = {
           skillSet: vm.skills
@@ -48,7 +47,12 @@
         })
       }
 
-
+      vm.clipboard = function() {
+        console.log('clicked');
+        holdtext.innerText = copytext.innerText;
+        Copied = holdtext.createTextRange();
+        Copied.execCommand("Copy");
+      }
     }
 
 }());

@@ -32,6 +32,8 @@ app.use('/users', require('./routes/users'));
 app.use('/skillsets', require('./routes/skillsets'));
 app.use('/searches', require('./routes/searches'));
 
+app.use(express.static(path.join(__dirname, '/../', 'node_modules')))
+
 //these need to be modified
 // app.use('/api/posts', require('./routes/searches'));
 // app.use('/api/posts', require('./routes/skillsets'));
