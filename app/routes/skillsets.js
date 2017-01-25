@@ -9,7 +9,7 @@ mongoose.Promise = require('bluebird');
 
 router.get('/:id', (req, res) => {
   User.findById(req.params.id, (err, data) => {
-    if(err) { throw err; }
+    if(err) throw err;
     else {
       res.send(data.skills);
     }
@@ -17,45 +17,49 @@ router.get('/:id', (req, res) => {
 });
 
 router.get('/:userid/:id', (req, res) => {
-  var searchId = req.params.id;
+  var skillsId = req.params.id;
   User.findById(req.params.userid, (err, data) => {
-    if(err) {throw err;}
+    if(err) throw err;
     else {
       for (var i = 0; i < data.skills.length; i++) {
         var skills = data.skills[i];
-        if(skills._id == searchId) {
+        if(skills._id == skillsId) {
           res.send(skills);
         }
         else {
-          res.send('skillset not found');
+          console.log('skillset not found');
         }
       }
     }
   })
-})
+});
 
-router.post('/:userid/:id', (req, res) => {
+router.post('/:userid', (req, res) => {
   User.findById(req.params.userid, (err, data) => {
-    if(err) { throw err; }
+    if(err) throw err;
     else {
       data.skills.push({
         skillSet: req.body.skills,
       });
-      data.save(function (err, data) {
+      data.save((err, data) => {
           if (err) throw err;
           res.send(data);
         })
-    }
+      }
   })
 });
 
-router.delete('/:id', (req, res) => {
-  User.findById(req.params.id, (err, data) => {
+router.delete('/:userid/:id', (req, res) => {
+  var skillsId = req.params.id;
+  User.findById(req.params.userid, (err, data) => {
     if(err) throw err;
-    data.remove((err, data) => {
-      if(err) throw err;
-      res.send(data);
-    })
+    else {
+      data.skills.pull({_id: skillsId});
+      data.save((err, data) => {
+        if (err) throw err;
+        res.send(data);
+      })
+    }
   })
 });
 
