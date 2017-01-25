@@ -4,6 +4,22 @@
     box-sizing: border-box;
 }
 
+.logo {
+  max-width:200px;
+  /*position: relative;*/
+  /*padding-top: 25px;*/
+
+}
+
+/*.logo img{
+    margin-left: 15px;
+    vertical-align: top;
+    position: relative;
+    height:65px;
+    margin-top: 5px;
+    padding-top: 5px;
+}*/
+
 .buttons {
   /*background: #2F637B;*/
   color: rgb(28, 184, 65);
@@ -15,10 +31,11 @@ border-radius: 8px;
 .home-menu {
     padding: 0.5em;
     /*text-align: center;*/
-    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+    /*box-shadow: 0 1px 1px rgba(0,0,0, 0.10);*/
     /*background: rgb(19, 2, 76);*/
-    background-color: rgba(0, 0, 0, 0.8);
-    border-bottom: 1px solid rgba(223, 86, 9, 0.99)
+    /*background-color: rgba(0, 0, 0, 0.8);*/
+    background-color: #0a114b;
+    /*border-bottom: 1px solid rgba(223, 86, 9, 0.99)*/
 }
 
 
