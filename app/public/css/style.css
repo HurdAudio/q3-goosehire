@@ -5,11 +5,18 @@
 }
 
 .logo {
-  max-width:200px;
+  max-width:210px;
+  float:left;
   /*position: relative;*/
   /*padding-top: 25px;*/
-
 }
+
+#login-button {
+  float: right;
+  position: relative;
+  margin-top: 2em;
+}
+
 
 /*.logo img{
     margin-left: 15px;
@@ -20,6 +27,8 @@
     padding-top: 5px;
 }*/
 
+
+
 .buttons {
   /*background: #2F637B;*/
   color: rgb(28, 184, 65);
@@ -29,8 +38,9 @@ border-radius: 8px;
 }
 
 .home-menu {
-    padding: 0.5em;
-    /*text-align: center;*/
+    /*padding: 0.5em;*/
+    text-align: right;
+    padding-right: 2em;
     /*box-shadow: 0 1px 1px rgba(0,0,0, 0.10);*/
     /*background: rgb(19, 2, 76);*/
     /*background-color: rgba(0, 0, 0, 0.8);*/
@@ -42,7 +52,7 @@ border-radius: 8px;
 .home-menu .pure-menu-heading, .footer-menu {
     color: white;
     font-weight: 400;
-    font-size: 120%;
+    /*font-size: 120%;*/
 }
 
 /*layout styles*/
@@ -144,7 +154,8 @@ This is the blue top section that appears on the page.*/
 
 /*footer*/
 .footer-menu {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #0a114b;
+    /*background-color: rgba(0, 0, 0, 0.8);*/
     /*position: fixed;*/
     bottom: 0.4em;
     width: 100%;
@@ -175,7 +186,7 @@ This is the blue top section that appears on the page.*/
 
 
 .job-page {
-  margin-top: 3em;
+  margin-top: 6em;
   padding-bottom: 2em;
   padding-left: 2em;
   padding-right: 2em;
@@ -203,7 +214,7 @@ This is the blue top section that appears on the page.*/
 .post-title {
     font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 700;
-    font-size: 2em;
+    font-size: 1.8em;
     color: #5C668A;
     margin-bottom: 0.2em;
 }
