@@ -12,8 +12,11 @@
     function JobViewController($http, $state, $stateParams){
       const vm = this;
 
+      vm.skills= $stateParams.skills;
+
       vm.$onInit = function() {
         console.log("loading jobView comp");
+        console.log($stateParams, "stateParams");
 
         $http({
           method:'GET',
@@ -23,13 +26,14 @@
           }
         })
         .then((response) => {
-          console.log(response);
+          console.log(response, "jobView");
           return vm.jobData = response.data;
         })
         .catch((err) => {
           console.log(err);
         });
       }
+
 
     }
 

@@ -7,9 +7,9 @@ const User = require('../src/users');
 mongoose.Promise = require('bluebird');
 <!--get route works -->
 router.get('/:id', (req, res) =>{
-  User.findById(req.params.id, (err, data)=> {
-    if(err) {throw err;}
-    else{
+  User.findById(req.params.id, (err, data) => {
+    if(err) { throw err; }
+    else {
       res.send(data.searches)
     }
   })
@@ -17,8 +17,6 @@ router.get('/:id', (req, res) =>{
 <!--get searches by id-->
 
 
-  // })
-// });
 router.get('/:userid/:searchid', (req, res) => {
   var searchId = req.params.searchid;
   // res.send(searchId);
