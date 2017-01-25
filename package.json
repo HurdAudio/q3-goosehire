@@ -4,7 +4,8 @@
   "description": "goose your resume. get hired.",
   "main": "app/server.js",
   "scripts": {
-    "test": "mocha test/client-test.js"
+    "test": "mocha test/client-test.js",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
