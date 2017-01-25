@@ -39,7 +39,7 @@ router.post('/:userid', (req, res) => {
     if(err) throw err;
     else {
       data.skills.push({
-        skillSet: req.body.skills,
+        skillSet: req.body.skillSet,
       });
       data.save((err, data) => {
           if (err) throw err;

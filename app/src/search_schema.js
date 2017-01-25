@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const SearchSchema = new Schema({
   location: {},
   jobTitle: String,
-  skillSet: [String]
+  skillSet: String
 });
 
 module.exports = SearchSchema;
