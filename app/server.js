@@ -11,6 +11,8 @@ const cheerio = require('cheerio');
 
 require('dotenv').config();
 
+console.log('loading');
+
 const port = 3007;
 
 if (process.env.NODE_ENV !== 'test') {
@@ -72,7 +74,7 @@ app.use('*', function(req, res, next) {
 });
 
 app.listen(port, () => {
-  console.log('Listening on port', port);
+  console.log('Listening on port', process.env.PORT);
 });
 
 module.exports = app;
