@@ -11,12 +11,8 @@
 
   <div ng-repeat="result in $ctrl.searchResults">
 
-    <!-- <pre> {{ result }}</pre> -->
-    <!--brad  -->
-
-    <!--chanse  -->
     <!-- <p>{{ result.url }}</p> -->
-    <a ui-sref="jobView({jobLink: '{{ result.url }}'})">
+    <a ui-sref="jobView({jobLink: '{{ result.url }}', skills: '{{ $ctrl.skills }}'})">
       <job-post job="result"></job-post>
 
       <!-- {{ result.jobtitle }} -->
