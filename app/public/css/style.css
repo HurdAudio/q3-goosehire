@@ -13,14 +13,13 @@
 
 #login-button {
   float: right;
-  position: relative;
-  margin-top: 2em;
+  position: absolute;
+  /*margin-top: 20px;*/
 }
 
 
 .logo img{
     margin-left: 15px;
-    vertical-align: top;
     position: relative;
     height:100px;
     margin-top: 0px;
@@ -161,6 +160,8 @@ This is the blue top section that appears on the page.*/
 .footer-menu {
     background-color: #0a114b;
     padding: 0.4em;
+    padding-top: 1em;
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
     /*background-color: rgba(0, 0, 0, 0.8);*/
     /*position: fixed;*/
     /*bottom: 0.4em;*/

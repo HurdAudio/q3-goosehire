@@ -1,4 +1,4 @@
-<!--nav bar  -->
+<!--old nav bar  -->
 <!-- <header class="content"> -->
   <!-- <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
     <a href="/"><img class="logo pure-menu-heading pure-u-4-5" src="images/goose_logo.png" alt="GooseHire"></a>
@@ -9,14 +9,26 @@
   </div> -->
 <!-- </header> -->
 
-<div class="pure-g" style="background-color: #0a114b; color: white;">
-  <a href="/"><div class="pure-u-8-24 l-box logo"><img src="images/goose_logo.png" alt="GooseHire"></a></div>
-    <div class="pure-u-12-24 l-box"><p>Some things here</p></div>
+<!-- new nav bar -->
+  <div class="pure-g home-menu">
+    <a href="/"><div class="pure-u-8-24 l-box logo"><img src="images/goose_logo.png" alt="GooseHire"></a></div>
+      <div class="pure-u-12-24"></div>
 
-  <div class="pure-u-4-24 l-box">
-    <button class="pure-button pure-button-primary">Login</button>
+    <div class="pure-u-4-24 l-box">
+        <button class="pure-button pure-button-primary">Login</button>
+          <button class="pure-button pure-button-primary"><a ui-sref="main">New Search</a></button>
+    </div>
   </div>
-</div>
+
+<!--another nav to try
+  <!-- <div class="pure-menu pure-menu-horizontal">
+    <a href="#" class="pure-menu-heading pure-menu-link">BRAND</a>
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">News</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sports</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Finance</a></li>
+    </ul>
+  </div> -->
 
 <ui-view></ui-view>
 
