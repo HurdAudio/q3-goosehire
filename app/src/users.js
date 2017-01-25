@@ -11,12 +11,13 @@ const UserSchema = new Schema({
   },
   hashedPassword: {
     type: String,
-    validate: {
-      validator: (hashedPassword) => hashedPassword.length === 16,
-      message: 'if ur password isnt 16 characters, its probably not hashed'
-    },
-    required: [true, 'password is required']
+    // validate: {
+    //   validator: (hashedPassword) => hashedPassword.length === 16,
+    //   message: 'if ur password isnt 16 characters, its probably not hashed'
+    // },
+    // required: [true, 'password is required']
   },
+  linkedInId: String,
   skills: [SkillsSchema],
   searches: [SearchSchema]
 });
