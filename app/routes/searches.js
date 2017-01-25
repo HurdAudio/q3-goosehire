@@ -31,7 +31,7 @@ router.get('/:userid/:searchid', (req, res) => {
             res.send(searches)
           }
           else {
-            res.send("searches not found");
+            console.log("searches not found");
           }
 
         }
@@ -58,18 +58,22 @@ router.get('/:userid/:searchid', (req, res) => {
       }
     })
   });
-//     console.log(searchId);
-//   User.findById(req.params.userid, (err, data) => {
-//     if(err) { throw err; }
-//     else {
-//       // for (var i = 0; i < data.searches.length; i++) {
-//       //   data.searches.length[i];
-//       //   console.log(users.searches.length[i]);
-      // }
-//       res.send(data);
-//
-//   })
-// });
+
+router.delete('/:userid/:searchid', (req, res) => {
+  var searchId = req.params.searchid;
+  // var userId = req.params.userid;
+  User.findById(req.params.userid, (err, data)=> {
+    if(err) {throw err;}
+      else {
+        data.searches.pull({_id: searchId});
+          data.save((err, data)=> {
+            if (err) throw err;
+            res.send(data);
+
+          })
+      }
+    })
+  });
 
 
 
