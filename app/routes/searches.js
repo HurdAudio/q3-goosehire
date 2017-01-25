@@ -44,14 +44,12 @@ router.get('/:userid/:searchid', (req, res) => {
         data.searches.push({
           location: req.body.location,
           jobTitle: req.body.jobTitle,
-          skillSet: req.body.skills
-
+          skillSet: req.body.skillSet
         });
 
         data.save((err, data) => {
           if(err) throw err;
-          res.send(data);
-
+          res.send(data.skills);
         })
       }
     })
