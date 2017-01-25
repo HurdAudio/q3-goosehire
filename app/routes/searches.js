@@ -5,41 +5,77 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const User = require('../src/users');
 mongoose.Promise = require('bluebird');
-
-//gets all of a users searches
-router.get('/:id', (req, res) => {
+<!--get route works -->
+router.get('/:id', (req, res) =>{
   User.findById(req.params.id, (err, data) => {
     if(err) { throw err; }
     else {
-      res.send(data.searches);
+      res.send(data.searches)
     }
   })
 });
+<!--get searches by id-->
 
-//gets one of a users search, by userid and search id
-// router.get('/:userid/:id', (req, res) => {
-//   User.find({'id': req.params.userid, $where: this.searches._id === req.params.id}).exec( (err, data) => {
-//     if(err) { throw err; }
-//     else {
-//       res.send(data);
-//     }
-//   })
-// });
 
-//posts new search to users searches
-router.post('', (req, res) => {
+router.get('/:userid/:searchid', (req, res) => {
+  var searchId = req.params.searchid;
+  // res.send(searchId);
+  User.findById(req.params.userid, (err, data)=> {
+    if(err) {throw err;}
+      else{
+        for (var i = 0; i < data.searches.length; i++) {
+          var searches = data.searches[i];
+          if(searches._id == searchId){
+            res.send(searches)
+          }
+          else {
+            console.log("searches not found");
+          }
 
-});
+        }
+      }
+    })
+  })
 
-//updates one of a users searches
-router.patch('', (req, res) => {
+  router.post('/:id', (req, res) =>{
+    User.findById(req.params.id, (err, data)=> {
+      if(err) {throw err;}
+      else{
+        data.searches.push({
+          location: req.body.location,
+          jobTitle: req.body.jobTitle,
+          skillSet: req.body.skills
 
-});
+        });
 
-// deletes a users search
-router.delete('', (req, res) => {
+        data.save((err, data) => {
+          if(err) throw err;
+          res.send(data);
 
-});
+        })
+      }
+    })
+  });
+
+router.delete('/:userid/:searchid', (req, res) => {
+  var searchId = req.params.searchid;
+  // var userId = req.params.userid;
+  User.findById(req.params.userid, (err, data)=> {
+    if(err) {throw err;}
+      else {
+        data.searches.pull({_id: searchId});
+          data.save((err, data)=> {
+            if (err) throw err;
+            res.send(data);
+
+          })
+      }
+    })
+  });
+
+
+
+
 
 
 
