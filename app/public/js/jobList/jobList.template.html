@@ -1,17 +1,13 @@
-<!-- <div class="content pure-u-1 pure-u-md-3-4"> -->
-        <!-- <div> -->
+
 <div class="job-page">
-  <p>You are now on the jobList page!</p>
   <a ui-sref="jobView">Go to jobView</a>
-  <p>Your search parameters were: </p>
-  <p>skills: {{ $ctrl.skills }}</p>
-  <p>title: {{ $ctrl.title }}</p>
-  <p>location: {{ $ctrl.location }}</p>
+  <p>Your search parameters were: skills: {{ $ctrl.skills }}, title: {{ $ctrl.title }}, location: {{ $ctrl.location }}</p>
   <hr>
-  <p>Job Results</p>
 </div>
-
-
+<div>
+    <h1 class="jobList-header">Job Results</h1>
+    <!-- <h2>subhead here</h2> -->
+</div>
 
   <div ng-repeat="result in $ctrl.searchResults">
 
@@ -26,8 +22,3 @@
       <!-- {{ result.jobtitle }} -->
     </a>
   </div>
-</div>
-
-    </div>
-  </div>
-<!-- </div> -->

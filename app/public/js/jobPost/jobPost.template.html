@@ -1,18 +1,18 @@
 <div class="content pure-u-1 pure-u-md-3-4">
         <div>
-            <!-- A wrapper for all the blog posts -->
+          <!-- A wrapper for all the blog posts -->
             <div class="posts">
                 <h1 class="content-subhead"></h1>
 
-<!-- A single job post -->
+            <!-- A single job post -->
                 <section class="post">
                     <header class="post-header">
-                        <img width="48" height="48" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src="images/goose-avatar.png">
+                        <img width="48" height="48" alt="GooseHire" class="post-avatar" src="images/goose-avatar.png">
 
                         <h2 class="post-title">{{$ctrl.job.jobtitle}}</h2>
 
                         <p class="post-meta">
-                            {{$ctrl.job.company}} - {{$ctrl.job.formattedLocationFull}} | Posted: {{$ctrl.job.formattedRelativeTime}}
+                            <strong>{{$ctrl.job.company}}</strong> - {{$ctrl.job.formattedLocationFull}} | Posted: {{$ctrl.job.formattedRelativeTime}}
                         </p>
                     </header>
 
@@ -20,7 +20,7 @@
                         <p>
                             {{$ctrl.job.snippet}}
                         </p>
-                        <a class="pure-button pure-button-primary" href="">View More</a>
+                        <a class="pure-button pure-button-primary buttons" href="">View More</a>
                     </div>
                 </section>
             </div>
