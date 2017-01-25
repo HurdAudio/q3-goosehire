@@ -12,23 +12,6 @@
     function LoginController($http, $state, $stateParams){
       const vm = this;
 
-      vm.$onInit() = onInit;
-      vm.login = login;
-      vm.newUser = newUser;
-
-      function onInit() {
-
-      }
-
-      function login() {
-
-      }
-
-      function newUser() {
-        $http.post('/users', vm.user).then((res) => {
-          console.log(res);
-        })
-      }
     }
 
 }());
