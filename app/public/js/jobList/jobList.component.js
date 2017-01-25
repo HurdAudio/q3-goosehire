@@ -28,6 +28,8 @@
           skillSet: vm.skills,
         }
         $http.post(`/searches/${vm.userid}`, request).then((data) => {
+          //TODO: make a toast/popup letting the user know their search has been saved
+          console.log(data);
           return;
         })
       }
