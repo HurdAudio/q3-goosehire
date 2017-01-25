@@ -1,8 +1,6 @@
 'use strict';
 
-// var Canvas = require("../canvas");
 
-// var cloud = require("../");
 
 var fakeSkills = ['agile', 'github', 'css', 'angularjs', 'react', 'nodeJS', 'postgresql', 'mongodb', 'bootstrap', 'javascript', 'materialize', 'es6', 'html5'];
 
