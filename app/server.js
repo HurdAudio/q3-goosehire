@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 
 app.use('/users', require('./routes/users'));
 app.use('/skillsets', require('./routes/skillsets'));
-app.use('/search', require('./routes/searches'));
+app.use('/searches', require('./routes/searches'));
 
 //these need to be modified
 // app.use('/api/posts', require('./routes/searches'));
