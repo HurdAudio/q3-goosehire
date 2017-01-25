@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <link rel="stylesheet" href="./cloudstyle.css">
+  <script src="./cloudtest.js" defer></script>
+
+<title>Word Cloud Generator</title>
+
+
+</head>
+<body>
+
+  <div id="cloudContainer">
+  </div>
+</body>

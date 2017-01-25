@@ -1,20 +1,20 @@
-<div>
-  <p>You are now on the jobList page!</p>
+
+<div class="job-page">
   <a ui-sref="jobView">Go to jobView</a>
-  <p>Your search parameters were: </p>
-  <p>skills: {{ $ctrl.skills }}</p>
-  <p>title: {{ $ctrl.title }}</p>
-  <p>location: {{ $ctrl.location }}</p>
+  <p>Your search parameters were: skills: {{ $ctrl.skills }}, title: {{ $ctrl.title }}, location: {{ $ctrl.location }}</p>
   <hr>
-  <p>Results!!</p>
+</div>
+<div>
+    <h1 class="jobList-header">Job Results</h1>
+    <!-- <h2>subhead here</h2> -->
+</div>
+
   <div ng-repeat="result in $ctrl.searchResults">
 
-    <!-- <pre> {{ result }}</pre> -->
-    <!--brad  -->
-    <job-post job="result"></job-post>
+    <!-- <p>{{ result.url }}</p> -->
+    <a ui-sref="jobView({jobLink: '{{ result.url }}', skills: '{{ $ctrl.skills }}'})">
+      <job-post job="result"></job-post>
 
-    <!--chanse  -->
-    <p>{{ result.url }}</p>
-    <a ui-sref="jobView({jobLink: '{{ result.url }}', skills: '{{ $ctrl.skills }}'})">{{ result.jobtitle }}</a>
+      <!-- {{ result.jobtitle }} -->
+    </a>
   </div>
-</div>
