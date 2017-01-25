@@ -38,7 +38,8 @@
         name: 'jobView',
         url: '/jobView',
         params: {
-          jobLink: 'No link provided'
+          jobLink: 'No link provided',
+          skills: ''
         },
         parent: 'app',
         component: 'jobView'

@@ -15,6 +15,6 @@
 
     <!--chanse  -->
     <p>{{ result.url }}</p>
-    <a ui-sref="jobView({jobLink: '{{ result.url }}'})">{{ result.jobtitle }}</a>
+    <a ui-sref="jobView({jobLink: '{{ result.url }}', skills: '{{ $ctrl.skills }}'})">{{ result.jobtitle }}</a>
   </div>
 </div>
