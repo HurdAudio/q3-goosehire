@@ -13,7 +13,7 @@ require('dotenv').config();
 
 console.log('loading');
 
-const port = 3007;
+const port = process.env.PORT || 3007;
 
 if (process.env.NODE_ENV !== 'test') {
   const logger = require('morgan');
@@ -74,7 +74,7 @@ app.use('*', function(req, res, next) {
 });
 
 app.listen(port, () => {
-  console.log('Listening on port', process.env.PORT);
+  console.log('Listening on port', port);
 });
 
 module.exports = app;
