@@ -27,12 +27,9 @@
           location: vm.location,
           skillSet: vm.skills,
         }
-        console.log(request);
         $http.post(`/searches/${vm.userid}`, request).then((data) => {
-          console.log(data);
+          return;
         })
       }
-
     }
-
 }());
