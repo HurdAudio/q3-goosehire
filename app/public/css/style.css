@@ -14,6 +14,19 @@ p {
   padding: 1em;
 }
 
+textarea {
+  border: 1px solid #888;
+  width:100%;
+  padding: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8em;
+  /*resize: none;*/
+}
+
+.indent {
+  padding-left: 10px;
+}
+
 .one {
   font-style: italic;
 }
