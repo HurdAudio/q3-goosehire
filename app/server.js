@@ -12,7 +12,6 @@ const passport = require('passport');
 const LinkedInStrategy = require('passport-linkedin').Strategy;
 const cookieSession = require('cookie-session');
 
-
 require('dotenv').config();
 
 console.log('loading');
