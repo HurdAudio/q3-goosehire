@@ -7,11 +7,12 @@
       templateUrl: '/js/login/login.template.html'
     });
 
-    LoginController.$inject = ['$http', '$state', '$stateParams'];
+    LoginController.$inject = ['$http', '$state', '$stateParams', 'userService'];
 
-    function LoginController($http, $state, $stateParams){
+    function LoginController($http, $state, $stateParams, userService){
       const vm = this;
 
+      vm.$onInit = userService;
     }
 
 }());

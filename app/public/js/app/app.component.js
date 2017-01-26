@@ -13,7 +13,6 @@
 
     vm.showLogin = function() {
       vm.viewLogin = !vm.viewLogin;
-      console.log('login');
     }
   }
 
