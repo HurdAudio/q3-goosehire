@@ -16,10 +16,7 @@
         searchFormService.getResults(vm.searchForm)
           .then(() => {
             console.log('this happened');
-            return $state.go('jobList', {
-              skills: vm.searchForm.skills,
-              location: vm.searchForm.location
-            });
+            return $state.go('jobList');
           });
       }
     };

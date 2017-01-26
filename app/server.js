@@ -54,8 +54,7 @@ app.use(express.static(path.join(__dirname, '/../', 'node_modules')));
 app.get('/indeed', (req, res) => {
   let searchInfo = {
     skills: encodeURIComponent(req.query.skills),
-    location: encodeURIComponent(req.query.location),
-    title: encodeURIComponent(req.query.title)
+    location: encodeURIComponent(req.query.location)
   };
 
   //TODO: Do we need to get the useragent dynamically from the browser for the search string below? -- CDH
