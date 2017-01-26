@@ -26,7 +26,7 @@
                   <br>
                   <li><a class="pure-button button-secondary is-center" href="#" ngclipboard data-clipboard-target="#copytext">Copy to Clipboard</a></li>
                   <br>
-                  <li><a class="pure-button button-secondary is-center" href="#" ngclipboard data-clipboard-target="#copytext" ng-click="wordCloudGen()">Update Cloud</a></li>
+                  <li><a class="pure-button button-secondary is-center" href="#" ngclipboard data-clipboard-target="#copytext" ng-click="$scope.wordCloudGen($scope.wordCLoudObjectGen($ctrl.skills.split(', '), $ctrl.jobData));">Update Cloud</a></li>
                 </ul>
             </div>
           </div>
