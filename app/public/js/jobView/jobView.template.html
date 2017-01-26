@@ -6,7 +6,7 @@
 
 <!-- wordcloud goes here -->
 <div class="cloud">
-  <word-cloud skills="" jobPosting=""></word-cloud>
+  <word-cloud ng-if="$ctrl.jobData" skills="$ctrl.skills" job-posting="$ctrl.jobData"></word-cloud>
 </div>
 
 <div class="splash-container">
