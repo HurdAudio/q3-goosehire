@@ -440,7 +440,7 @@
       };
 
       vm.$onChanges = function(boundVarsObj) {
-        console.log(boundVarsObj);
+
         wordCloudGen(wordCLoudObjectGen(boundVarsObj.skills.currentValue.split(', '), vm.jobPosting));
       };
 
