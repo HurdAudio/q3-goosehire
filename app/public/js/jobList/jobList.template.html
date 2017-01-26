@@ -1,7 +1,6 @@
 
 <div class="job-page">
-  <a ui-sref="jobView">Go to jobView</a>
-  <p>Your search parameters were: skills: {{ $ctrl.skills }}, title: {{ $ctrl.title }}, location: {{ $ctrl.location }}</p>
+  <p>Your search parameters were: <b>Skills: </b>{{ $ctrl.skills }}, <b>Location: </b>{{ $ctrl.location }}</p>
   <hr>
   <ul class="pure-menu-list pure-u-5-5 is-center">
     <li id="login-button"><a class="login-button pure-button pure-button-primary is-center" href="#" ng-click="$ctrl.saveSearch()">Save Search</a></li>

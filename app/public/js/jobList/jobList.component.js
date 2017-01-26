@@ -7,22 +7,22 @@
       templateUrl: '/js/jobList/jobList.template.html'
     });
 
-    JobListController.$inject = ['$http', '$state', '$stateParams', 'searchFormService'];
+    JobListController.$inject = ['$http', '$state', 'searchFormService'];
 
-    function JobListController($http, $state, $stateParams, searchFormService){
+    function JobListController($http, $state, searchFormService){
       const vm = this;
 
       vm.$onInit = function() {
-        vm.searchResults = searchFormService.searchResults;
-        vm.skills = $stateParams.skills;
-        vm.location = $stateParams.location;
+        vm.searchResults = searchFormService.searchParams.results;
+        vm.skills = searchFormService.searchParams.skills;
+        vm.location = searchFormService.searchParams.location;
       }
 
       // console.log(vm.searchResults)
 
       vm.saveSearch = function() {
         vm.userid = '58862bb83c085df2aaf099cc';
-        var request = {
+        let request = {
           location: vm.location,
           skillSet: vm.skills,
         }

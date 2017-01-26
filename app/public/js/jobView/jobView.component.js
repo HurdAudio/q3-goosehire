@@ -1,6 +1,7 @@
 (function() {
   'use strict';
 
+
   angular.module('app')
     .component('jobView', {
       controller: JobViewController,
