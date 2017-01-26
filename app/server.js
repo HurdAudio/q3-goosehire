@@ -11,6 +11,9 @@ const cheerio = require('cheerio');
 const passport = require('passport');
 const LinkedInStrategy = require('passport-linkedin').Strategy;
 const cookieSession = require('cookie-session');
+const User = require('./src/users');
+const getLinkedIn = require('./routes/users');
+mongoose.Promise = require('bluebird');
 
 require('dotenv').config();
 
@@ -58,9 +61,26 @@ passport.use(new LinkedInStrategy( {
 },function(token, tokenSecret, profile, done) {
    // Get user from database or create.
    //this is where we will do get to mongo with
-   console.log(profile);
+   console.log(doesUserExist(profile.id));
    return done(null, profile);
 }));
+
+function doesUserExist(id) {
+   User.findOne({linkedInId: id}, (err, data) => {
+     console.log(data + '!!!!!!!!!!!');
+     if(!data) {
+      User.create({
+        linkedInId: id
+      }, (err, newUser) => {
+        if(err) {throw err};
+        return newUser._id;
+      })
+     }
+     else {
+       return data._id;
+     }
+  })
+}
 
 
 app.use(express.static(path.join(__dirname, 'public')));
