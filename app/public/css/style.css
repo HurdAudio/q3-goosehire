@@ -23,6 +23,12 @@ textarea {
   /*resize: none;*/
 }
 
+.cloud {
+  width: 80%;
+  height: auto;
+  padding:10px;
+}
+
 .indent {
   padding-left: 10px;
 }

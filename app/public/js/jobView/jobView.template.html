@@ -1,11 +1,11 @@
 <div class="indent">
   <p>Welcome to the JobView page!</p>
-  <a ui-sref="jobList">Return to job list</a>
+  <a ui-sref="jobList"> Return to job list</a>
   <!-- <pre>{{ $ctrl.jobData }}</pre> -->
 </div>
 
 <!-- wordcloud goes here -->
-<div class="cloud">
+<div class="cloud is-center">
   <word-cloud skills="" jobPosting=""></word-cloud>
 </div>
 
@@ -15,8 +15,7 @@
           <div class="pure-u-1 pure-u-md-1-2">
             <div class="save-boxes">
               <h3 class="is-center">Your Searched Skills</h3>
-                <textarea id="copytext">
-                  {{ $ctrl.skills }}
+                <textarea id="copytext" ng-model="{{$ctrl.skills}}">
                 </textarea>
                 <ul class="pure-menu-list pure-u-5-5 is-center">
                   <li id="login-button"><a class="login-button pure-button pure-button-primary is-left" href="#" ng-click="$ctrl.saveSkills()">Save Skills</a></li>
@@ -27,6 +26,7 @@
                 </ul>
             </div>
           </div>
+
           <div class="pure-u-1 pure-u-md-1-2">
             <div class="save-boxes">
               <h3 class="is-center">Job Description</h3>
