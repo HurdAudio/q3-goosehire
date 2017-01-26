@@ -26,6 +26,16 @@ router.get('/:id', (req, res) => {
   })
 });
 
+router.get('/linkedin/:id', (req, res) => {
+  User.findOne({linkedInId: req.params.id}, (err, data) => {
+    // console.log(req.params.linkedInId);
+    if(err) { res.send(404) }
+    else {
+      res.send(data);
+    }
+  })
+});
+
 router.post('/', (req, res) => {
   User.create({
     username: req.body.username,

@@ -13,6 +13,7 @@
 
       vm.validate = function() {
         vm.id = '5883e0b0c3c69cc68ae7ae1';
+        //this get will go to linkedin id route
         $http.get(`/users/${vm.id}`).then((result) => {
           console.log(result.status);
           if(result.status === 200) {
@@ -27,7 +28,7 @@
             })
           }
           else {
-            console.log(err);  
+            console.log(err);
           }
         })
       }
