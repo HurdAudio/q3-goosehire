@@ -47,7 +47,7 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(id, done) {
    //Take whats stored in session and query database/etc.
-   console.log('req.user deserial:', id);
+  //  console.log('req.user deserial:', id);
    done(null, id);
 });
 
@@ -59,7 +59,7 @@ passport.use(new LinkedInStrategy( {
 },function(token, tokenSecret, profile, done) {
    // Get user from database or create.
    //this is where we will do get to mongo with
-  //  console.log(profile);
+   console.log(profile.id);
    return done(null, profile);
 }));
 
@@ -104,7 +104,6 @@ app.get('/indeedSingleJob', (req, res) => {
     res.send(jobDeets);
   })
 })
-
 
 
 //default endpoint
