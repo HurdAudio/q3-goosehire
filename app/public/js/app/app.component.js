@@ -9,7 +9,12 @@
 
   AppController.$inject = ['$http']
   function AppController($http) {
-    const vm = this
+    const vm = this;
+
+    vm.showLogin = function() {
+      vm.viewLogin = !vm.viewLogin;
+      console.log('login');
+    }
   }
 
   //nav menu lives here
