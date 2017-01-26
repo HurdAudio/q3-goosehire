@@ -4,30 +4,29 @@
     box-sizing: border-box;
 }
 
-.logo {
-  max-width:210px;
-  float:left;
-  /*position: relative;*/
-  /*padding-top: 25px;*/
+div {
+  font-family: 'Roboto', sans-serif;
 }
 
-#login-button {
-  float: right;
-  position: relative;
-  margin-top: 2em;
+p {
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.0625em;
+  padding: 1em;
 }
 
+.one {
+  font-style: italic;
+}
 
-/*.logo img{
-    margin-left: 15px;
-    vertical-align: top;
-    position: relative;
-    height:65px;
-    margin-top: 5px;
-    padding-top: 5px;
+/*button {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.0625em;
+  opacity: 0.8;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
 }*/
-
-
 
 .buttons {
   /*background: #2F637B;*/
@@ -37,21 +36,40 @@
 border-radius: 8px;
 }
 
-.home-menu {
-    /*padding: 0.5em;*/
-    text-align: right;
-    padding-right: 2em;
-    /*box-shadow: 0 1px 1px rgba(0,0,0, 0.10);*/
-    /*background: rgb(19, 2, 76);*/
-    /*background-color: rgba(0, 0, 0, 0.8);*/
+.logo {
+  max-width:200px;
+  /*float:left;*/
+  position: relative;
+  /*padding-top: 25px;*/
+}
+
+.logo img{
+    position: relative;
+    max-width: 200px;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.slideshow {
+  /*margin-top: 20px;*/
+  /*max-height: 600px;*/
+ /*max-height: 200px;*/
+ /*width: 50%;*/
+ /*opacity:.9;*/
+}
+
+.home-menu, .pure-menu {
+    /*padding-right: 2em;*/
     background-color: #0a114b;
-    /*border-bottom: 1px solid rgba(223, 86, 9, 0.99)*/
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    color: white;
 }
 
 
-.home-menu .pure-menu-heading, .footer-menu {
+.home-menu .pure-menu, .pure-menu-heading, .footer-menu {
     color: white;
-    font-weight: 400;
+    font-weight: 300;
     /*font-size: 120%;*/
 }
 
@@ -155,11 +173,14 @@ This is the blue top section that appears on the page.*/
 /*footer*/
 .footer-menu {
     background-color: #0a114b;
+    padding: 0.4em;
+    padding-top: 1em;
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
     /*background-color: rgba(0, 0, 0, 0.8);*/
     /*position: fixed;*/
-    bottom: 0.4em;
+    /*bottom: 0.4em;*/
     width: 100%;
-    border-top: 1px solid rgba(223, 86, 9, 0.99)
+    /*border-top: 1px solid rgba(223, 86, 9, 0.99)*/
 }
 
 /*.content {
@@ -264,10 +285,10 @@ This is the blue top section that appears on the page.*/
     text-shadow: 0 1px 1px #333;
 }
 
-.header {
+/*.header {
     margin: 80% 2em 0;
     text-align: right;
-}
+}*/
 
 /* job posts end */
 
