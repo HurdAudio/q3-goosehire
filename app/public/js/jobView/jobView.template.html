@@ -1,12 +1,12 @@
 <div class="indent">
   <p>Welcome to the JobView page!</p>
-  <a ui-sref="jobList">Return to job list</a>
+  <a ui-sref="jobList"> Return to job list</a>
   <!-- <pre>{{ $ctrl.jobData }}</pre> -->
 </div>
 
 <!-- wordcloud goes here -->
 <div class="cloud">
-  <word-cloud skills="" jobPosting=""></word-cloud>
+  <word-cloud ng-if="$ctrl.jobData" skills="$ctrl.skills" job-posting="$ctrl.jobData"></word-cloud>
 </div>
 
 <div class="splash-container">
@@ -14,28 +14,35 @@
         <div class="pure-g">
           <div class="pure-u-1 pure-u-md-1-2">
             <div class="save-boxes">
-              <h3 class="is-center">Your Searched Skills</h3>
-                <textarea id="copytext">
-                  {{ $ctrl.skills }}
-                </textarea>
+                <form class="pure-form">
+                    <fieldset class="pure-group">
+                      <h3 class="is-center">Your Searched Skills</h3>
+                        <textarea class="pure-input-1" id="copytext" ng-model="$ctrl.skills">{{ $ctrl.skills }}</textarea>
+                    </fieldset>
+                </form>
+
                 <ul class="pure-menu-list pure-u-5-5 is-center">
-                  <li ng-if="$ctrl.isUser()" id="login-button"><a class="login-button pure-button pure-button-primary is-left" href="#" ng-click="$ctrl.saveSkills()">Save Skills</a></li>
+                  <li><a ng-if="$ctrl.isUser()" class="pure-button button-secondary is-left" href="#" ng-click="$ctrl.saveSkills()">Save Skills</a></li>
                   <br>
-                  <li><a class="login-button pure-button pure-button-primary is-center" href="#" ngclipboard data-clipboard-target="#copytext">Copy to Clipboard</a></li>
+                  <li><a class="pure-button button-secondary is-center" href="#" ngclipboard data-clipboard-target="#copytext">Copy to Clipboard</a></li>
                   <br>
-                  <li><a class="login-button pure-button pure-button-primary is-center" href="#" ngclipboard data-clipboard-target="#copytext">Update Cloud</a></li>
+                  <li><a class="pure-button button-secondary is-center" href="#" ngclipboard data-clipboard-target="#copytext" ng-click="wordCloudGen()">Update Cloud</a></li>
                 </ul>
             </div>
           </div>
 
           <div class="pure-u-1 pure-u-md-1-2">
             <div class="save-boxes">
-              <h3 class="is-center">Job Description</h3>
-                <textarea class ="jobview-box" id="copytext">
-                {{ $ctrl.jobData }}
-              </textarea>
+                <form class="pure-form">
+                    <fieldset class="pure-group">
+                      <h3 class="is-center">Job Description</h3>
+                        <textarea class="pure-input-1 jobview-box description" id="copytext">{{ $ctrl.jobData }}</textarea>
+                    </fieldset>
+                </form>
             </div>
           </div>
+
+
         </div>
     <!-- </div> -->
 </div>
