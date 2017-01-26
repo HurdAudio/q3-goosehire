@@ -7,6 +7,10 @@
 
       const vm = this;
 
+      vm.linkedIn = function() {
+        console.log('linkedin');
+      };
+
 
       vm.id = '5883e0b0c3c69cc68ae7ae17';
 

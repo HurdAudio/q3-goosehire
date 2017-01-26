@@ -7,12 +7,11 @@
       controller: AppController
     })
 
-  AppController.$inject = ['$http']
-  function AppController($http) {
+  AppController.$inject = ['$http', 'userService'];
+  function AppController($http, userService) {
     const vm = this;
-      vm.showLogin = function() {
-        vm.viewLogin = !vm.viewLogin;
-      }
+
+    vm.linkedIn = userService.linkedIn;
 
   }
 
