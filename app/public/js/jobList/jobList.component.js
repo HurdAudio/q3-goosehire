@@ -7,9 +7,9 @@
       templateUrl: '/js/jobList/jobList.template.html'
     });
 
-    JobListController.$inject = ['$http', '$state', 'searchFormService'];
+    JobListController.$inject = ['$http', '$state', 'searchFormService', 'userService'];
 
-    function JobListController($http, $state, searchFormService){
+    function JobListController($http, $state, searchFormService, userService){
       const vm = this;
 
       vm.$onInit = function() {
@@ -19,6 +19,15 @@
       }
 
       // console.log(vm.searchResults)
+
+      vm.isUser = function() {
+        if(userService.id) {
+          console.log('isUser');
+        }
+        else {
+          console.log('false');
+        }
+      }
 
       vm.saveSearch = function() {
         vm.userid = '58862bb83c085df2aaf099cc';
