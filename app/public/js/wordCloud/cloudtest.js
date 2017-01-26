@@ -1,5 +1,8 @@
 'use strict';
 
+var fakeJobForParse = "<p><b>Cook: </b> Part time position working a varied schedule. Schedule will include 20-25 hours a week which will consist of days, afternoon and evening hours as well as weekend shifts. Prior experience working as a cook in a health care setting or other cook experience is a must. Apply online or to learn about additional employment opportunities, please visit our website at www.sunshine.org. Drug Free Workplace. EOE</p><p>Job Type: Part-time</p><p>Required experience:</p><ul><li>Cooking: 1 year</li></ul>";
+
+// console.log(takeOutHTMLTags(fakeJobForParse));
 
 
 var fakeSkills = ['agile', 'github', 'css', 'angularjs', 'react', 'nodeJS', 'postgresql', 'mongodb', 'bootstrap', 'javascript', 'materialize', 'es6', 'html5'];
@@ -8,7 +11,7 @@ var fakeJobDescription = "Job Description As a Gogo Business Aviation Full Stack
 
 var words = {};
 
-words = generateWordsObject(fakeSkills, fakeJobDescription);
+words = generateWordsObject(fakeSkills, takeOutHTMLTags(fakeJobForParse));
 
 console.log(words);
 
@@ -36,6 +39,28 @@ function convertDescriptionToCommaSeparatedWords (description) {
   }
   console.log(commaSeparatedString);
   return (commaSeparatedString);
+}
+
+function takeOutHTMLTags (descriptionString) {
+  var filteredDescription = '';
+  var write = true;
+
+  for (let i = 0; i < descriptionString.length; i++) {
+    if (descriptionString[i] === "<") {
+      write = false;
+      filteredDescription += ' ';
+    }
+    if (descriptionString[i] === ">") {
+      write = true;
+    } else {
+      if (write) {
+        filteredDescription += descriptionString[i];
+      }
+    }
+
+  }
+  // console.log(filteredDescription);
+  return (filteredDescription);
 }
 
 
@@ -167,7 +192,7 @@ function generateWordsArray (wordsObj) {
   //This is where the words object gets converted into an array of objects to store styling information for each word.
 
   var arrayOfWords = [];
-  var excludedWords = [ '', 'the', 'a', 'to', 'and', 'of', 'and', 'an', 'are', 'in', 'with', 'as', 'for', 'or', 'at', 'your', 'our', 'yours', 'is', 'if', 'this', 'be', 'that', 'has', 'you', 'we', 'by', "you'll", 'got', "you're", 'when', "that's", "you'll", 'but', 'than', "that's", 'youll', 'us', 'how', 'weve', "we've", 'what', 'why', 'will', "it's", 'where', 'those', "there's", 'its', 'youd', "you're", 'were', "you've", "there's", 'they', 'so', 'ok...as', 'like', 'etc', 'any', 'given', 'after', 'been', 'within', 'get', 'dont', 'brings', 'do', 'should', 'not', 'well', 'some', 'from', 'using', 'on', 'needing', 'very', '&', 'every', 'it', 'other', 'into', 'eg', 'more', 'all', 'throuh', 'above' , "we're", 'who', 'would', "aren't", 'their', 'these', 'come', 'bs', 'theyre', 'sex', '"get' ];
+  var excludedWords = [ '', 'the', 'a', 'to', 'and', 'of', 'and', 'an', 'are', 'in', 'with', 'as', 'for', 'or', 'at', 'your', 'our', 'yours', 'is', 'if', 'this', 'be', 'that', 'has', 'you', 'we', 'by', "you'll", 'got', "you're", 'when', "that's", "you'll", 'but', 'than', "that's", 'youll', 'us', 'how', 'weve', "we've", 'what', 'why', 'will', "it's", 'where', 'those', "there's", 'its', 'youd', "you're", 'were', "you've", "there's", 'they', 'so', 'ok...as', 'like', 'etc', 'any', 'given', 'after', 'been', 'within', 'get', 'dont', 'brings', 'do', 'should', 'not', 'well', 'some', 'from', 'using', 'on', 'needing', 'very', '&', 'every', 'it', 'other', 'into', 'eg', 'more', 'all', 'throuh', 'above' , "we're", 'who', 'would', "aren't", 'their', 'these', 'come', 'bs', 'theyre', 'sex', '"get', 'andor' ];
 
   for (let key in wordsObj) {
 
@@ -334,13 +359,7 @@ function renderWordCloud (currentWords) {
     newWord.innerHTML = currentWords[i].text;
     newWord.setAttribute("style", "font-family: " + font + "; width: auto;" + "font-weight: " + currentWords[i].fontWeight + ";" + "color: " + currentWords[i].fontColor + ";" + "font-size: " + currentWords[i].fontSize + "px;" + "padding: " + currentWords[i].padding + ";" + "transform: " + currentWords[i].rotation + ";" + "display: inline-block;" + "-webkit-transition: 1s ease-in-out;" + "-moz-transition: 1s ease-in-out;" + "-o-transition: 1s ease-in-out;" + "transition: 1s ease-in-out;");
     makeMouseOver(newWord, currentWords[i].rotation, currentWords[i]);
-    // newWord.setAttibute("style", "display: block;");
 
-    // newWord.setAttribute("style", "font-weight: " + currentWords[i].fontWeight + ";");
-    // newWord.setAttribute("style", "color: " + currentWords[i].fontColor + ";");
-    // newWord.setAttibute("transform", currentWords[i].rotation);
-    // newWord.setAttribute("padding", currentWords[i].padding);
-    // newWord.setAttribute("style", "font-size: " + currentWords[i].fontSize + "px;");
 
   }
 

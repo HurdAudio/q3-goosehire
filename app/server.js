@@ -11,7 +11,9 @@ const cheerio = require('cheerio');
 
 require('dotenv').config();
 
-const port = 3007;
+console.log('loading');
+
+const port = process.env.PORT || 3007;
 
 if (process.env.NODE_ENV !== 'test') {
   const logger = require('morgan');
@@ -19,7 +21,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost:27017/goosehire');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/goosehire');
 
 mongoose.connection.on('error', () => {console.log('mongo connection failed')})
   .once('open', () => {console.log('mongo is lit')});
@@ -32,6 +34,8 @@ app.use('/users', require('./routes/users'));
 app.use('/skillsets', require('./routes/skillsets'));
 app.use('/searches', require('./routes/searches'));
 
+app.use(express.static(path.join(__dirname, '/../', 'node_modules')))
+
 //these need to be modified
 // app.use('/api/posts', require('./routes/searches'));
 // app.use('/api/posts', require('./routes/skillsets'));
@@ -39,7 +43,6 @@ app.use('/searches', require('./routes/searches'));
 
 
 app.get('/indeed', (req, res) => {
-
   let searchInfo = {
     skills: encodeURIComponent(req.query.skills),
     location: encodeURIComponent(req.query.location),
@@ -48,7 +51,7 @@ app.get('/indeed', (req, res) => {
 
   //TODO: Do we need to get the useragent dynamically from the browser for the search string below? -- CDH
 
-  const newUrl = `http://api.indeed.com/ads/apisearch?publisher=${process.env.INDEED_KEY}&q=${searchInfo.skills}&l=${searchInfo.location}&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=1&co=us&chnl=&userip=localhost:3000&useragent=Mozilla%2F5.0+(Macintosh%3B+Intel+Mac+OS+X+10_11_6)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F55.0.2883.95+Safari%2F537.36&v=2&format=json`;
+  const newUrl = `http://api.indeed.com/ads/apisearch?publisher=${process.ENV.INDEED_KEY}&q=${searchInfo.skills}&l=${searchInfo.location}&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=1&co=us&chnl=&userip=localhost:3000&useragent=Mozilla%2F5.0+(Macintosh%3B+Intel+Mac+OS+X+10_11_6)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F55.0.2883.95+Safari%2F537.36&v=2&format=json`;
 
   return request(newUrl).pipe(res);
 });
