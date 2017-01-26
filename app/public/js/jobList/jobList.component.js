@@ -22,10 +22,10 @@
 
       vm.isUser = function() {
         if(userService.id) {
-          console.log('isUser');
+          return true;
         }
         else {
-          console.log('false');
+          return false;
         }
       }
 
