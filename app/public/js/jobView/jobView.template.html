@@ -5,8 +5,8 @@
 </div>
 
 <!-- wordcloud goes here -->
-<div class="cloud is-center">
-  <word-cloud skills="$ctrl.skills" jobPosting="$ctrl.jobData"></word-cloud>
+<div class="cloud">
+  <word-cloud ng-if="$ctrl.jobData" skills="$ctrl.skills" job-posting="$ctrl.jobData"></word-cloud>
 </div>
 
 <div class="splash-container">

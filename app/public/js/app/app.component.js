@@ -9,7 +9,14 @@
 
   AppController.$inject = ['$http']
   function AppController($http) {
-    const vm = this
+    const vm = this;
+
+    vm.$onInit = function(){
+
+
+    }
+
+
   }
 
   //nav menu lives here
