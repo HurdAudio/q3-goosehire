@@ -12,7 +12,7 @@
     function LoginController($http, $state, $stateParams, userService){
       const vm = this;
 
-      vm.$onInit = userService;
+      vm.userValidate = userService.validate;
     }
 
 }());

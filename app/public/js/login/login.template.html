@@ -1,3 +1,18 @@
 <div>
   <h2>Login</h2>
+    <form novalidate name="form" ng-submit="$ctrl.userValidate()">
+      <div ng-class="{ 'form-group': true, 'has-error': form.username.$touched && form.username.$invalid }">
+        <label for="username">username</label>
+        <input id="username" class="form-control" name="username" ng-model="$ctrl.user.username" required>
+      </div>
+      <div ng-class="{ 'form-group': true, 'has-error': form.password.$touched && form.password.$invalid }">
+        <label for="password">password</label>
+        <input id="password" class="form-control" name="password" ng-model="$ctrl.post.password" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" ng-disabled="form.$invalid">
+          Create Post
+        </button>
+      </div>
+    </form>
 </div>
