@@ -21,12 +21,7 @@
       // console.log(vm.searchResults)
 
       vm.isUser = function() {
-        if(userService.id) {
-          return true;
-        }
-        else {
-          return false;
-        }
+        return userService.id ? true : false;
       }
 
       vm.saveSearch = function() {
