@@ -8,6 +8,10 @@ const app = express();
 const request = require('request');
 const rpn = require('request-promise-native');
 const cheerio = require('cheerio');
+const passport = require('passport');
+const LinkedInStrategy = require('passport-linkedin').Strategy;
+const cookieSession = require('cookie-session');
+
 
 require('dotenv').config();
 
@@ -26,22 +30,27 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/goosehire
 mongoose.connection.on('error', () => {console.log('mongo connection failed')})
   .once('open', () => {console.log('mongo is lit')});
 
-app.use(express.static(path.join(__dirname, 'public')));
 
+//Oauth with Passport
+app.use(cookieSession({
+   name: 'session',
+   keys: [process.env.SECRET_KEY]
+}));
+
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
+
+//routes
 app.use('/users', require('./routes/users'));
 app.use('/skillsets', require('./routes/skillsets'));
 app.use('/searches', require('./routes/searches'));
+app.use('/auth', require('./routes/auth'));
 
-app.use(express.static(path.join(__dirname, '/../', 'node_modules')))
-
-//these need to be modified
-// app.use('/api/posts', require('./routes/searches'));
-// app.use('/api/posts', require('./routes/skillsets'));
-// app.use('/api/posts', require('./routes/users'));
+app.use(express.static(path.join(__dirname, '/../', 'node_modules')));
 
 
+//api call to indeed
 app.get('/indeed', (req, res) => {
   let searchInfo = {
     skills: encodeURIComponent(req.query.skills),
@@ -64,6 +73,8 @@ app.get('/indeedSingleJob', (req, res) => {
   })
 })
 
+
+//default endpoint
 app.get('/', (req, res) => {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')});
 });
@@ -71,6 +82,7 @@ app.get('/', (req, res) => {
 app.use('*', function(req, res, next) {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')});
 });
+
 
 app.listen(port, () => {
   console.log('Listening on port', port);
