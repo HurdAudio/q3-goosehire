@@ -59,7 +59,7 @@ passport.use(new LinkedInStrategy( {
 },function(token, tokenSecret, profile, done) {
    // Get user from database or create.
    //this is where we will do get to mongo with
-   console.log(profile);
+  //  console.log(profile);
    return done(null, profile);
 }));
 

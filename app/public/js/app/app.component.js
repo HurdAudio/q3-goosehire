@@ -12,8 +12,6 @@
     const vm = this;
 
     vm.$onInit = function(){
-
-
     }
 
 
