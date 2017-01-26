@@ -4,7 +4,12 @@
   angular.module('app')
     .service('searchFormService', function($http) {
 
-      this.searchResults = [];
+      // this.searchResults = [];
+      this.searchParams = {
+        skills: '',
+        location: '',
+        results: []
+      };
 
       this.getResults = function(searchParams) {
         console.log('searchService params: ', searchParams)
@@ -17,8 +22,11 @@
           }
         })
         .then((response) => {
-          console.log('searchService: ', response)
-          return this.searchResults = response.data.results
+          return this.searchParams = {
+            skills: searchParams.skills,
+            location: searchParams.location,
+            results: response.data.results
+          };
         })
         .catch((err) => {
           console.log(err);
