@@ -1,29 +1,15 @@
 
-<!-- <div class="splash-container"> -->
   <div class="slideshow">
     <div uib-carousel active="$ctrl.active" interval="$ctrl.myInterval" no-wrap="$ctrl.noWrapSlides">
         <div uib-slide ng-repeat="slide in $ctrl.slides track by slide.id" index="slide.id">
-          <img ng-src="{{slide.image}}" style="margin:auto;">
+          <img class="pure-img-responsive" ng-src="{{slide.image}}" style="margin:auto;">
           <div class="carousel-caption">
             <p>{{slide.text}}</p>
           </div>
         </div>
     </div>
   </div>
-<!-- </div> -->
 
-<!--box before slideshow  -->
-<!-- <div class="splash-container">
-    <div class="splash"> -->
-        <!-- not this <h1 class="splash-head">Big Bold Text</h1> -->
-        <!-- <p class="splash-subhead">
-          Don't let the job search get you down - GooseHire
-        </p>
-        <p>
-          <a href="http://purecss.io" class="pure-button pure-button-primary">Goose my resume</a>
-        </p>
-    </div>
-</div> -->
 
 <!--logged in  -->
 <!-- <div class="splash-container"> -->

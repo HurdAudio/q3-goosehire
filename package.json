@@ -2,10 +2,10 @@
   "name": "q3-goosehire",
   "version": "1.0.0",
   "description": "goose your resume. get hired.",
-  "main": "app/server.js",
+  "main": "./app/server.js",
   "scripts": {
     "test": "mocha test/client-test.js",
-    "start": "nodemon server.js"
+    "start": "nodemon"
   },
   "repository": {
     "type": "git",
