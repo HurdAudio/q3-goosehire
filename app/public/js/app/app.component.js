@@ -9,7 +9,22 @@
 
   AppController.$inject = ['$http']
   function AppController($http) {
-    const vm = this
+    const vm = this;
+
+    vm.loginLinkedIn = function(){
+      console.log('login');
+    }
+
+    vm.logoutLinkedIn = function(){
+      console.log('logout');
+    }
+
+    vm.$onInit = function(){
+
+
+    }
+
+
   }
 
   //nav menu lives here

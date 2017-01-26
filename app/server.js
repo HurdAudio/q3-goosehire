@@ -27,41 +27,15 @@ if (process.env.NODE_ENV !== 'test') {
 mongoose.Promise = require('bluebird');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/goosehire');
 
-
 mongoose.connection.on('error', () => {console.log('mongo connection failed')})
   .once('open', () => {console.log('mongo is lit')});
 
 
 //Oauth with Passport
-// app.use(cookieSession({
-//    name: 'session',
-//    keys: [process.env.SECRET_KEY]
-// }));
-//
-// app.use(passport.initialize());
-// app.use(passport.session());
-//
-// passport.serializeUser(function(user, done) {
-//    //Decide what to store in session.
-//    done(null, user);
-// });
-//
-// passport.deserializeUser(function(obj, done) {
-//    //Take whats stored in session and query database/etc.
-//    done(null, obj);
-// });
-//
-// passport.use(new LinkedInStrategy( {
-//    consumerKey: process.env['LINKEDIN_CLIENT_ID'],
-//    consumerSecret: process.env['LINKEDIN_CLIENT_SECRET'],
-//    callbackURL: "http://localhost:3000/auth/linkedin/callback",
-//    scope:['r_basicprofile']
-// },function(token, tokenSecret, profile, done) {
-//    // Get user from database or create.
-//    return done(null, profile);
-// }));
-//end of Oauth stuff
-
+app.use(cookieSession({
+   name: 'session',
+   keys: [process.env.SECRET_KEY]
+}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
@@ -71,9 +45,7 @@ app.use(bodyParser.json());
 app.use('/users', require('./routes/users'));
 app.use('/skillsets', require('./routes/skillsets'));
 app.use('/searches', require('./routes/searches'));
-
-// app.use('/auth', require('./routes/auth'));
-
+app.use('/auth', require('./routes/auth'));
 
 app.use(express.static(path.join(__dirname, '/../', 'node_modules')));
 
@@ -112,14 +84,6 @@ app.use('*', function(req, res, next) {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')});
 });
 
-
-//set environments
-const port = 3007;
-
-if (process.env.NODE_ENV !== 'test') {
-  const logger = require('morgan');
-  app.use(logger('dev'));
-}
 
 app.listen(port, () => {
   console.log('Listening on port', port);
