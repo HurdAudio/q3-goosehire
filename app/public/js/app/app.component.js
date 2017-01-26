@@ -12,7 +12,14 @@
     const vm = this;
 
     vm.loginLinkedIn = function(){
-      console.log('login');
+
+      $http.get('./auth/linkedin').then(function (response) {
+        // vm.things = response.data
+        console.log('app.component', response);
+        console.log('logged in');
+      })
+
+
     }
 
     vm.logoutLinkedIn = function(){

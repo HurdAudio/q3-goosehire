@@ -6,18 +6,19 @@ const passport = require('passport');
 const LinkedInStrategy = require('passport-linkedin').Strategy;
 const cookieSession = require('cookie-session');
 
-router.get('/', function(req,res,next) {
 
-    if (!req.user) {
-        console.log('please login');
-        // res.send('please log in <a href="/"><button>Home</button></a>');
-        // res.redirect('/');
-    }
-    else{
-        console.log("authorized req.user info:", req.user);
-        // res.send('logged in <a href="/"><button>Home</button></a>');
-    }
-});
+// router.get('/', function(req,res,next) {
+//
+//     if (!req.user) {
+//         console.log('please login');
+//         // res.send('please log in <a href="/"><button>Home</button></a>');
+//         // res.redirect('/');
+//     }
+//     else{
+//         console.log("authorized req.user info:", req.user);
+//         // res.send('logged in <a href="/"><button>Home</button></a>');
+//     }
+// });
 
 router.use(passport.initialize());
 router.use(passport.session());
