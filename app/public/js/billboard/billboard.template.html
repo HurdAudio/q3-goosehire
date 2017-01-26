@@ -1,5 +1,5 @@
-
-  <div class="slideshow">
+<div>
+  <div class="slideshow" ng-if="$ctrl.isUser() === false">
     <div uib-carousel active="$ctrl.active" interval="$ctrl.myInterval" no-wrap="$ctrl.noWrapSlides">
         <div uib-slide ng-repeat="slide in $ctrl.slides track by slide.id" index="slide.id">
           <img class="pure-img-responsive" ng-src="{{slide.image}}" style="margin:auto;">
@@ -9,3 +9,7 @@
         </div>
     </div>
   </div>
+  <div ng-if="$ctrl.isUser()">
+    <h2>lit</h2>
+  </div>
+</div>

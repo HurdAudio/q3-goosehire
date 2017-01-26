@@ -7,7 +7,9 @@
       templateUrl: '/js/billboard/billboard.template.html'
     });
 
-    function BillboardController(){
+    BillboardController.$inject = ['userService', '$http'];
+
+    function BillboardController(userService, $http){
       const vm = this;
       console.log(vm);
 
@@ -15,6 +17,10 @@
       vm.myInterval = 9000;
       vm.noWrapSlides = false;
       vm.active = 0;
+
+      vm.isUser = function() {
+        return userService.id ? true : false;
+      }
 
     vm.$onInit = function() {
       vm.slides = [{
