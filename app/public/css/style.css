@@ -31,6 +31,21 @@ textarea {
   color: #b4ccc0;
 }
 
+.button-secondary {
+  background: rgb(47, 99, 123);
+  color: white;
+  border-radius: 6px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-secondary:hover {
+  background: rgb(8, 14, 64);
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
 .description {
   height: 200px;
 }
@@ -264,7 +279,7 @@ This is the blue top section that appears on the page.*/
 
 .post {
     padding-bottom: 2em;
-    padding-left: 2em;
+    padding-left: 3em;
     padding-right: 2em;
 }
 .post-title {
