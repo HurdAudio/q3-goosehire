@@ -12,7 +12,7 @@
       console.log(vm);
 
       vm.slides = [];
-      vm.myInterval = 8000;
+      vm.myInterval = 9000;
       vm.noWrapSlides = false;
       vm.active = 0;
 
@@ -24,13 +24,8 @@
       {
         image: '../images/banner02.jpg',
         id: 1
-      },
-      // {
-      //   image: '../images/img00.jpg',
-      //   id: 2,
-      //   text: 'Modify your skills to match desired job skills'
-      // }
-    ];
+        //   text: 'Modify your skills to match desired job skills'
+      }];
      };
 
     }

@@ -3,28 +3,36 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-
-.logo {
-  max-width:200px;
-  float:left;
-  /*position: relative;*/
-  /*padding-top: 25px;*/
-}
+/*
 
 #login-button {
   float: right;
   position: absolute;
   /*margin-top: 20px;*/
+/*}*/
+
+.nav-color {
+  background-color: #0a114b;
 }
 
-
-.logo img{
-    margin-left: 15px;
-    position: relative;
-    height:100px;
-    margin-top: 0px;
-    padding-top: 0px;
+div {
+  font-family: 'Raleway', sans-serif;
 }
+
+p {
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 0.0625em;
+}
+
+/*button {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.0625em;
+  opacity: 0.8;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}*/
 
 .buttons {
   /*background: #2F637B;*/
@@ -32,6 +40,20 @@
 -webkit-border-radius: 8px;
 -moz-border-radius: 8px;
 border-radius: 8px;
+}
+
+.logo {
+  max-width:200px;
+  /*float:left;*/
+  position: relative;
+  /*padding-top: 25px;*/
+}
+
+.logo img{
+    position: relative;
+    max-width: 200px;
+    margin-top: 0px;
+    padding-top: 0px;
 }
 
 .slideshow {
@@ -42,18 +64,13 @@ border-radius: 8px;
  /*opacity:.9;*/
 }
 
-.home-menu {
-    /*padding: 0.5em;*/
-    text-align: right;
+.home-menu, .pure-menu {
     padding-right: 2em;
-    /*box-shadow: 0 1px 1px rgba(0,0,0, 0.10);*/
-    /*background: rgb(19, 2, 76);*/
-    /*background-color: rgba(0, 0, 0, 0.8);*/
     background-color: #0a114b;
 }
 
 
-.home-menu .pure-menu-heading, .footer-menu {
+.home-menu .pure-menu, .pure-menu-heading, .footer-menu {
     color: white;
     font-weight: 400;
     /*font-size: 120%;*/

@@ -1,34 +1,11 @@
-<!--old nav bar  -->
-<!-- <header class="content"> -->
-  <!-- <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-    <a href="/"><img class="logo pure-menu-heading pure-u-4-5" src="images/goose_logo.png" alt="GooseHire"></a>
-      <ul class="pure-menu-list pure-u-1-5 is-center">
-          <li class="pure-menu-item"><a ui-sref="main" class="pure-menu-link">New Search</a></li>
-          <li id="login-button"><a class="login-button pure-button pure-button-primary is-center" href="#">Login</a></li>
-      </ul>
-  </div> -->
-<!-- </header> -->
-
-<!-- new nav bar -->
-  <div class="pure-g home-menu">
-    <a href="/"><div class="pure-u-8-24 l-box logo"><img src="images/goose_logo.png" alt="GooseHire"></a></div>
-      <div class="pure-u-12-24"></div>
-
-    <div class="pure-u-4-24 l-box">
-        <button class="pure-button pure-button-primary">Login</button>
-          <button class="pure-button pure-button-primary"><a ui-sref="main">New Search</a></button>
-    </div>
-  </div>
-
-<!--another nav to try
-  <!-- <div class="pure-menu pure-menu-horizontal">
-    <a href="#" class="pure-menu-heading pure-menu-link">BRAND</a>
+<div class="pure-menu pure-menu-horizontal">
+    <a href="/" class="logo pure-menu-heading"><img src="images/goose_logo.png" alt="GooseHire"></a>
     <ul class="pure-menu-list">
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">News</a></li>
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sports</a></li>
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Finance</a></li>
+        <li class="pure-menu-item"><a ui-sref="main" class="pure-menu-link">New Search</a></li>
+        <li id="login"class="pure-menu-item"><a href="#" class="pure-menu-link">Login</a></li>
+        <li id="logout" class="pure-menu-item"><a href="#" class="pure-menu-link">Logout</a></li>
     </ul>
-  </div> -->
+</div>
 
 <ui-view></ui-view>
 
