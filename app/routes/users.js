@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   User.findById(req.params.id, (err, data) => {
     console.log(req.params.id);
-    if(err) { throw err; }
+    if(err) { res.send(404) }
     else {
       res.send(data);
     }
@@ -29,7 +29,8 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   User.create({
     username: req.body.username,
-    hashedPassword: req.body.hashedPassword
+    hashedPassword: req.body.hashedPassword,
+    linkedInId: req.body.linkedInId
   }, (err, data) => {
     if(err) {throw err};
     res.send(data);

@@ -8,25 +8,27 @@
       const vm = this;
 
       vm.linkedIn = function() {
-        console.log('linkedin');
+        vm.validate();
       };
 
-
-      vm.id = '5883e0b0c3c69cc68ae7ae17';
-
-      vm.validate = function(id) {
+      vm.validate = function() {
+        vm.id = '5883e0b0c3c69cc68ae7ae1';
         $http.get(`/users/${vm.id}`).then((result) => {
-          // need to include post if user doesn't exist ex: 404
-          console.log(result);
+          console.log(result.status);
           if(result.status === 200) {
-            console.log('gr8');
             vm.userId = result.data._id;
-            console.log(vm.userId);
             return vm.userId;
           }
         })
         .catch((err) =>{
-          console.log(err);
+          if(err.status === 404) {
+            $http.post('/users', {linkedInId: vm.id}).then((result) => {
+              console.log(result);
+            })
+          }
+          else {
+            console.log(err);  
+          }
         })
       }
     })
