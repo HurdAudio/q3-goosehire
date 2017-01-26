@@ -10,10 +10,10 @@
   AppController.$inject = ['$http']
   function AppController($http) {
     const vm = this;
+      vm.showLogin = function() {
+        vm.viewLogin = !vm.viewLogin;
+      }
 
-    vm.showLogin = function() {
-      vm.viewLogin = !vm.viewLogin;
-    }
   }
 
   //nav menu lives here

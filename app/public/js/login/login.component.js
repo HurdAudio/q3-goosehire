@@ -12,7 +12,12 @@
     function LoginController($http, $state, $stateParams, userService){
       const vm = this;
 
-      vm.userValidate = userService.validate;
-    }
 
+      vm.userValidate = function(){
+        userService.validate();
+        //promise this
+        console.log(userService.id);
+      }
+
+    };
 }());
