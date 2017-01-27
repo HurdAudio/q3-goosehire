@@ -6,9 +6,36 @@
 
       const vm = this;
 
-      vm.isUser = function() {
-          
+      vm.$onInit = function() {
+        if(!vm.userId || (vm.userId === false)) {
+          $http.get('/auth/userid').then((result) => {
+            console.log(result.data);
+            vm.userId = result.data;
+            console.log(vm.userId);
+            return vm.userId;
+          })
+        }
+        else {
+          console.log('u got that user id');
+        }
       }
+
+      // vm.isUser = function() {
+      //   console.log(!vm.userId);
+      //   if(!vm.userId || (vm.userId === false)) {
+      //     var a = getUserId();
+      //     console.log(a);
+      //   }
+      //   return vm.userId;
+      // }
+      //
+      //
+      // function getUserId() {
+      //   $http.get('/auth/userid').then((result) => {
+      //     console.log(result.data);
+      //     return result.data;
+      //   })
+      // }
 
       vm.validate = function() {
         vm.id = '5883e0b0c3c69cc68ae7ae17';

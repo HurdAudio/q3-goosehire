@@ -12,16 +12,10 @@
   function AppController($http, userService) {
     const vm = this;
 
-    vm.$onInit = function(){
+    vm.$onInit = userService.$onInit;
 
-
-    }
-
-    vm.getLinkedIn = function() {
-      console.log('linkedin');
-      $http.get('/auth/userid').then((data) => {
-        console.log(data);
-      })
+    vm.isUser = function () {
+      return userService.userId ? true : false;
     }
   }
   //nav menu lives here
