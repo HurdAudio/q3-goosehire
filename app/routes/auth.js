@@ -16,10 +16,6 @@ router.get('/linkedin/callback', passport.authenticate('linkedin',{
     successRedirect :'/',
     failureRedirect :'/'
   }
-//   , () => {
-//     console.log('linkedin callback');
-//   })
-// )
 ));
 
 router.get('/userid', (req, res) => {
@@ -34,7 +30,6 @@ router.get('/userid', (req, res) => {
       else {
         res.send(data._id);
       }
-    // res.send(req.user);
     })
   }
 });

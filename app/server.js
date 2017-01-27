@@ -57,31 +57,21 @@ passport.use(new LinkedInStrategy( {
    callbackURL: `http://localhost:3007/auth/linkedin/callback`,
    scope:['r_basicprofile', 'r_emailaddress']
 },function(token, tokenSecret, profile, done) {
-   // Get user from database or create.
-   //this is where we will do get to mongo with
-   console.log('user is HERE' + profile.id);
   User.findOne({linkedInId: profile.id}, (err, data) => {
      if(!data) {
       User.create({
         linkedInId: id
       }, (err, data) => {
         if(err) {throw err};
-        console.log(data._id + '!!!!!!!!!!!!!!!!!!!!!');
+        console.log(data._id);
         return data._id;
       })
      }
      else {
-       console.log(data._id + '~~~~~~~~~~~~~~~~~~~~~~');
+       console.log(data._id);
        return data._id;
      }
   })
-  // .then((data) => {
-  //   console.log(data + '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
-  //   // return data;
-  // })
-
-  //  console.log("profile.id HERE", profile.id);
-
    return done(null, profile);
 }));
 
@@ -95,10 +85,10 @@ app.use('/searches', require('./routes/searches'));
 app.use('/auth', require('./routes/auth'));
 
 
-app.use(function(req,res,next) {
-  console.log('user', req.user);
-  next();
-});
+// app.use(function(req,res,next) {
+//   console.log('user', req.user);
+//   next();
+// });
 
 app.use(express.static(path.join(__dirname, '/../', 'node_modules')));
 
