@@ -26,16 +26,16 @@ router.get('/:id', (req, res) => {
   })
 });
 
-var getLinkedIn = function(id) {
-  router.get('/linkedin/:id', (req, res) => {
-    User.findOne({linkedInId: id}, (err, data) => {
-      if(err) { res.send(404) }
-      else {
-        res.send(data);
-      }
-    })
+
+router.get('/linkedin/:id', (req, res) => {
+  User.findOne({linkedInId: id}, (err, data) => {
+    if(err) { res.send(404) }
+    else {
+      res.send(data);
+    }
   })
-}
+});
+
 
 router.post('/', (req, res) => {
   User.create({
@@ -68,4 +68,4 @@ router.delete('/:id', (req, res) => {
 });
 
 
-module.exports = router, getLinkedIn;
+module.exports = router;

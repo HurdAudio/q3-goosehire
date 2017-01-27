@@ -16,9 +16,7 @@
 
 
     }
-
   }
-
   //nav menu lives here
 
 })();

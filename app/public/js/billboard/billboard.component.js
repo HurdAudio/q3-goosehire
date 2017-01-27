@@ -23,7 +23,6 @@
       }
 
     vm.$onInit = function() {
-      // console.log(angular.module('app'));
       vm.slides = [{
         image: '../images/banner01.jpg',
         id: 0
