@@ -7,14 +7,18 @@
       templateUrl: '/js/billboard/billboard.template.html'
     });
 
-    function BillboardController(){
+    function BillboardController($http){
       const vm = this;
-      console.log(vm);
 
       vm.slides = [];
       vm.myInterval = 9000;
       vm.noWrapSlides = false;
       vm.active = 0;
+
+      vm.isUser = true;
+      vm.userid = '58862bb83c085df2aaf099cc';
+      vm.savedSkills = vm.savedSkills;
+      vm.savedJobSearches = vm.savedJobSearches;
 
     vm.$onInit = function() {
       vm.slides = [{
@@ -26,9 +30,44 @@
         id: 1
         //   text: 'Modify your skills to match desired job skills'
       }];
-     };
 
+      //if logged in
+      if(vm.isUser){
+        console.log('logged in');
+
+        // $http.get(`/skillsets/${vm.userid}`)
+        //   .then((result)=> {
+        //     console.log('result', result);
+        //     vm.savedSkills = results;
+        //   })
+        //   .catch((err)=>{
+        //     console.log(err);
+        //   })
+
+        // $http.get(`/searches/${vm.userid}`)
+        //   .then((result)=> {
+        //     console.log('result', result);
+        //     vm.savedJobSearches = results;
+        //   })
+        //   .catch((err)=>{
+        //     console.log(err);
+        //   })
+
+      }
+
+
+     };
     }
+
+
+
+    // vm.search = function() {
+    //   searchFormService.getResults(vm.searchForm)
+    //     .then(() => {
+    //       console.log('this happened');
+    //       return $state.go('jobList');
+    //     });
+    // }
 
 
 }());

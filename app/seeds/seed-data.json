@@ -26,8 +26,8 @@
           "_id": ObjectId("58862bb83c085df2aaf099bc"),
           "createdAt": "2017-01-23T16:13:44.096Z",
           "skillSet": [
-              "sarcasm",
-              "drinking"
+              "CSS design",
+              "Javascript"
           ]
       }
   ],
@@ -55,8 +55,8 @@
             "_id": ObjectId("58862bb83c085df2aaf099ce"),
             "createdAt": "2017-01-23T16:13:44.096Z",
             "skillSet": [
-                "sarcasm",
-                "drinking"
+                "pun jokes",
+                "pythagorean Comma"
             ]
         }
     ],
