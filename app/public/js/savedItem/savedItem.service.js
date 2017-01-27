@@ -4,8 +4,10 @@
   angular.module('app')
     .service('savedItemService', function() {
 
-      this.skills = '';
-      console.log(this.skills);
+      vm.newSkills = function(skills) {
+        // this.skills =
+        console.log(skills);
+      }
     });
 
 }());
