@@ -15,11 +15,19 @@
 
     var words = {};
     console.log(skills);
-    words = generateWordsObject(skills, takeOutHTMLTags(jobPosting));
+    words = generateWordsObject(skills, bigConcatonate(jobPosting));
 
     // console.log(words);
 
+    function bigConcatonate(jobData) {
+      var jobDescriptionString = '';
 
+      for (let k = 0; k < jobData.length; k++) {
+        jobDescriptionString += jobData[k].text;
+        console.log(jobDescriptionString);
+      }
+      return(jobDescriptionString);
+    }
 
     function convertDescriptionToCommaSeparatedWords (description) {
       var commaSeparatedString = '';
@@ -216,7 +224,7 @@
 
       var arrayOfWords = [];
       var index = 0;
-      var excludedWords = [ '', 'the', 'a', 'to', 'and', 'of', 'and', 'an', 'are', 'in', 'with', 'as', 'for', 'or', 'at', 'your', 'our', 'yours', 'is', 'if', 'this', 'be', 'that', 'has', 'you', 'we', 'by', "you'll", 'got', "you're", 'when', "that's", "you'll", 'but', 'than', "that's", 'youll', 'us', 'how', 'weve', "we've", 'what', 'why', 'will', "it's", 'where', 'those', "there's", 'its', 'youd', "you're", 'were', "you've", "there's", 'they', 'so', 'ok...as', 'like', 'etc', 'any', 'given', 'after', 'been', 'within', 'get', 'dont', 'brings', 'do', 'should', 'not', 'well', 'some', 'from', 'using', 'on', 'needing', 'very', '&', 'every', 'it', 'other', 'into', 'eg', 'more', 'all', 'throuh', 'above' , "we're", 'who', 'would', "aren't", 'their', 'these', 'come', 'bs', 'theyre', 'sex', '"get', 'andor', '•', '*', 'through', 'experience', 'please', '000', 'development', '￧', 'o', '⿢', '-', '&', '⿢', 'business', 'work', 'application' , '–', '00000', 'require', 'web' ];
+      var excludedWords = [ '', 'the', 'a', 'to', 'and', 'of', 'and', 'an', 'are', 'in', 'with', 'as', 'for', 'or', 'at', 'your', 'our', 'yours', 'is', 'if', 'this', 'be', 'that', 'has', 'you', 'we', 'by', "you'll", 'got', "you're", 'when', "that's", "you'll", 'but', 'than', "that's", 'youll', 'us', 'how', 'weve', "we've", 'what', 'why', 'will', "it's", 'where', 'those', "there's", 'its', 'youd', "you're", 'were', "you've", "there's", 'they', 'so', 'ok...as', 'like', 'etc', 'any', 'given', 'after', 'been', 'within', 'get', 'dont', 'brings', 'do', 'should', 'not', 'well', 'some', 'from', 'using', 'on', 'needing', 'very', '&', 'every', 'it', 'other', 'into', 'eg', 'more', 'all', 'throuh', 'above' , "we're", 'who', 'would', "aren't", 'their', 'these', 'come', 'bs', 'theyre', 'sex', '"get', 'andor', '•', '*', 'through', 'experience', 'please', '000', 'development', '￧', 'o', '⿢', '-', '&', '⿢', 'business', 'work', 'application' , '–', '00000', 'require', 'web', 'new' ];
 
       for (let key in wordsObj) {
 
