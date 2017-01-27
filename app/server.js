@@ -52,6 +52,7 @@ passport.deserializeUser(function(id, done) {
    done(null, id);
 });
 
+
 passport.use(new LinkedInStrategy( {
    consumerKey: process.env['LINKEDIN_CLIENT_ID'],
    consumerSecret: process.env['LINKEDIN_CLIENT_SECRET'],
@@ -65,18 +66,19 @@ passport.use(new LinkedInStrategy( {
      if(!data) {
       User.create({
         linkedInId: id
-      }, (err, newUser) => {
+      }, (err, data) => {
         if(err) {throw err};
-        console.log(user._id + '!!!!!!!!!!!!!!!!!!!!!');
-        return user._id;
+        console.log(data._id + '!!!!!!!!!!!!!!!!!!!!!');
+        return data._id;
       })
      }
      else {
-       console.log(user._id + '~~~~~~~~~~~~~~~~~~~~~~');
-       return user._id;
+       console.log(data._id + '~~~~~~~~~~~~~~~~~~~~~~');
+       return data._id;
      }
-  }).then((user) => {
-    console.log(user + '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+  }).then((data) => {
+    console.log(data + '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+    // return data;
   })
    return done(null, profile);
 }));

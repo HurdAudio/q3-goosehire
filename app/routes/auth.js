@@ -9,10 +9,12 @@ router.get('/linkedin', passport.authenticate('linkedin'));
 
 
 //callback from LinkedIn
-router.get('/linkedin/callback', passport.authenticate('linkedin',{
+router.get('/linkedin/callback', passport.authenticate('linkedin',({
     successRedirect :'/',
     failureRedirect :'/'
-  })
+  },() => {
+    console.log('linkedin callback');
+  }))
 );
 
 router.get('/logout', function(req, res){
