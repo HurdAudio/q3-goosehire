@@ -8,9 +8,9 @@
     });
 
 
-    BillboardController.$inject = ['userService', '$http'];
+    BillboardController.$inject = ['userService', '$http', 'savedItemService'];
 
-    function BillboardController(userService, $http){
+    function BillboardController(userService, $http, savedItemService){
 
       const vm = this;
 
@@ -43,7 +43,7 @@
         })
         $http.get(`/searches/${userService.userId}`).then((result) => {
           console.log(result);
-          vm.searches = result.data;  
+          vm.searches = result.data;
         })
       }
 
@@ -74,8 +74,9 @@
 
      };
 
-     vm.newSkillsSearch = function (words) {
-       console.log(words);
+     vm.newSkillsSearch = function (skills) {
+       console.log(skills); 
+       savedItemService.skills = skills;
      }
 
      vm.newJobSearch = function () {
