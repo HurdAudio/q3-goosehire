@@ -60,7 +60,7 @@ passport.use(new LinkedInStrategy( {
   User.findOne({linkedInId: profile.id}, (err, data) => {
      if(!data) {
       User.create({
-        linkedInId: id
+        linkedInId: profile.id
       }, (err, data) => {
         if(err) {throw err};
         console.log(data._id);
