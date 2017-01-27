@@ -42,6 +42,7 @@ app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
    //Decide what to store in session.
+  //  console.log(user);
    done(null, user.id);
 });
 
@@ -59,7 +60,8 @@ passport.use(new LinkedInStrategy( {
 },function(token, tokenSecret, profile, done) {
    // Get user from database or create.
    //this is where we will do get to mongo with
-   console.log(profile);
+  //  console.log("profile.id HERE", profile.id);
+
    return done(null, profile);
 }));
 
@@ -74,10 +76,10 @@ app.use('/skillsets', require('./routes/skillsets'));
 app.use('/searches', require('./routes/searches'));
 app.use('/auth', require('./routes/auth'));
 
-app.use(function(req,res,next) {
-  console.log('user',req.user);
-  next();
-});
+// app.use(function(req,res,next) {
+//   console.log('user',req.user);
+//   next();
+// });
 
 app.use(express.static(path.join(__dirname, '/../', 'node_modules')));
 
@@ -104,7 +106,6 @@ app.get('/indeedSingleJob', (req, res) => {
     res.send(jobDeets);
   })
 })
-
 
 
 //default endpoint
