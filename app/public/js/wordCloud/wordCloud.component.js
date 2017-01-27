@@ -134,7 +134,7 @@
     }
 
     function getWordRotation () {
-      var rotationValues = ['rotate(0deg)', 'rotate(20deg)', 'rotate(40deg)', 'rotate(60deg)', 'rotate(60deg)', 'rotate(80deg)', 'rotate(100deg)', 'rotate(120deg)', 'rotate(140deg)', 'rotate(160deg)', 'rotate(180deg)', 'rotate(200deg)', 'rotate(220deg)', 'rotate(240deg)', 'rotate(260deg)', 'rotate(280deg)', 'rotate(300deg)', 'rotate(320deg)', 'rotate(340deg)', 'rotate(0deg)'];
+      var rotationValues = ['rotate(0deg)', 'rotate(20deg)', 'rotate(40deg)', 'rotate(320deg)', 'rotate(340deg)', 'rotate(0deg)'];
 
       var value = (Math.floor(Math.random() * rotationValues.length));
 
@@ -164,7 +164,7 @@
     function getWordObject(size, key) {
       var singleWordObject = {};
 
-      singleWordObject.text = key;
+      singleWordObject.text = key.trim();
       singleWordObject.fontSize = size * 3.5;
       singleWordObject.fontWeight = getFontWeight(size);
       singleWordObject.fontColor = getFontColor();
@@ -194,7 +194,20 @@
           }
         }
       }
+      arrayToOrganize.pop();
       return (arrayToOrganize);
+    }
+
+    function tripLargeResults (cloudWordsArray) {
+      var upperCap = 135;
+
+      if (cloudWordsArray.length > upperCap) {
+        while (cloudWordsArray.length > upperCap) {
+          cloudWordsArray.shift();
+          cloudWordsArray.pop();
+        }
+      }
+      return(cloudWordsArray);
     }
 
 
@@ -203,7 +216,7 @@
 
       var arrayOfWords = [];
       var index = 0;
-      var excludedWords = [ '', 'the', 'a', 'to', 'and', 'of', 'and', 'an', 'are', 'in', 'with', 'as', 'for', 'or', 'at', 'your', 'our', 'yours', 'is', 'if', 'this', 'be', 'that', 'has', 'you', 'we', 'by', "you'll", 'got', "you're", 'when', "that's", "you'll", 'but', 'than', "that's", 'youll', 'us', 'how', 'weve', "we've", 'what', 'why', 'will', "it's", 'where', 'those', "there's", 'its', 'youd', "you're", 'were', "you've", "there's", 'they', 'so', 'ok...as', 'like', 'etc', 'any', 'given', 'after', 'been', 'within', 'get', 'dont', 'brings', 'do', 'should', 'not', 'well', 'some', 'from', 'using', 'on', 'needing', 'very', '&', 'every', 'it', 'other', 'into', 'eg', 'more', 'all', 'throuh', 'above' , "we're", 'who', 'would', "aren't", 'their', 'these', 'come', 'bs', 'theyre', 'sex', '"get', 'andor' ];
+      var excludedWords = [ '', 'the', 'a', 'to', 'and', 'of', 'and', 'an', 'are', 'in', 'with', 'as', 'for', 'or', 'at', 'your', 'our', 'yours', 'is', 'if', 'this', 'be', 'that', 'has', 'you', 'we', 'by', "you'll", 'got', "you're", 'when', "that's", "you'll", 'but', 'than', "that's", 'youll', 'us', 'how', 'weve', "we've", 'what', 'why', 'will', "it's", 'where', 'those', "there's", 'its', 'youd', "you're", 'were', "you've", "there's", 'they', 'so', 'ok...as', 'like', 'etc', 'any', 'given', 'after', 'been', 'within', 'get', 'dont', 'brings', 'do', 'should', 'not', 'well', 'some', 'from', 'using', 'on', 'needing', 'very', '&', 'every', 'it', 'other', 'into', 'eg', 'more', 'all', 'throuh', 'above' , "we're", 'who', 'would', "aren't", 'their', 'these', 'come', 'bs', 'theyre', 'sex', '"get', 'andor', '•', '*', 'through', 'experience', 'please', '000', 'development', '￧', 'o', '⿢', '-', '&', '⿢', 'business', 'work', 'application' , '–', '00000', 'require', 'web' ];
 
       for (let key in wordsObj) {
 
@@ -217,6 +230,7 @@
 
       // arrayOfWords = scrambleArrayOrder(arrayOfWords);
       arrayOfWords = shiftBigWordsToCentre(arrayOfWords);
+      arrayOfWords = tripLargeResults(arrayOfWords);
       console.log(arrayOfWords);
       return arrayOfWords;
     }
@@ -247,63 +261,25 @@
   }
 
   function wordCloudGen (wordObject) {
+
     function makeMouseExit (node, rotationQuantity, wordlyObject) {
       var newRotateValue = '';
 
       switch (rotationQuantity) {
         case ('rotate(0deg)'):
-          newRotateValue = 'rotate(220deg)';
-          break;
-        case ('rotate(20deg)'):
-          newRotateValue = 'rotate(200deg)';
-          break;
-        case ('rotate(40deg)'):
-          newRotateValue = 'rotate(180deg)';
-          break;
-        case ('rotate(60deg)'):
-          newRotateValue = 'rotate(140deg)';
-          break;
-        case ('rotate(80deg)'):
-          newRotateValue = 'rotate(120deg)';
-          break;
-        case ('rotate(100deg)'):
-          newRotateValue = 'rotate(100deg)';
-          break;
-        case ('rotate(120deg)'):
-          newRotateValue = 'rotate(80deg)';
-          break;
-        case ('rotate(140deg)'):
-          newRotateValue = 'rotate(60deg)';
-          break;
-        case ('rotate(160deg)'):
-          newRotateValue = 'rotate(40deg)';
-          break;
-        case ('rotate(180deg)'):
-          newRotateValue = 'rotate(20deg)';
-          break;
-        case ('rotate(200deg)'):
-          newRotateValue = 'rotate(0deg)';
-          break;
-        case ('rotate(220deg)'):
           newRotateValue = 'rotate(340deg)';
           break;
-        case ('rotate(240deg)'):
+        case ('rotate(20deg)'):
           newRotateValue = 'rotate(320deg)';
           break;
-        case ('rotate(260deg)'):
-          newRotateValue = 'rotate(300deg)';
-          break;
-        case ('rotate(280deg)'):
-          newRotateValue = 'rotate(280deg)';
-          break;
-        case ('rotate(300deg)'):
-          newRotateValue = 'rotate(260deg)';
+        case ('rotate(40deg)'):
+          newRotateValue = 'rotate(0deg)';
           break;
         case ('rotate(320deg)'):
-          newRotateValue = 'rotate(240deg)';
+          newRotateValue = 'rotate(20deg)';
           break;
         case ('rotate(340deg)'):
-          newRotateValue = 'rotate(220deg)';
+          newRotateValue = 'rotate(40deg)';
           break;
         default:
           newRotateValue = 'rotate(180deg)';
@@ -321,61 +297,22 @@
 
       switch (rotationQuantity) {
         case ('rotate(0deg)'):
-          newRotateValue = 'rotate(20deg)';
+          newRotateValue = 'rotate(40deg)';
           break;
         case ('rotate(20deg)'):
-          newRotateValue = 'rotate(0deg)';
+          newRotateValue = 'rotate(3200deg)';
           break;
         case ('rotate(40deg)'):
           newRotateValue = 'rotate(340deg)';
           break;
-        case ('rotate(60deg)'):
-          newRotateValue = 'rotate(320deg)';
-          break;
-        case ('rotate(80deg)'):
-          newRotateValue = 'rotate(300deg)';
-          break;
-        case ('rotate(100deg)'):
-          newRotateValue = 'rotate(280deg)';
-          break;
-        case ('rotate(120deg)'):
-          newRotateValue = 'rotate(260deg)';
-          break;
-        case ('rotate(140deg)'):
-          newRotateValue = 'rotate(240deg)';
-          break;
-        case ('rotate(160deg)'):
-          newRotateValue = 'rotate(220deg)';
-          break;
-        case ('rotate(180deg)'):
-          newRotateValue = 'rotate(200deg)';
-          break;
-        case ('rotate(200deg)'):
-          newRotateValue = 'rotate(180deg)';
-          break;
-        case ('rotate(220deg)'):
-          newRotateValue = 'rotate(160deg)';
-          break;
-        case ('rotate(240deg)'):
-          newRotateValue = 'rotate(140deg)';
-          break;
-        case ('rotate(260deg)'):
-          newRotateValue = 'rotate(120deg)';
-          break;
-        case ('rotate(280deg)'):
-          newRotateValue = 'rotate(100deg)';
-          break;
-        case ('rotate(300deg)'):
-          newRotateValue = 'rotate(80deg)';
-          break;
         case ('rotate(320deg)'):
-          newRotateValue = 'rotate(60deg)';
+          newRotateValue = 'rotate(0deg)';
           break;
         case ('rotate(340deg)'):
-          newRotateValue = 'rotate(40deg)';
+          newRotateValue = 'rotate(20deg)';
           break;
         default:
-          newRotateValue = 'rotate(0deg)';
+          newRotateValue = 'rotate(40deg)';
       }
       wordlyObject.rotation = newRotateValue;
       node.onmouseover = function () {
