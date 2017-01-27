@@ -3,6 +3,9 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const mongoose = require('mongoose');
+const User = require('../src/users');
+mongoose.Promise = require('bluebird');
 
 //send to LinkedIn
 router.get('/linkedin', passport.authenticate('linkedin'));
@@ -24,7 +27,15 @@ router.get('/userid', (req, res) => {
     res.send(false);
   }
   else {
-    res.send(req.user);
+    User.findOne({linkedInId: req.user}, (err, data) => {
+      if(!data) {
+        res.send(false);
+      }
+      else {
+        res.send(data._id);
+      }
+    // res.send(req.user);
+    })
   }
 });
 
