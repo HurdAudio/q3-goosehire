@@ -90,7 +90,7 @@ app.get('/indeed', (req, res) => {
 app.get('/indeedSingleJob', (req, res) => {
   return request(req.query.url, (error, response, html) => {
     let $ = cheerio.load(html);
-    let textArray = []
+    let textArray = [];
     let jobDeets = $('#job_summary');
     let deetsKids = jobDeets.children();
 
@@ -139,6 +139,28 @@ app.get('/indeedSingleJob', (req, res) => {
               }
             }
             break;
+          case 'li':
+            if (deetsKids[i].children[0].name) {
+              textArray.push({
+                order: i,
+                type: `${deetsKids[i].name}, ${deetsKids[i].children[0].name}`,
+                text: deetsKids[i].children[0].children[0].data
+              });
+            } else {
+              textArray.push({
+                order: i,
+                type: deetsKids[i].name,
+                text: deetsKids[i].children[0].data
+              });
+            };
+            break;
+          case 'br':
+            textArray.push({
+              order: i,
+              type: deetsKids[i].name,
+              text: deetsKids[i].next.data
+            });
+            break;
           default:
             console.log(`deetsKids ${i}: ${deetsKids[i].name}`);
         }
@@ -150,7 +172,7 @@ app.get('/indeedSingleJob', (req, res) => {
     const jobDetails = {
       html: jobDeets.html(),
       array: textArray
-    }
+    };
 
     res.send(jobDetails);
     });
