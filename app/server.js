@@ -49,38 +49,44 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(id, done) {
    //Take whats stored in session and query database/etc.
-   console.log('req.user deserial:', id);
+  //  console.log('req.user deserial:', id);
    done(null, id);
 });
 
 passport.use(new LinkedInStrategy( {
    consumerKey: process.env['LINKEDIN_CLIENT_ID'],
    consumerSecret: process.env['LINKEDIN_CLIENT_SECRET'],
-   callbackURL: "http://localhost:3007/auth/linkedin/callback",
+   callbackURL: `http://localhost:3007/auth/linkedin`,
    scope:['r_basicprofile', 'r_emailaddress']
 },function(token, tokenSecret, profile, done) {
    // Get user from database or create.
    //this is where we will do get to mongo with
-   console.log(doesUserExist(profile.id));
+  //  console.log(profile);
+     console.log(profile.id + '%%%%%%%%%%%%%%%%%%%%%%%%%%');
+    //  doesUserExist(profile.id);
    return done(null, profile);
 }));
 
 function doesUserExist(id) {
+  ((req, res) => {
    User.findOne({linkedInId: id}, (err, data) => {
-     console.log(data + '!!!!!!!!!!!');
      if(!data) {
       User.create({
         linkedInId: id
       }, (err, newUser) => {
         if(err) {throw err};
+        console.log(newUser._id + '!!!!!!!!!!!!!!!!!!!!!');
         return newUser._id;
       })
      }
      else {
+       console.log(data._id + '~~~~~~~~~~~~~~~~~~~~~~');
        return data._id;
      }
   })
+})(req, res);
 }
+
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -94,8 +100,8 @@ app.use('/searches', require('./routes/searches'));
 app.use('/auth', require('./routes/auth'));
 
 app.use(function(req,res,next) {
-  console.log('user',req.user);
-  next();
+  console.log('user', req.user);
+  res.send(req.user.id);
 });
 
 app.use(express.static(path.join(__dirname, '/../', 'node_modules')));
