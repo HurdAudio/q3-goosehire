@@ -7,10 +7,12 @@
       templateUrl: '/js/searchForm/searchForm.template.html'
     });
 
-    SearchFormController.$inject = ['$state', 'searchFormService'];
+    SearchFormController.$inject = ['$state', 'searchFormService', 'savedItemService'];
 
-    function SearchFormController($state, searchFormService){
+    function SearchFormController($state, searchFormService, savedItemService){
       const vm = this;
+
+      vm.searchForm.skills = savedItemService.skills;
 
       vm.search = function() {
         searchFormService.getResults(vm.searchForm)
