@@ -40,12 +40,12 @@
       }
 
       vm.saveSkills = function() {
-        vm.userid = '58862bb83c085df2aaf099cc';
+
         var request = {
           skillSet: vm.skills
         }
         console.log(request);
-        $http.post(`/skillsets/${vm.userid}`, request).then((data) => {
+        $http.post(`/skillsets/${userService.userId}`, request).then((data) => {
           //TODO: make a toast/popup letting the user know their skills have been saved
           console.log(data);
           return;
