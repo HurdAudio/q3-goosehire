@@ -59,6 +59,11 @@ textarea {
   padding-left: 10px;
 }
 
+.job {
+  overflow: scroll;
+  height: 300px;
+}
+
 .one {
   font-style: italic;
 }

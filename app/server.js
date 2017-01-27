@@ -59,11 +59,72 @@ app.get('/indeed', (req, res) => {
 app.get('/indeedSingleJob', (req, res) => {
   return request(req.query.url, (error, response, html) => {
     let $ = cheerio.load(html);
-    let jobDeets = $('#job_summary').html();
+    let textArray = []
+    let jobDeets = $('#job_summary');
+    let deetsKids = jobDeets.children();
 
-    res.send(jobDeets);
-  })
-})
+    console.log(`loop results: arraylength: ${deetsKids.length}`);
+
+    for (let i=0; i < deetsKids.length; i++) {
+
+      if (deetsKids[i].type === 'text') {
+        textArray.push({
+          type: deetsKids[i].name || deetsKids[i].type,
+          text: deetsKids[i].data
+        });
+      } else {
+        switch (deetsKids[i].name) {
+          case 'p':
+            if (deetsKids[i].children[0].name) {
+              textArray.push({
+                order: i,
+                type: `${deetsKids[i].name}, ${deetsKids[i].children[0].name}`,
+                text: deetsKids[i].children[0].children[0].data
+              });
+            } else {
+              textArray.push({
+                order: i,
+                type: deetsKids[i].name,
+                text: deetsKids[i].children[0].data
+              });
+            };
+            break;
+          case 'ul':
+            for (let j=0; j < deetsKids[i].children.length; j++) {
+              if (deetsKids[i].children[j].children[0].name) {
+                textArray.push({
+                  order: i,
+                  listOrder: j,
+                  type: `${deetsKids[i].name}, ${deetsKids[i].children[j].name}, ${deetsKids[i].children[j].children[0].name}`,
+                  text: deetsKids[i].children[j].children[0].children[0].data
+                })
+              } else {
+                textArray.push({
+                  order: i,
+                  listOrder: j,
+                  type: `${deetsKids[i].name}, ${deetsKids[i].children[j].name}`,
+                  text: deetsKids[i].children[j].children[0].data
+                })
+              }
+            }
+            break;
+          default:
+            console.log(`deetsKids ${i}: ${deetsKids[i].name}`);
+        }
+      }
+    }
+
+    console.log('testArray: ', textArray);
+
+    const jobDetails = {
+      html: jobDeets.html(),
+      array: textArray
+    }
+
+    res.send(jobDetails);
+    });
+});
+
 
 app.get('/', (req, res) => {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')});
