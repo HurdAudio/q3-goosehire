@@ -19,10 +19,14 @@ router.get('/linkedin/callback', passport.authenticate('linkedin',{
 // )
 ));
 
-// router.get('/userid', (req, res) => {
-//   console.log(req.user);
-//   res.send(req.user);
-// });
+router.get('/userid', (req, res) => {
+  if(!req.user) {
+    res.send(false);
+  }
+  else {
+    res.send(req.user);
+  }
+});
 
 router.get('/logout', function(req, res){
   console.log('logout', req.user);
