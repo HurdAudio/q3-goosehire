@@ -110,12 +110,13 @@ app.get('/indeed', (req, res) => {
 app.get('/indeedSingleJob', (req, res) => {
   return request(req.query.url, (error, response, html) => {
     let $ = cheerio.load(html);
-    let textArray = []
+    let textArray = [];
     let jobDeets = $('#job_summary');
     let deetsKids = jobDeets.children();
 
     console.log(`loop results: arraylength: ${deetsKids.length}`);
 
+    // parse html into array in prep for passing to wordcloud
     for (let i=0; i < deetsKids.length; i++) {
 
       if (deetsKids[i].type === 'text') {
@@ -128,49 +129,95 @@ app.get('/indeedSingleJob', (req, res) => {
           case 'p':
             if (deetsKids[i].children[0].name) {
               textArray.push({
-                order: i,
                 type: `${deetsKids[i].name}, ${deetsKids[i].children[0].name}`,
                 text: deetsKids[i].children[0].children[0].data
               });
             } else {
               textArray.push({
-                order: i,
                 type: deetsKids[i].name,
                 text: deetsKids[i].children[0].data
               });
             };
             break;
+
+            case 'b':
+              if (deetsKids[i].children[0].name) {
+                textArray.push({
+                  type: `${deetsKids[i].name}, ${deetsKids[i].children[0].name}`,
+                  text: deetsKids[i].children[0].children[0].data
+                });
+              } else {
+                textArray.push({
+                  type: deetsKids[i].name,
+                  text: deetsKids[i].children[0].data
+                });
+              };
+              break;
+
           case 'ul':
             for (let j=0; j < deetsKids[i].children.length; j++) {
               if (deetsKids[i].children[j].children[0].name) {
                 textArray.push({
-                  order: i,
-                  listOrder: j,
                   type: `${deetsKids[i].name}, ${deetsKids[i].children[j].name}, ${deetsKids[i].children[j].children[0].name}`,
                   text: deetsKids[i].children[j].children[0].children[0].data
                 })
               } else {
                 textArray.push({
-                  order: i,
-                  listOrder: j,
                   type: `${deetsKids[i].name}, ${deetsKids[i].children[j].name}`,
                   text: deetsKids[i].children[j].children[0].data
                 })
               }
             }
             break;
+
+          case 'li':
+            if (deetsKids[i].children[0].name) {
+              textArray.push({
+                type: `${deetsKids[i].name}, ${deetsKids[i].children[0].name}`,
+                text: deetsKids[i].children[0].children[0].data
+              });
+            } else {
+              textArray.push({
+                type: deetsKids[i].name,
+                text: deetsKids[i].children[0].data
+              });
+            };
+            break;
+
+          case 'br':
+            if (deetsKids[i].next.data && deetsKids[i].next.data !== '\n') {
+              textArray.push({
+                type: deetsKids[i].name,
+                text: deetsKids[i].next.data
+              });
+            };
+            break;
+
           default:
             console.log(`deetsKids ${i}: ${deetsKids[i].name}`);
         }
       }
     }
 
-    console.log('testArray: ', textArray);
+    console.log('textArray: ', textArray);
+    console.log('=========================');
 
+    let parsedArray = [];
+
+    for (let k=0; k < textArray.length; k++) {
+      parsedArray.push({
+        type: textArray[k].type,
+        text: textArray[k].text.replace(/\n/g,'')
+      });
+    }
+
+    console.log('parsed: ', parsedArray);
+
+// handing both the parsed array (for the word cloud), and the raw html (for display) back to the component
     const jobDetails = {
       html: jobDeets.html(),
       array: textArray
-    }
+    };
 
     res.send(jobDetails);
     });
