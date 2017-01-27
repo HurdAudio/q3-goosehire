@@ -19,7 +19,7 @@
       vm.noWrapSlides = false;
       vm.active = 0;
 
-      vm.isUser = true;
+
       vm.userid = '58862bb83c085df2aaf099cc';
       vm.savedSkills = vm.savedSkills;
       vm.savedJobSearches = vm.savedJobSearches;
@@ -61,6 +61,10 @@
 
 
      };
+
+     vm.isUser = function() {
+       return userService.userId ? true : false;
+     }
     }
 
 
