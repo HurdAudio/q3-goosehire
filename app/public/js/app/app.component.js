@@ -7,18 +7,17 @@
       controller: AppController
     })
 
-  AppController.$inject = ['$http']
-  function AppController($http) {
+
+  AppController.$inject = ['$http', 'userService']
+  function AppController($http, userService) {
     const vm = this;
 
-    vm.$onInit = function(){
+    vm.$onInit = userService.$onInit;
 
-
+    vm.isUser = function () {
+      return userService.userId ? true : false;
     }
-
-
   }
-
   //nav menu lives here
 
 })();

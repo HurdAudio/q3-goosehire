@@ -8,9 +8,9 @@
       templateUrl: '/js/jobView/jobView.template.html'
     });
 
-    JobViewController.$inject = ['$http', '$state', '$stateParams']
+    JobViewController.$inject = ['$http', '$state', '$stateParams', 'userService']
 
-    function JobViewController($http, $state, $stateParams){
+    function JobViewController($http, $state, $stateParams, userService){
       const vm = this;
 
       vm.skills= $stateParams.skills;
@@ -33,6 +33,10 @@
         .catch((err) => {
           console.log(err);
         });
+      }
+
+      vm.isUser = function() {
+        return userService.userId ? true : false;
       }
 
       vm.saveSkills = function() {

@@ -22,7 +22,7 @@
                 </form>
 
                 <ul class="pure-menu-list pure-u-5-5 is-center">
-                  <li><a class="pure-button button-secondary is-left" href="#" ng-click="$ctrl.saveSkills()">Save Skills</a></li>
+                  <li><a ng-if="$ctrl.isUser()" class="pure-button button-secondary is-left" href="#" ng-click="$ctrl.saveSkills()">Save Skills</a></li>
                   <br>
                   <li><a class="pure-button button-secondary is-center" href="#" ngclipboard data-clipboard-target="#copytext">Copy to Clipboard</a></li>
                   <br>

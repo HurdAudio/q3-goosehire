@@ -11,6 +11,8 @@ const cheerio = require('cheerio');
 const passport = require('passport');
 const LinkedInStrategy = require('passport-linkedin').Strategy;
 const cookieSession = require('cookie-session');
+const User = require('./src/users');
+mongoose.Promise = require('bluebird');
 
 require('dotenv').config();
 
@@ -44,20 +46,32 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(id, done) {
    //Take whats stored in session and query database/etc.
-   console.log('req.user deserial:', id);
+  //  console.log('req.user deserial:', id);
    done(null, id);
 });
+
 
 passport.use(new LinkedInStrategy( {
    consumerKey: process.env['LINKEDIN_CLIENT_ID'],
    consumerSecret: process.env['LINKEDIN_CLIENT_SECRET'],
-   callbackURL: "http://localhost:3007/auth/linkedin/callback",
+   callbackURL: `http://localhost:3007/auth/linkedin/callback`,
    scope:['r_basicprofile', 'r_emailaddress']
 },function(token, tokenSecret, profile, done) {
-   // Get user from database or create.
-   //this is where we will do get to mongo with
-  //  console.log("profile.id HERE", profile.id);
-
+  User.findOne({linkedInId: profile.id}, (err, data) => {
+     if(!data) {
+      User.create({
+        linkedInId: profile.id
+      }, (err, data) => {
+        if(err) {throw err};
+        console.log(data._id);
+        return data._id;
+      })
+     }
+     else {
+       console.log(data._id);
+       return data._id;
+     }
+  })
    return done(null, profile);
 }));
 
@@ -70,7 +84,13 @@ app.use('/skillsets', require('./routes/skillsets'));
 app.use('/searches', require('./routes/searches'));
 app.use('/auth', require('./routes/auth'));
 
-app.use(express.static(path.join(__dirname, '/../', 'node_modules')))
+
+// app.use(function(req,res,next) {
+//   console.log('user', req.user);
+//   next();
+// });
+
+app.use(express.static(path.join(__dirname, '/../', 'node_modules')));
 
 
 app.get('/indeed', (req, res) => {

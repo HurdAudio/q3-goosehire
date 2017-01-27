@@ -6,11 +6,11 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
   username: {
-    type: String,
-    required: [true, 'username is required']
+    type: String
+    // required: [true, 'username is required']
   },
   hashedPassword: {
-    type: String,
+    type: String
     // validate: {
     //   validator: (hashedPassword) => hashedPassword.length === 16,
     //   message: 'if ur password isnt 16 characters, its probably not hashed'
