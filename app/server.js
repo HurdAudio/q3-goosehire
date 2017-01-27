@@ -51,7 +51,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new LinkedInStrategy( {
    consumerKey: process.env['LINKEDIN_CLIENT_ID'],
    consumerSecret: process.env['LINKEDIN_CLIENT_SECRET'],
-   callbackURL: "http://localhost:3007/auth/linkedin/callback",
+   callbackURL: "https://q3-goosehire.herokuapp.com/auth/linkedin/callback",
    scope:['r_basicprofile', 'r_emailaddress']
 },function(token, tokenSecret, profile, done) {
    // Get user from database or create.
