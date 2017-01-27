@@ -23,7 +23,7 @@
       var jobDescriptionString = '';
 
       for (let k = 0; k < jobData.length; k++) {
-        jobDescriptionString += jobData[k].text;
+        jobDescriptionString += ` ${jobData[k].text}`;
         console.log(jobDescriptionString);
       }
       return(jobDescriptionString);
