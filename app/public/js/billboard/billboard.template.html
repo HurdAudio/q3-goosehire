@@ -1,5 +1,5 @@
-
-  <div class="slideshow">
+<div>
+  <div class="slideshow" ng-if="$ctrl.isUser">
     <div uib-carousel active="$ctrl.active" interval="$ctrl.myInterval" no-wrap="$ctrl.noWrapSlides">
         <div uib-slide ng-repeat="slide in $ctrl.slides track by slide.id" index="slide.id">
           <img class="pure-img-responsive" ng-src="{{slide.image}}" style="margin:auto;">
@@ -11,32 +11,30 @@
   </div>
 
 
-<!--logged in  -->
-<!-- <div class="splash-container"> -->
-    <!-- <div class="splash"> -->
-        <!-- <div class="pure-g">
-          <div class="pure-u-1 pure-u-md-1-2">
-            <div class="save-boxes">
-              <h3 class="is-center">skill sets(will scroll)</h3>
-              <div class="pure-u-1 pure-u-md-1-2 small-box">
-                small box
+  <!--user logged in  -->
+  <div class="splash-container" ng-if="!$ctrl.isUser">
+      <!-- <div class="splash"> -->
+          <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-2">
+              <div class="save-boxes">
+                <h3 class="is-center">Saved Skills Sets</h3>
+                <div class="pure-u-1 pure-u-md-1-2">
+                  small box $ctrl.savedSkills here
+                </div>
               </div>
-              <div class="pure-u-1 pure-u-md-1-2 small-box">
-                small box
+            </div>
+            <div class="pure-u-1 pure-u-md-1-2">
+              <div class="save-boxes">
+                <h3 class="is-center">Saved Job Searches</h3>
+                <div class="pure-u-1 pure-u-md-1-2">
+                  $ctrl.savedJobSearches here
+                </div>
+                <div class="pure-u-1 pure-u-md-1-2 small-box">
+                  small box
+                </div>
               </div>
             </div>
           </div>
-          <div class="pure-u-1 pure-u-md-1-2">
-            <div class="save-boxes">
-              <h3 class="is-center">saved job searches(will scroll)</h3>
-              <div class="pure-u-1 pure-u-md-1-2 small-box">
-                small box
-              </div>
-              <div class="pure-u-1 pure-u-md-1-2 small-box">
-                small box
-              </div>
-            </div>
-          </div>
-        </div> -->
-    <!-- </div> -->
-<!-- </div>
+      </div>
+  <!-- </div> -->
+</div>
