@@ -2,7 +2,7 @@
 <div class="job-page">
   <p>Your search parameters were: <b>Skills: </b>{{ $ctrl.skills }}, <b>Location: </b>{{ $ctrl.location }}</p>
   <hr>
-  <ul class="pure-menu-list pure-u-5-5 is-center">
+  <ul class="pure-menu-list pure-u-5-5 is-center" ng-if="$ctrl.isUser()">
     <li id="login-button"><a class="pure-button button-secondary is-center" href="#" ng-click="$ctrl.saveSearch()">Save Search</a></li>
   </ul>
 </div>
