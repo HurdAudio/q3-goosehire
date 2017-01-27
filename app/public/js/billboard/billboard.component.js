@@ -35,9 +35,16 @@
         //   text: 'Modify your skills to match desired job skills'
       }];
 
+      if(userService.userId) {
+        console.log(userService.userId);
+        $http.get(`/skillsets/${userService.userId}`).then((data) => {
+          console.log(data);
+        })
+      }
+
       //if logged in
-      if(vm.isUser){
-        console.log('logged in');
+      // if(vm.isUser){
+        // console.log('logged in');
 
         // $http.get(`/skillsets/${vm.userid}`)
         //   .then((result)=> {
@@ -57,10 +64,12 @@
         //     console.log(err);
         //   })
 
-      }
+      // }
 
 
      };
+
+
 
      vm.isUser = function() {
        return userService.userId ? true : false;
