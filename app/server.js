@@ -8,10 +8,6 @@ const app = express();
 const request = require('request');
 const rpn = require('request-promise-native');
 const cheerio = require('cheerio');
-const passport = require('passport');
-const LinkedInStrategy = require('passport-linkedin').Strategy;
-const cookieSession = require('cookie-session');
-
 
 require('dotenv').config();
 
@@ -30,63 +26,27 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/goosehire
 mongoose.connection.on('error', () => {console.log('mongo connection failed')})
   .once('open', () => {console.log('mongo is lit')});
 
-
-//Oauth with Passport
-app.use(cookieSession({
-   name: 'session',
-   keys: [process.env.SECRET_KEY]
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.serializeUser(function(user, done) {
-   //Decide what to store in session.
-   done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-   //Take whats stored in session and query database/etc.
-   console.log('req.user deserial:', id);
-   done(null, id);
-});
-
-passport.use(new LinkedInStrategy( {
-   consumerKey: process.env['LINKEDIN_CLIENT_ID'],
-   consumerSecret: process.env['LINKEDIN_CLIENT_SECRET'],
-   callbackURL: "https://q3-goosehire.herokuapp.com/auth/linkedin/callback",
-   scope:['r_basicprofile', 'r_emailaddress']
-},function(token, tokenSecret, profile, done) {
-   // Get user from database or create.
-   //this is where we will do get to mongo with
-   console.log(profile);
-   return done(null, profile);
-}));
-
-
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(bodyParser.json());
 
-
-//routes
 app.use('/users', require('./routes/users'));
 app.use('/skillsets', require('./routes/skillsets'));
 app.use('/searches', require('./routes/searches'));
-app.use('/auth', require('./routes/auth'));
 
-app.use(function(req,res,next) {
-  console.log('user',req.user);
-  next();
-});
+app.use(express.static(path.join(__dirname, '/../', 'node_modules')))
 
-app.use(express.static(path.join(__dirname, '/../', 'node_modules')));
+//these need to be modified
+// app.use('/api/posts', require('./routes/searches'));
+// app.use('/api/posts', require('./routes/skillsets'));
+// app.use('/api/posts', require('./routes/users'));
 
 
-//api call to indeed
 app.get('/indeed', (req, res) => {
   let searchInfo = {
     skills: encodeURIComponent(req.query.skills),
-    location: encodeURIComponent(req.query.location)
+    location: encodeURIComponent(req.query.location),
+    title: encodeURIComponent(req.query.title)
   };
 
   //TODO: Do we need to get the useragent dynamically from the browser for the search string below? -- CDH
@@ -105,9 +65,6 @@ app.get('/indeedSingleJob', (req, res) => {
   })
 })
 
-
-
-//default endpoint
 app.get('/', (req, res) => {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')});
 });
@@ -115,7 +72,6 @@ app.get('/', (req, res) => {
 app.use('*', function(req, res, next) {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')});
 });
-
 
 app.listen(port, () => {
   console.log('Listening on port', port);
