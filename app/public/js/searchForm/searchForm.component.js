@@ -12,7 +12,13 @@
     function SearchFormController($state, searchFormService, savedItemService){
       const vm = this;
 
-      vm.searchForm.skills = savedItemService.skills;
+      vm.$onInit = function() {
+        vm.searchForm = {
+          skills: ''
+        };
+      }
+
+      vm.searchForm.skills = (savedItemService.skills || '');
 
       vm.search = function() {
         searchFormService.getResults(vm.searchForm)
