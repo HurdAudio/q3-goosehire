@@ -8,9 +8,9 @@
     });
 
 
-    BillboardController.$inject = ['userService', '$http', 'savedItemService'];
+    BillboardController.$inject = ['userService', '$http'];
 
-    function BillboardController(userService, $http, savedItemService){
+    function BillboardController(userService, $http){
 
       const vm = this;
 
@@ -74,10 +74,11 @@
 
      };
 
-     vm.newSkillsSearch = function (skills) {
-       console.log(skills); 
-       savedItemService.skills = skills;
-     }
+    //  vm.newSkillsSearch(skills) = savedItemService.newSkills(skills);
+    //  function (skills) {
+    //    console.log(skills);
+    //    savedItemService.newSkills = skills;
+    //  }
 
      vm.newJobSearch = function () {
 
