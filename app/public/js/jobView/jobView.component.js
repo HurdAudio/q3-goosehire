@@ -27,7 +27,7 @@
           }
         })
         .then((response) => {
-          console.log(response, "jobView");
+          console.log("jobView:html? ", response);
           return vm.jobData = response.data;
         })
         .catch((err) => {
