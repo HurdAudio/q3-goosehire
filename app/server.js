@@ -16,8 +16,6 @@ mongoose.Promise = require('bluebird');
 
 require('dotenv').config();
 
-console.log('loading');
-
 const port = process.env.PORT || 3007;
 
 if (process.env.NODE_ENV !== 'test') {
@@ -31,7 +29,6 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/goosehire
 mongoose.connection.on('error', () => {console.log('mongo connection failed')})
   .once('open', () => {console.log('mongo is lit')});
 
-
 //Oauth with Passport
 app.use(cookieSession({
    name: 'session',
@@ -43,6 +40,7 @@ app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
    //Decide what to store in session.
+  //  console.log(user);
    done(null, user.id);
 });
 
@@ -76,23 +74,26 @@ passport.use(new LinkedInStrategy( {
        console.log(data._id + '~~~~~~~~~~~~~~~~~~~~~~');
        return data._id;
      }
-  }).then((data) => {
-    console.log(data + '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
-    // return data;
   })
+  // .then((data) => {
+  //   console.log(data + '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+  //   // return data;
+  // })
+
+  //  console.log("profile.id HERE", profile.id);
+
    return done(null, profile);
 }));
 
-
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(bodyParser.json());
 
-
-//routes
 app.use('/users', require('./routes/users'));
 app.use('/skillsets', require('./routes/skillsets'));
 app.use('/searches', require('./routes/searches'));
 app.use('/auth', require('./routes/auth'));
+
 
 app.use(function(req,res,next) {
   console.log('user', req.user);
@@ -102,11 +103,11 @@ app.use(function(req,res,next) {
 app.use(express.static(path.join(__dirname, '/../', 'node_modules')));
 
 
-//api call to indeed
 app.get('/indeed', (req, res) => {
   let searchInfo = {
     skills: encodeURIComponent(req.query.skills),
-    location: encodeURIComponent(req.query.location)
+    location: encodeURIComponent(req.query.location),
+    title: encodeURIComponent(req.query.title)
   };
 
   //TODO: Do we need to get the useragent dynamically from the browser for the search string below? -- CDH
@@ -119,15 +120,72 @@ app.get('/indeed', (req, res) => {
 app.get('/indeedSingleJob', (req, res) => {
   return request(req.query.url, (error, response, html) => {
     let $ = cheerio.load(html);
-    let jobDeets = $('#job_summary').html();
+    let textArray = []
+    let jobDeets = $('#job_summary');
+    let deetsKids = jobDeets.children();
 
-    res.send(jobDeets);
-  })
-})
+    console.log(`loop results: arraylength: ${deetsKids.length}`);
 
+    for (let i=0; i < deetsKids.length; i++) {
 
+      if (deetsKids[i].type === 'text') {
+        textArray.push({
+          type: deetsKids[i].name || deetsKids[i].type,
+          text: deetsKids[i].data
+        });
+      } else {
+        switch (deetsKids[i].name) {
+          case 'p':
+            if (deetsKids[i].children[0].name) {
+              textArray.push({
+                order: i,
+                type: `${deetsKids[i].name}, ${deetsKids[i].children[0].name}`,
+                text: deetsKids[i].children[0].children[0].data
+              });
+            } else {
+              textArray.push({
+                order: i,
+                type: deetsKids[i].name,
+                text: deetsKids[i].children[0].data
+              });
+            };
+            break;
+          case 'ul':
+            for (let j=0; j < deetsKids[i].children.length; j++) {
+              if (deetsKids[i].children[j].children[0].name) {
+                textArray.push({
+                  order: i,
+                  listOrder: j,
+                  type: `${deetsKids[i].name}, ${deetsKids[i].children[j].name}, ${deetsKids[i].children[j].children[0].name}`,
+                  text: deetsKids[i].children[j].children[0].children[0].data
+                })
+              } else {
+                textArray.push({
+                  order: i,
+                  listOrder: j,
+                  type: `${deetsKids[i].name}, ${deetsKids[i].children[j].name}`,
+                  text: deetsKids[i].children[j].children[0].data
+                })
+              }
+            }
+            break;
+          default:
+            console.log(`deetsKids ${i}: ${deetsKids[i].name}`);
+        }
+      }
+    }
 
-//default endpoint
+    console.log('testArray: ', textArray);
+
+    const jobDetails = {
+      html: jobDeets.html(),
+      array: textArray
+    }
+
+    res.send(jobDetails);
+    });
+});
+
 app.get('/', (req, res) => {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')});
 });
@@ -135,7 +193,6 @@ app.get('/', (req, res) => {
 app.use('*', function(req, res, next) {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')});
 });
-
 
 app.listen(port, () => {
   console.log('Listening on port', port);

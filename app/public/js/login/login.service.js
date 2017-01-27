@@ -6,7 +6,9 @@
 
       const vm = this;
 
-      
+      vm.isUser = function() {
+          
+      }
 
       vm.validate = function() {
         vm.id = '5883e0b0c3c69cc68ae7ae17';

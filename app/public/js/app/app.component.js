@@ -16,6 +16,13 @@
 
 
     }
+
+    vm.getLinkedIn = function() {
+      console.log('linkedin');
+      $http.get('/auth/userid').then((data) => {
+        console.log(data);
+      })
+    }
   }
   //nav menu lives here
 
