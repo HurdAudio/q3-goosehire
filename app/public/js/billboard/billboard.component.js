@@ -37,8 +37,13 @@
 
       if(userService.userId) {
         console.log(userService.userId);
-        $http.get(`/skillsets/${userService.userId}`).then((data) => {
-          console.log(data);
+        $http.get(`/skillsets/${userService.userId}`).then((result) => {
+          // console.log(result);
+          vm.skills = result.data;
+        })
+        $http.get(`/searches/${userService.userId}`).then((result) => {
+          console.log(result);
+          vm.searches = result.data;  
         })
       }
 
@@ -69,7 +74,13 @@
 
      };
 
+     vm.newSkillsSearch = function (words) {
+       console.log(words);
+     }
 
+     vm.newJobSearch = function () {
+
+     }
 
      vm.isUser = function() {
        return userService.userId ? true : false;

@@ -47,7 +47,6 @@
         console.log(request);
         $http.post(`/skillsets/${userService.userId}`, request).then((data) => {
           //TODO: make a toast/popup letting the user know their skills have been saved
-          console.log(data);
           return;
         })
       }

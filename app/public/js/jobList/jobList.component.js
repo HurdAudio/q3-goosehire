@@ -31,7 +31,6 @@
         }
         $http.post(`/searches/${userService.userId}`, request).then((data) => {
           //TODO: make a toast/popup letting the user know their search has been saved
-          console.log(data);
           return;
         })
       }
