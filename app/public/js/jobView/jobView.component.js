@@ -36,7 +36,7 @@
       }
 
       vm.isUser = function() {
-        return userService.id ? true : false;
+        return userService.userId ? true : false;
       }
 
       vm.saveSkills = function() {

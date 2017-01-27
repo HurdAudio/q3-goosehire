@@ -21,7 +21,7 @@
       // console.log(vm.searchResults)
 
       vm.isUser = function() {
-        return userService.id ? true : false;
+        return userService.userId ? true : false;
       }
 
       vm.saveSearch = function() {
