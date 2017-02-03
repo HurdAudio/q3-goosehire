@@ -32,7 +32,9 @@
         name: 'jobView',
         url: '/jobView',
         params: {
-          jobLink: 'No link provided',
+          job: {
+            url: 'No link provided.'
+          },
           skills: ''
         },
         parent: 'app',

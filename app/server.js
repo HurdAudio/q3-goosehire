@@ -199,9 +199,6 @@ app.get('/indeedSingleJob', (req, res) => {
       }
     }
 
-    console.log('textArray: ', textArray);
-    console.log('=========================');
-
     let parsedArray = [];
 
     for (let k=0; k < textArray.length; k++) {
@@ -210,8 +207,6 @@ app.get('/indeedSingleJob', (req, res) => {
         text: textArray[k].text.replace(/\n/g,'')
       });
     }
-
-    console.log('parsed: ', parsedArray);
 
 // handing both the parsed array (for the word cloud), and the raw html (for display) back to the component
     const jobDetails = {
