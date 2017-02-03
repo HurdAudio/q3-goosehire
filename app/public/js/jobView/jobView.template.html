@@ -44,8 +44,13 @@
                       <h3 class="is-center">Job Description</h3>
                       <div class="job">
                         <h4>{{ $ctrl.job.jobtitle }}</h4>
-                        <p><strong>{{ $ctrl.job.company }}</strong></p>
-                        <p><strong>{{ $ctrl.job.formattedLocationFull }}</strong></p>
+                        <div>
+                          <strong>{{ $ctrl.job.company }}</strong> || <strong>{{ $ctrl.job.formattedLocationFull }}</strong>
+                          <div>
+                            <a href="{{ ctrl.job.url }}">View job posting on Indeed</a>
+                          </div>
+                        </div>
+                        <br>
                         <div ng-bind-html="$ctrl.jobData.html"></div>
                       </div>
                     </fieldset>
