@@ -252,6 +252,13 @@ This is the blue top section that appears on the page.*/
     letter-spacing: 0.05em;
 }
 
+.jobList-indeed {
+  border: 0;
+  margin: auto;
+  text-align: center;
+  width: 50%;
+}
+
 
 .job-page {
   margin-top: 6em;
