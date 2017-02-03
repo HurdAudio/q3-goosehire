@@ -22,11 +22,17 @@
                 </form>
 
                 <ul class="pure-menu-list pure-u-5-5 is-center">
-                  <li><a ng-if="$ctrl.isUser()" class="pure-button button-secondary is-left" href="#" ng-click="$ctrl.saveSkills()">Save Skills</a></li>
+                  <li>
+                    <a ng-if="$ctrl.isUser()" class="pure-button button-secondary is-left" href="#" ng-click="$ctrl.saveSkills()">Save Skills</a>
+                  </li>
                   <br>
-                  <li><a class="pure-button button-secondary is-center" href="#" ngclipboard data-clipboard-target="#copytext">Copy to Clipboard</a></li>
+                  <li>
+                    <a class="pure-button button-secondary is-center" href="#" ngclipboard data-clipboard-target="#copytext">Copy to Clipboard</a>
+                  </li>
                   <br>
-                  <li><a class="pure-button button-secondary is-center" href="#" ngclipboard data-clipboard-target="#copytext" ng-click="$scope.wordCloudGen($scope.wordCLoudObjectGen($ctrl.skills.split(', '), $ctrl.jobData));">Update Cloud</a></li>
+                  <li>
+                    <a class="pure-button button-secondary is-center" href="#" ngclipboard data-clipboard-target="#copytext" ng-click="$scope.wordCloudGen($scope.wordCLoudObjectGen($ctrl.skills.split(', '), $ctrl.jobData));">Update Cloud</a>
+                  </li>
                 </ul>
             </div>
           </div>
@@ -36,7 +42,12 @@
                 <form class="pure-form">
                     <fieldset class="pure-group">
                       <h3 class="is-center">Job Description</h3>
-                        <div class="job" ng-bind-html="$ctrl.jobData.html"></div>
+                      <div class="job">
+                        <h4>{{ $ctrl.job.jobtitle }}</h4>
+                        <p><strong>{{ $ctrl.job.company }}</strong></p>
+                        <p><strong>{{ $ctrl.job.formattedLocationFull }}</strong></p>
+                        <div ng-bind-html="$ctrl.jobData.html"></div>
+                      </div>
                     </fieldset>
                 </form>
             </div>

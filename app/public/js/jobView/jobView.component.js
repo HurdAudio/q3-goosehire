@@ -13,21 +13,21 @@
     function JobViewController($http, $state, $stateParams, userService){
       const vm = this;
 
-      vm.skills= $stateParams.skills;
+      vm.skills = $stateParams.skills;
+      vm.job = $stateParams.job;
 
       vm.$onInit = function() {
-        console.log("loading jobView comp");
-        console.log($stateParams, "stateParams");
+
+        console.log('job passed to single job search', vm.job);
 
         $http({
           method:'GET',
           url: '/indeedSingleJob',
           params: {
-            url: $stateParams.jobLink
+            url: vm.job.url
           }
         })
         .then((response) => {
-          console.log("jobView:html? ", response);
           return vm.jobData = response.data;
         })
         .catch((err) => {
