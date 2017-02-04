@@ -17,7 +17,6 @@
       vm.job = $stateParams.job;
 
       vm.$onInit = function() {
-
         console.log('job passed to single job search', vm.job);
 
         $http({
