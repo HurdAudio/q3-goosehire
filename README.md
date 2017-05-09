@@ -6,6 +6,7 @@ An online tool for matching skill sets to job descriptions, utilizing�
 
 Our current deployed version is here: https://q3-goosehire.herokuapp.com/
 
+**My role**: I worked on the overall look and feel of the site – color scheme, carousel images, layout. I also set up the MongoDB servers and assisted with querying the database and building the routes. 
 
 
 ![alt text](https://github.com/mehrimo/q3-goosehire/blob/master/app/public/images/goosehire-homepage.png?raw=true)
